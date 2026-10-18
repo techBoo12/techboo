@@ -149,12 +149,12 @@ window.CONTENT = {
   footer: {
     aboutLabel: "About Me", aboutLink: "Learn More", aboutHref: "#about",
     sayHi: "Say Hi",
-    email: "hello@techboo.design",      // >>> PLACEHOLDER <<< her real email
+    email: "adaikemmartilda@gmail.com",      // Oct 18 10:06 PM her official email
     linkedinLabel: "Linkedin", linkedinHandle: "adaikemajufo", linkedinHref: "https://www.linkedin.com/in/adaikemajufo/",   // >>> PLACEHOLDER <<< confirm URL
     behanceHref: "https://www.behance.net/adaikemajufo_techboo",
     xHref: "https://x.com/techboo_",
     signoff1: "With Intention", signoffAmp: "&", signoff2: "Motion",
-    rights: "All Rights Reserved © techBoo 2025"
+    rights: "All Rights Reserved © techBoo 2026"
   }
 };
 
@@ -198,9 +198,9 @@ window.CONTENT.groups = {
 window.CONTENT.experience = [
   { org: "SalesPlat Technologies", loc: "Nigeria · Hybrid", years: "Jul 2022 – Present", roles: [
       ["Associate Design Lead, AuxHR", "Jan 2026 – Present"],
+      ["UI/UX Design Instructor, The Growth Hub", "Mar 2023 – Present"],
       ["Associate Product Designer, AuxHR", "Jun 2025 – Jan 2026"],
-      ["Product Designer, Incubate", "Jul 2022 – Jun 2025"],
-      ["UI/UX Design Instructor, The Growth Hub", "Mar 2023 – Present"] ] },
+      ["Product Designer, Incubate", "Jul 2022 – Jun 2025"] ] },
   { org: "Freelance Product Visual Creator", loc: "Remote", years: "2023 – Present", roles: [ ["UI/UX, Motion Design & Video Edits", ""] ] },
   { org: "Axis Robotics Contributor", loc: "California · Remote", years: "Sep 2025 – Oct 2026", roles: [ ["Motion Designer & Brand Designer", ""] ] },
   { org: "Toki Finance", loc: "Japan · Remote", years: "Sep 2024 – Jan 2026", roles: [ ["Marketing Visual Designer & Community Moderator", ""], ["Brand visual design · community lead (Nigeria)", ""] ] }
