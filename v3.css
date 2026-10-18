@@ -397,8 +397,8 @@ body[data-tab="uiux"] .tb-split .tb-cw{display:flex;flex-direction:column;min-wi
 /* Oct 18 10:06 PM her ask: hero bubble replaces the purple foot glow, rising from bottom centre; LinkedIn icon only */
 .tb-contact .foot-orb{background:none;filter:none;opacity:1;transform:none;animation:none;left:calc(50% - 360px);width:720px;height:720px;bottom:-430px}
 .tb-contact .foot-orb .orb-core,.tb-contact .foot-orb .orb-ring,.tb-contact .foot-orb .orb-gloss{opacity:1}
-.li-ico{display:inline-flex;align-items:center;color:var(--ink2);transition:color .2s}
-.li-ico:hover{color:var(--lilac)}
+.li-ico{display:inline-flex;align-items:center;color:#0A66C2;transition:opacity .2s}
+.li-ico:hover{color:#0A66C2;opacity:.8}
 @media (max-width:760px){.tb-contact .foot-orb{width:92vw;height:92vw;left:4vw;bottom:-48vw}}
 .tb-contact .foot-orb .orb-core{box-shadow:inset -50px -60px 140px rgba(10,5,30,.8), inset 40px 40px 90px rgba(255,255,255,.08)}
 .tb-contact .foot-orb .orb-gloss{opacity:.55}
