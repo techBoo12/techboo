@@ -407,3 +407,8 @@ body[data-tab="uiux"] .tb-split .tb-cw{display:flex;flex-direction:column;min-wi
 @media (prefers-reduced-motion:no-preference){.tb-hero .tb-orb.tb-orb-intro:not(.tb-gl-on) .orb{animation:tbOrbSpin 5s cubic-bezier(.455,.03,.515,.955) 0s both}}
 .tb-contact{margin-top:56px;padding-top:80px}
 @media (max-width:760px){.tb-contact{margin-top:24px;padding-top:44px}}
+
+/* Oct 18 10:17 PM her asks: footer LinkedIn icon bigger and sitting above (outside) the bubble */
+.tb-contact .tb-socials{margin-top:26px}
+.tb-contact .rights{padding-top:300px}
+@media (max-width:760px){.tb-contact .rights{padding-top:calc(44vw + 24px)}}
