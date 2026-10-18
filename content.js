@@ -201,7 +201,7 @@ window.CONTENT.experience = [
       ["Associate Product Designer, AuxHR", "Jun 2025 – Jan 2026"],
       ["Product Designer, Incubate", "Jul 2022 – Jun 2025"],
       ["UI/UX Design Instructor, The Growth Hub", "Mar 2023 – Present"] ] },
-  { org: "Freelance Creator", loc: "Remote", years: "2023 – Present", roles: [ ["Video edits & physical AI", ""] ] },
+  { org: "Freelance Product Visual Creator", loc: "Remote", years: "2023 – Present", roles: [ ["UI/UX, Motion Design & Video Edits", ""] ] },
   { org: "Axis Robotics Contributor", loc: "California · Remote", years: "Sep 2025 – Oct 2026", roles: [ ["Motion Designer & Brand Designer", ""] ] },
   { org: "Toki Finance", loc: "Japan · Remote", years: "Sep 2024 – Jan 2026", roles: [ ["Marketing Visual Designer & Community Moderator", ""], ["Brand visual design · community lead (Nigeria)", ""] ] }
 ];
