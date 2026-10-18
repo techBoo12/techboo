@@ -20,7 +20,9 @@ window.VPARTS = {
  "assets/media/warblelive_scroll5.mp4": 2,
  "assets/media/sofavault_scroll2.mp4": 2,
  "assets/media/stikboo_mint1.mp4": 1,
- "assets/media/sofavault_ai_demo1.mp4": 1
+ "assets/media/sofavault_ai_demo1.mp4": 1,
+ "assets/media/sofavault_card2.mp4": 2,
+ "assets/media/stikboo_card2.mp4": 2
 };
 (function(){
   const P = window.VPARTS, cache = {};
