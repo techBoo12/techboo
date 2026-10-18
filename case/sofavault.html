@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SofaVault E-commerce Store | Adaikem Ajufo</title>
+<meta name="description" content="SofaVault: a furniture e-commerce store for desktop and mobile, from browsing to checkout.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400,100;1,9..144,400,100&family=Manrope:wght@400;500;600;700&family=EB+Garamond:ital@0;1&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../v3.css">
+<style>
+/* SofaVault case: text sections between the screen boards (3 text levels: 100 / 72 / 42) */
+.sv-sec{border-radius:24px;border:1.5px solid rgba(255,255,255,.1);background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.02));-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);padding:40px 44px}
+.sv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
+.sv-k{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.42);margin-bottom:14px}
+.sv-h{font-family:var(--serif);font-variation-settings:"SOFT" 100,"opsz" 36;font-weight:400;font-size:26px;line-height:1.2;color:#fff;margin:0 0 12px}
+.sv-p{font-size:16px;line-height:1.65;color:rgba(255,255,255,.72);margin:0;max-width:720px}
+.sv-head{padding:20px 4px 0}
+.sv-head .sv-h{font-size:clamp(28px,3.4vw,40px)}
+@media (max-width:900px){.sv-grid{grid-template-columns:1fr;gap:28px}}
+@media (max-width:600px){.sv-sec{padding:26px 22px;border-radius:16px}.sv-h{font-size:22px}.sv-p{font-size:15px}.sv-head{padding:8px 2px 0}.sv-head .sv-h{font-size:26px}}
+</style>
+<link rel="icon" href="../assets/logo.jpg">
+<meta property="og:title" content="SofaVault E-commerce Store | Adaikem Ajufo">
+<meta property="og:image" content="https://techboo-portfolio-preview.sites.tab.bot/assets/cases/sofavault/cover.webp">
+</head>
+<body class="case-page tb-site" data-base="../" data-slug="sofavault">
+<header class="nav">
+  <a class="nav-brand" href="../">
+    <span class="nav-name"><span id="nav-first"></span> <em id="nav-last"></em></span>
+    <span class="nav-role" id="nav-role"></span>
+  </a>
+  <div class="nav-right"><div class="nav-time" id="nav-time"></div></div>
+</header>
+<main class="case" id="case"></main>
+<script src="../content.js"></script>
+<script src="../tabs.js"></script>
+<script src="../vparts.js"></script>
+<script src="../case.js"></script>
+<script>
+/* SofaVault: story sections placed between the gallery boards rendered by case.js */
+(function(){
+  var gal = document.querySelector("#case .case-gallery"); if(!gal) return;
+  var figs = gal.querySelectorAll(".case-module");
+  function el(html){ var d = document.createElement("div"); d.innerHTML = html.trim(); return d.firstChild; }
+  function head(k, h, p){ return '<div class="sv-head"><span class="sv-k">'+k+'</span><h2 class="sv-h">'+h+'</h2>'+(p?'<p class="sv-p">'+p+'</p>':'')+'</div>'; }
+  var story = '<section class="sv-sec"><div class="sv-grid">'
+    + '<div><span class="sv-k">The problem</span><h2 class="sv-h">Buying online comes with a guess</h2><p class="sv-p">On most e-commerce sites, shoppers can\u2019t tell how a product will fit their life until it arrives. With furniture that guess is expensive: will this sofa suit my room, my colours, my space? So people either travel to a physical showroom or buy and hope.</p></div>'
+    + '<div><span class="sv-k">The goal</span><h2 class="sv-h">See it in your space before you buy</h2><p class="sv-p">Remove the uncertainty. Shoppers snap a photo of the space they are furnishing and the built-in AI places the piece in it, returning an image of exactly how it will look. The showroom comes to them, and checkout stays short enough to finish on a phone.</p></div>'
+    + '<div><span class="sv-k">The process</span><h2 class="sv-h">Add one step: see it first</h2><p class="sv-p">I mapped the path a shopper takes: land, browse, pick, pay, and added one step before paying. On any product, \u201cSee it in your room\u201d lets the shopper snap or upload a photo of their space; the AI places the piece in it and returns an image they can save, compare and share. Then I set the look: warm cream, deep teal, Poppins and a huge wordmark the furniture sits behind. Every screen was rebuilt for a 390px phone with the same parts.</p></div>'
+    + '</div></section>';
+  var before = [
+    story + head("Key screens \u00b7 Desktop", "Home and collections", "A calm hero, shop by room, this week\u2019s picks, and a collections menu that opens without leaving the page."),
+    head("Browse", "From the shop floor to one chair", "Filters by category, material, colour and price. The product page keeps photos, price, colour and add to cart in one view."),
+    head("Account", "Sign in and create account", "Short, friendly forms with Google and Apple as a shortcut."),
+    head("AI feature", "See it in your room", "Snap or upload your room, the AI places the piece in it, and you see the real fit before you buy."),
+    head("Motion design", "The flow in motion", "From the product page to the result: tap See it in your room, add a photo of your space and watch the chair land in it."),
+    head("Buy", "Cart to order confirmed", "A free delivery bar, a clear order summary, a checkout in three steps and a confirmation that says when it arrives."),
+    head("Mobile", "Same store, built for one thumb", "Every desktop screen has a phone version: menu, home, shop, product, cart, checkout, confirmation, sign in and create account.")
+  ];
+  for(var i=0;i<figs.length && i<before.length;i++){
+    var tmp = document.createElement("div"); tmp.innerHTML = before[i];
+    while(tmp.firstChild) gal.insertBefore(tmp.firstChild, figs[i]);
+  }
+  gal.appendChild(el('<section class="sv-sec"><span class="sv-k">Closing</span><h2 class="sv-h">Let the furniture do the talking</h2><p class="sv-p">SofaVault came down to restraint: one accent colour, real photos and one clear choice per step. The result feels calm on a big screen and just as easy on a phone.</p></section>'));
+})();
+</script>
+</body>
+</html>
