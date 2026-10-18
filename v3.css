@@ -413,7 +413,7 @@ body[data-tab="uiux"] .tb-split .tb-cw{display:flex;flex-direction:column;min-wi
 .tb-contact .rights{padding-top:300px}
 @media (max-width:760px){.tb-contact .rights{padding-top:calc(44vw + 24px)}}
 
-/* Oct 18 10:44 PM her ask: footer bubble as big as she drew it (wider than the screen, rising to just under the LinkedIn icon) */
+/* Oct 18 10:53 PM her fix: "too big, follow the drawing" = dome edge to edge of the screen, top just under the LinkedIn icon */
 .tb-contact{padding-bottom:110px}
-.tb-contact .foot-orb{left:calc(50% - 700px);width:1400px;height:1400px;bottom:-1000px}
-@media (max-width:760px){.tb-contact{padding-bottom:18vw}.tb-contact .foot-orb{width:116vw;height:116vw;left:-8vw;bottom:-46vw}}
+.tb-contact .foot-orb{left:calc(50% - 500px);width:1000px;height:1000px;bottom:-600px}
+@media (max-width:760px){.tb-contact{padding-bottom:4vw}.tb-contact .foot-orb{width:100vw;height:100vw;left:0;bottom:-50vw}}
