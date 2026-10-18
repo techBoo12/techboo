@@ -203,6 +203,6 @@ window.CONTENT.experience = [
       ["Product Designer, Incubate", "Jul 2022 – Jun 2025"] ] },
   { org: "Freelance Product Visual Creator", loc: "Remote", years: "2023 – Present", roles: [ ["UI/UX, Motion Design & Video Edits", ""] ] },
   { org: "Axis Robotics Contributor", loc: "California · Remote", years: "Sep 2025 – Oct 2026", roles: [ ["Motion Designer & Brand Designer", ""] ] },
-  { org: "Toki Finance", loc: "Japan · Remote", years: "Sep 2024 – Jan 2026", roles: [ ["Marketing Visual Designer & Community Moderator", ""], ["Brand visual design · community lead (Nigeria)", ""] ] }
+  { org: "Toki Finance", loc: "Japan · Remote", years: "Sep 2024 – Jan 2026", roles: [ ["Marketing Designer, Ambassador & Community Lead", ""] ] }
 ];
 window.CONTENT.contact = { eyebrow: "Contact", title: "Let’s build something <em>people trust</em>.", body: "Product design, Web3 visuals, AI films and motion. Tell me what you’re making.", cta: "Email me" };
