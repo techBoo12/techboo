@@ -161,8 +161,8 @@
     var rot = 0, op = 1, intro = false;
     if(introT0 >= 0){
       var t = ts - introT0; intro = t < 6100;
-      rot = SPIN*(1 - easeIOQ(Math.max(0,Math.min(1,(t-1000)/5000))));
-      op = Math.max(0,Math.min(1,(t-1000)/2000));
+      rot = SPIN*(1 - easeIOQ(Math.max(0,Math.min(1,t/5000))));
+      op = 1;   // Oct 18 10:13 PM her ask: show the bubble immediately on load
       if(!intro) introT0 = -1;
     }
     draw(rot);
@@ -189,7 +189,7 @@
     if(w === wrap) return;
     wrap = w; shown = false; m = pm = m1 = pm1 = tgt = null;
     if(!w){ if(cv.parentNode) cv.parentNode.removeChild(cv); return; }
-    w.appendChild(cv); cv.style.opacity = "0"; cssD = 0;
+    w.appendChild(cv); cv.style.opacity = "1"; cssD = 0;
     if(tA){ [tA,tA2,tB,tB2].forEach(function(o){ gl.bindFramebuffer(gl.FRAMEBUFFER,o.f); gl.clearColor(0,0,0,0); gl.clear(gl.COLOR_BUFFER_BIT); }); }
     introT0 = w.classList.contains("tb-orb-intro") ? performance.now() : -1;
     idle = 0; kick();
