@@ -40,15 +40,18 @@ window.CONTENT = {
     notInWork: ["spenda-motion", "sphinx-ai-promo"],
     cases: [
       {
-        key: "auxhr",
+        key: "auxhr", slug: "auxhr", href: "case/auxhr",
         brand: "AUXHR · SALESPLAT",
-        years: "2024 → 2025",
-        dot: "#C4A0FF",
-        outcome: "Redesigned a SaaS HR product from MVP to a product people trust",
-        role: "Associate Design Lead · Product & UI/UX",
-        desc: "Led the AuxHR redesign end-to-end. The first designs shipped as an MVP; the redesign brings a better look, clearer flows and better UX across onboarding, people and payroll.",   // >>> PLACEHOLDER <<< her words
-        media: { type: "image", src: "assets/auxhr_cover.jpg", alt: "AuxHR redesign" },  // >>> PLACEHOLDER <<< old vs new screens
-        badges: ["Lead", "SaaS", "B2B"]
+        title: "AuxHR Case Study",
+        years: "2025 → 2026",
+        dot: "#4266ff",
+        outcome: "AuxHR: AI-powered hiring for recruiters and talent",
+        role: "Associate Design Lead · Product, UX & UI",
+        desc: "AuxHR is SalesPlat's AI-powered hiring platform. Recruiters set the screening criteria once and every applicant arrives scored; talent builds one profile, gets matched to roles that fit and sees where every application stands. I led the redesign from the MVP to the product that is live today: both sides, the AI configuration flow, the marketing site and the design system.",   // Oct 19 2026: case study build (case/auxhr.html, auxhr-case.js). Live features only, no metrics (her ask)
+        media: { type: "image", src: "assets/cases/auxhr/cover.webp", alt: "AuxHR recruiter dashboard" },
+        badges: ["Lead", "SaaS", "AI hiring"],
+        tags: ["SaaS", "B2B + B2C", "AI", "Web app", "Lead"],
+        website: "https://www.auxhr.com"
       },
       {
         key: "axis",
@@ -180,7 +183,7 @@ window.CONTENT.tabs = [
 window.CONTENT.groups = {
   uiux: { eyebrow: "B2B B2C SAAS FINTECH & WEB3 Case Studies", title: "UI/UX Designs",
     intro: "Products I designed end to end: research, flows, UI and the details that make people trust them.",
-    cases: ["warblelive","sofavault","hm-trades","stikboo","clique-logistics","chainai","presale-memecoin-landing","e-learning-dashboard","sign-in-page-ui","balenciaga","redesigned-neon-ui"],
+    cases: ["auxhr","warblelive","sofavault","hm-trades","stikboo","clique-logistics","chainai","presale-memecoin-landing","e-learning-dashboard","sign-in-page-ui","balenciaga","redesigned-neon-ui"],
     explore: { img: "assets/media/warblelive_banner.jpg", vid: "assets/media/warblelive_banner.mp4" } },
   motion: { eyebrow: "AI films & motion design", title: "AI / Motion Designs",
     intro: "AI films, product promos, brand motion and launch animations.",
