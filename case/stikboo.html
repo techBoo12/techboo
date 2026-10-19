@@ -7,6 +7,7 @@
 <meta name="description" content="Stikboo: a 555 NFT collection product from my pixel character.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400,100;1,9..144,400,100&family=Manrope:wght@400;500;600;700&family=EB+Garamond:ital@0;1&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tiny5&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css">
 <link rel="stylesheet" href="../v3.css">
 <style>
@@ -18,6 +19,21 @@
 .sb-run .tr{display:flex;height:100%;width:max-content;animation:sbrun 22s linear infinite}
 .sb-run .tr img{height:100%;width:auto;display:block;max-width:none}
 @keyframes sbrun{to{transform:translateX(-50%)}}
+
+/* Oct 19 2026 her ask: Stikboo page type + accents follow Stikboo's own brand (Tiny5 pixel display + Space Grotesk body; acid lime #D4FF4A, cyan #7DF9FF on near-black, from the Stikboo design source), not the portfolio lilac/serif. Nav + footer keep the portfolio look. */
+body[data-slug="stikboo"] main.case{--lilac:#D4FF4A;--serif:"Space Grotesk","Manrope",sans-serif;--sk-lime:#D4FF4A;--sk-cyan:#7DF9FF;--sk-soft:#A79FC4}
+body[data-slug="stikboo"] main.case .case-foot{--lilac:#C4A0FF;--serif:"Fraunces",Georgia,serif}
+body[data-slug="stikboo"] .case-title{font-family:"Tiny5",monospace;font-weight:400;letter-spacing:.02em;font-variation-settings:normal;line-height:1;text-transform:uppercase}
+body[data-slug="stikboo"] .case-lede{font-family:"Space Grotesk",sans-serif;font-weight:500;letter-spacing:-.01em;font-variation-settings:normal}
+body[data-slug="stikboo"] .case-desc,body[data-slug="stikboo"] .sb-cap span{font-family:"Space Grotesk","Manrope",sans-serif}
+body[data-slug="stikboo"] .case-hero .brand,body[data-slug="stikboo"] .next .brand{font-family:"Tiny5",monospace;color:var(--sk-lime);letter-spacing:.12em}
+body[data-slug="stikboo"] .case-meta .foot-label{font-family:"Tiny5",monospace;letter-spacing:.14em}
+body[data-slug="stikboo"] .badge{font-family:"Space Grotesk",sans-serif}
+body[data-slug="stikboo"] .back:hover{color:var(--sk-lime)}
+body[data-slug="stikboo"] .next-title{font-family:"Space Grotesk",sans-serif;font-weight:600;font-variation-settings:normal}
+body[data-slug="stikboo"] .next-title i{color:var(--sk-lime)}
+body[data-slug="stikboo"] .sb-cap b{font-family:"Tiny5",monospace;font-size:13px;letter-spacing:.12em}
+@media (max-width:600px){body[data-slug="stikboo"] .sb-cap b{font-size:12px}}
 </style>
 <link rel="icon" href="../assets/logo.jpg">
 <meta property="og:title" content="Stikboo | Adaikem Ajufo">
