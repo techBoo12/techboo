@@ -14,6 +14,10 @@
 .sb-cap{display:flex;gap:12px;align-items:baseline;margin:-22px 6px 8px;font-size:14px;line-height:1.5;color:rgba(255,255,255,.62)}
 .sb-cap b{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#D4FF4A;flex:none}
 @media (max-width:600px){.sb-cap{margin:-8px 4px 6px;font-size:13px;gap:10px}.sb-cap b{font-size:10px}}
+.sb-run{position:absolute;left:10.278%;top:.657%;width:79.722%;height:3.829%;overflow:hidden;pointer-events:none;background:linear-gradient(90deg,#14121e,#0d0a1b)}
+.sb-run .tr{display:flex;height:100%;width:max-content;animation:sbrun 22s linear infinite}
+.sb-run .tr img{height:100%;width:auto;display:block;max-width:none}
+@keyframes sbrun{to{transform:translateX(-50%)}}
 </style>
 <link rel="icon" href="../assets/logo.jpg">
 <meta property="og:title" content="Stikboo | Adaikem Ajufo">
@@ -51,6 +55,17 @@
     p.innerHTML = "<b>" + caps[i][0] + "</b><span>" + caps[i][1] + "</span>";
     figs[i].parentNode.insertBefore(p, figs[i].nextSibling);
   }
+})();
+</script>
+<script>
+/* Oct 19 2026 her ask: the recolour row on the landing board moves horizontally */
+(function(){
+  var img=document.querySelector('#case .case-gallery img[src*="d01-landing"]'); if(!img) return;
+  var w=document.createElement('div'); w.style.position='relative';
+  img.parentNode.insertBefore(w,img); w.appendChild(img);
+  var r=document.createElement('div'); r.className='sb-run';
+  r.innerHTML='<div class="tr"><img src="../assets/cases/stikboo/strip.webp" alt=""><img src="../assets/cases/stikboo/strip.webp" alt=""></div>';
+  w.appendChild(r);
 })();
 </script>
 </body>
