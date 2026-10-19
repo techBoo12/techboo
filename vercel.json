@@ -1,3 +1,16 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "techboo-portfolio.vercel.app"
+        }
+      ],
+      "destination": "https://adaikemajufo-techboo-portfolio.vercel.app/$1",
+      "permanent": true
+    }
+  ]
 }
