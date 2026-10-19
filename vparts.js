@@ -9,6 +9,7 @@ window.VPARTS = {
  "assets/media/motion_bolapsd_v2.mp4": 6,
  "assets/media/motion_auxhr3.mp4": 30,
  "assets/media/motion_axisrecap.mp4": 6,
+ "assets/media/motion_creditrolls.mp4": 29,
  "assets/media/motion_spenda_v2.mp4": 4,
  "assets/media/warblelive_banner.mp4": 3,
  "assets/media/video_spenda.mp4": 7,
