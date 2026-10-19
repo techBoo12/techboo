@@ -118,6 +118,9 @@ html.mp-lock,html.mp-lock body{overflow:hidden}
 .mp-lb-d{margin-top:10px;font-size:14px;line-height:1.55;color:var(--ink2)}
 .mp-lb-a{display:inline-block;margin-top:10px}
 .mp-lb-a[hidden]{display:none}
+.mp-lb-ext{display:inline-block;margin-top:10px}
+.mp-lb-ext[hidden]{display:none}
+.mp-lb-a:not([hidden])+.mp-lb-ext{margin-left:18px}
 .mp-lb-th{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;flex:none;max-width:52%;padding:4px}
 .mp-lb-th::-webkit-scrollbar{display:none}
 .mp-lb-th button{position:relative;flex:none;width:92px;aspect-ratio:16/9;border-radius:8px;overflow:hidden;padding:0;border:1px solid #2a2433;background:#000;cursor:pointer;opacity:.55;transition:opacity .3s,border-color .3s,transform .3s}
