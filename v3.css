@@ -434,3 +434,6 @@ body[data-tab="uiux"] .tb-split .tb-cw{display:flex;flex-direction:column;min-wi
  body[data-tab="uiux"] .tb-split .tb-col>.tb-cw{grid-column:auto!important;order:var(--o)}
  body[data-tab="uiux"] .tb-split .tb-col>.tb-cw[style*="--o:0"]{grid-column:1/-1!important}
 }
+
+/* Oct 19 11:10 AM her ask: "take that down" = footer copyright lower inside the dome. Desktop only. */
+@media (min-width:761px){.tb-contact .rights{padding-top:370px}}
