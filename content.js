@@ -119,6 +119,11 @@ window.CONTENT = {
           desc: "Launch Video for AuxHR, an AI powered hiring platform for talents and recruiters. It walks through posting a role, AI screening and the shortlist, with the product UI in motion." },   // Oct 18 2026 11:30 AM: her ask, AuxHR video first in Motion Designs
         { title: "Axis Robotics · September recap", outcome: "Axis Robotics Recap", meta: "Recap film · 52 s · 2026", src: "assets/media/motion_axisrecap.mp4", poster: "assets/media/motion_axisrecap.jpg", ar: "16/9",
           caseKey: "axis", short: "Motion design for Axis Robotics recap 3D data graphics", cta: "Watch video" },   // Oct 18 12:13 her ask: second after AuxHR, intro cut, starts on the trajectories screen
+        { title: "The Lore of Credit Rolls", outcome: "The Lore of Credit Rolls", meta: "Motion design · NFT · 48 s · 2026", src: "assets/media/motion_creditrolls.mp4", poster: "assets/media/motion_creditrolls.jpg", ar: "16/9",
+          brand: "CREDIT ROLLS · MONAD", years: "2026", dot: "#FF8EE4", role: "Motion design · Launch video", badges: ["Motion design", "NFT"],
+          short: "Launch video for an NFT product", cta: "Watch video",
+          desc: "A motion story for Credit Rolls on Monad. Spikes bonded, then split into 1001 pixel cubes; the video tells that lore from the first boom to the mint.",
+          link: "https://www.creditrolls.xyz/", linkLabel: "Visit creditrolls.xyz" },   // Oct 19 2026 12:27-12:41 PM her copy: heading, subheading, description + site link in the watch view; 4K web cut ends before the end card
         { title: "Spenda · motion graphics", outcome: "Spenda Motion Graphics", meta: "Motion graphics · 15 s", src: "assets/media/motion_spenda_v2.mp4", poster: "assets/media/motion_spenda_v2.jpg", ar: "16/9",
           brand: "SPENDA", dot: "#9EF0C4", role: "Motion design · Product promo", badges: ["Motion graphics", "Fintech"],
           short: "Motion graphics promo for Spenda, the naira to stablecoin app.", cta: "Watch video" },   // Oct 18 4:15 PM her ask: right after Axis recap
