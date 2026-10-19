@@ -417,3 +417,12 @@ body[data-tab="uiux"] .tb-split .tb-cw{display:flex;flex-direction:column;min-wi
 .tb-contact{padding-bottom:110px}
 .tb-contact .foot-orb{left:calc(50% - 500px);width:1000px;height:1000px;bottom:-600px}
 @media (max-width:760px){.tb-contact{padding-bottom:4vw}.tb-contact .foot-orb{width:100vw;height:100vw;left:0;bottom:-50vw}}
+
+/* Oct 19 10:55 AM her ask (desktop only): on wide screens the tabs ran past the content and the page looked like a big frame around small content. Tabs now line up with the logo; content widens on big screens. Mobile untouched. */
+@media (min-width:761px){.tb-tabs-in{min-width:0;width:auto}}
+@media (min-width:1600px){
+  .tb-bar,.tb-tabs-in,.tb-hero,.foot-row{max-width:1680px}
+  .tb-page,.tb-exp,.tb-reel,.tb-explore,.tb-foot,.cards,.card,.case,.vgrid,.back-row,.about-grid{max-width:1480px}
+  .tb-loop,.tb-about{max-width:1680px}
+  .tb-hero-h{max-width:1320px}
+}
