@@ -187,4 +187,4 @@ html.mp-lock,html.mp-lock body{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.mp-ind::after{animation:none;display:none}}
 
 /* Oct 19 11:00 AM her ask: on big screens the AI / Motion heading sat to the right of the logo; widen the hero to match the nav so they line up */
-@media (min-width:1600px){.mp-hero{max-width:1480px}}
+@media (min-width:1600px){.mp-hero,.mp-pills{max-width:1480px}}
