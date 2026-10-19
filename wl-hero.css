@@ -54,3 +54,12 @@
 /* Oct 19 2026 4:25 PM her ask (mobile/Safari): screen corners poked out of the phone. Clip the slot to the screen hole with clip-path too (works where mask does not) */
 .wlh .wl-slot{left:27.3%;top:5.95%;width:53.65%;height:86.6%;border-radius:12% / 5.2%;-webkit-clip-path:inset(0 round 12% / 5.2%);clip-path:inset(0 round 12% / 5.2%);overflow:hidden;isolation:isolate}
 .wlh .wl-slot .sl{border-radius:inherit}
+
+/* Oct 19 2026 4:35 PM her ask: "just use another mock up". Clean CSS iPhone frame replaces the hand photo; screen sits inside the frame by construction */
+.wlh .wl-hand{height:calc(var(--h)*.93);aspect-ratio:9/19.5;transform:translateX(-50%);-webkit-mask-image:none;mask-image:none;
+  box-sizing:border-box;border-radius:15.5% / 7.2%;background:linear-gradient(145deg,#d9d9e0 0%,#8e8e99 22%,#5b5b66 50%,#9a9aa5 78%,#e2e2e8 100%);padding:1.4%;
+  box-shadow:0 34px 70px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.18)}
+.wlh .wl-hand::before{content:"";position:absolute;inset:1.4%;border-radius:14.5% / 6.7%;background:#050507;z-index:0}
+.wlh .wl-hand-img{display:none}
+.wlh .wl-slot{left:5.2%;top:2.45%;width:89.6%;height:95.1%;border-radius:12.5% / 5.8%;-webkit-mask:none;mask:none;-webkit-clip-path:inset(0 round 12.5% / 5.8%);clip-path:inset(0 round 12.5% / 5.8%);overflow:hidden;isolation:isolate;z-index:1}
+.wlh .wl-hand::after{content:"";position:absolute;top:3.6%;left:50%;width:30%;height:3.1%;transform:translateX(-50%);background:#000;border-radius:999px;z-index:3}
