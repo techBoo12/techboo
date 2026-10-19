@@ -7,6 +7,7 @@
 <meta name="description" content="SofaVault: a furniture e-commerce store for desktop and mobile, from browsing to checkout.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400,100;1,9..144,400,100&family=Manrope:wght@400;500;600;700&family=EB+Garamond:ital@0;1&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css">
 <link rel="stylesheet" href="../v3.css">
 <style>
@@ -20,6 +21,21 @@
 .sv-head .sv-h{font-size:clamp(28px,3.4vw,40px)}
 @media (max-width:900px){.sv-grid{grid-template-columns:1fr;gap:28px}}
 @media (max-width:600px){.sv-sec{padding:26px 22px;border-radius:16px}.sv-h{font-size:22px}.sv-p{font-size:15px}.sv-head{padding:8px 2px 0}.sv-head .sv-h{font-size:26px}}
+
+/* Oct 19 2026 her ask: SofaVault page type + accents follow SofaVault's own brand (Poppins; deep teal #1C5A63 / #123F46, sage #B5CCC8, cream #F7F4EF, from the SofaVault design source), not the portfolio lilac/serif. Nav + footer keep the portfolio look. */
+body[data-slug="sofavault"] main.case{--lilac:#B5CCC8;--serif:"Poppins","Manrope",sans-serif;--sv-teal:#1C5A63;--sv-deep:#123F46;--sv-sage:#B5CCC8;--sv-cream:#F7F4EF}
+body[data-slug="sofavault"] main.case .case-foot{--lilac:#C4A0FF;--serif:"Fraunces",Georgia,serif}
+body[data-slug="sofavault"] .case-title{font-family:"Poppins",sans-serif;font-weight:600;letter-spacing:-.035em;font-variation-settings:normal;line-height:1.05}
+body[data-slug="sofavault"] .case-lede{font-family:"Poppins",sans-serif;font-weight:500;letter-spacing:-.01em;font-variation-settings:normal;color:var(--sv-cream)}
+body[data-slug="sofavault"] .case-desc,body[data-slug="sofavault"] .sv-p{font-family:"Poppins","Manrope",sans-serif;font-weight:400}
+body[data-slug="sofavault"] .case-hero .brand,body[data-slug="sofavault"] .next .brand{color:var(--sv-sage);font-family:"Poppins",sans-serif;font-weight:600;letter-spacing:.14em}
+body[data-slug="sofavault"] .foot-link.pill{border-color:rgba(181,204,200,.45)}
+body[data-slug="sofavault"] .foot-link.pill:hover{border-color:var(--sv-sage);background:var(--sv-teal);color:var(--sv-cream)}
+body[data-slug="sofavault"] .next-title{font-family:"Poppins",sans-serif;font-weight:600;font-variation-settings:normal;letter-spacing:-.01em}
+body[data-slug="sofavault"] .next-title i{color:var(--sv-sage)}
+body[data-slug="sofavault"] .sv-h{font-family:"Poppins",sans-serif;font-weight:600;letter-spacing:-.02em;font-variation-settings:normal}
+body[data-slug="sofavault"] .sv-k{font-family:"Poppins",sans-serif;font-weight:600;letter-spacing:.16em;color:var(--sv-sage)}
+body[data-slug="sofavault"] .sv-sec{border-color:rgba(181,204,200,.16);background:linear-gradient(160deg,rgba(28,90,99,.28),rgba(18,63,70,.12))}
 </style>
 <link rel="icon" href="../assets/logo.jpg">
 <meta property="og:title" content="SofaVault E-commerce Store | Adaikem Ajufo">
