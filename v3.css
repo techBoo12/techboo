@@ -426,3 +426,11 @@ body[data-tab="uiux"] .tb-split .tb-cw{display:flex;flex-direction:column;min-wi
   .tb-loop,.tb-about{max-width:1680px}
   .tb-hero-h{max-width:1320px}
 }
+
+/* Oct 19 11:05 AM her ask: UI/UX page like the motion page: one big card first (WarbleLive), then the rest in doubles, filling the full width (no empty gap on the right). Desktop only; phone unchanged. */
+@media (min-width:821px){
+ body[data-tab="uiux"] .tb-page .cards.tb-split{max-width:none;width:100%;grid-auto-flow:row}
+ body[data-tab="uiux"] .tb-split .tb-col{display:contents}
+ body[data-tab="uiux"] .tb-split .tb-col>.tb-cw{grid-column:auto!important;order:var(--o)}
+ body[data-tab="uiux"] .tb-split .tb-col>.tb-cw[style*="--o:0"]{grid-column:1/-1!important}
+}
