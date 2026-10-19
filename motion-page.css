@@ -185,3 +185,6 @@ html.mp-lock,html.mp-lock body{overflow:hidden}
 .mp-pills a{color:rgba(236,226,255,.78);letter-spacing:.005em}
 .mp-pills a.on{color:#fff;text-shadow:0 1px 8px rgba(50,15,110,.55)}
 @media (prefers-reduced-motion:reduce){.mp-ind::after{animation:none;display:none}}
+
+/* Oct 19 11:00 AM her ask: on big screens the AI / Motion heading sat to the right of the logo; widen the hero to match the nav so they line up */
+@media (min-width:1600px){.mp-hero{max-width:1480px}}
