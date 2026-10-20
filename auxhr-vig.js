@@ -123,6 +123,8 @@
 
   /* ---------------- vignettes ---------------- */
   var S = {};
+  /* company logo marks (auxhr-logos.js, Oct 20 2026); falls back to the old monogram if missing */
+  function LG(nm) { return window.AXLOGO ? window.AXLOGO(nm) : ""; }
 
   /* discover: role cards re-sort by fit */
   S.discover = function () {
@@ -135,7 +137,7 @@
     var html = hd(I.spark, "Matched For You", I.sort + " Sorted By Fit") + '<div class="dsc">';
     roles.forEach(function (r, i) {
       html += '<div class="dsc-card" data-i="' + i + '">' +
-        '<span class="dsc-logo h' + r[4] + '">' + r[2] + '</span>' +
+        (LG(r[1].split(" · ")[0]) ? '<span class="dsc-logo lg">' + LG(r[1].split(" · ")[0]) + '</span>' : '<span class="dsc-logo h' + r[4] + '">' + r[2] + '</span>') +
         '<div class="dsc-t"><b>' + r[0] + '<em class="dsc-top">Top Match</em></b><small>' + r[1] + '</small></div>' +
         '<div class="dsc-m"><span class="dsc-pct">0%</span><small>Match</small></div></div>';
     });
@@ -195,7 +197,7 @@
     var st = ["Applied", "In Review", "Interview", "Offer"];
     var msg = [["Application Received", "Kosana Tech has your profile"], ["CV Under Review", "Scored 92% match by AuxHR AI"], ["Interview Scheduled", "Thu, 10:00 AM · Google Meet"], ["Offer Received", "Respond by Friday"]];
     var html = hd(I.brief, "Application Status", "Kosana Tech") +
-      '<div class="tr-job"><b>Product Designer</b><small>Applied 3 Days Ago</small></div><div class="tr-line"><i class="tr-fill"></i><i class="tr-dot"></i>';
+      (LG("Kosana Tech") ? '<div class="tr-job co"><span class="tr-lg">' + LG("Kosana Tech") + '</span>' : '<div class="tr-job">') + '<b>Product Designer</b><small>Applied 3 Days Ago</small></div><div class="tr-line"><i class="tr-fill"></i><i class="tr-dot"></i>';
     st.forEach(function (s, i) { html += '<span class="tr-n" style="left:' + (i * 100 / 3) + '%"><i>' + I.check + '</i><small>' + s + '</small></span>'; });
     html += '</div><div class="tr-msg"><span class="tr-mi">' + I.spark + '</span><div><b>' + msg[0][0] + '</b><small>' + msg[0][1] + '</small></div></div>';
     return {
@@ -227,7 +229,7 @@
     var html = '<div class="ap-prof"><small class="axv-lab">Your Profile</small>' + av("AO", 1, "Amaka Obi") +
       '<b>Amaka Obi</b><small>Product Designer · Lagos</small>' +
       '<ul><li>' + I.doc + 'Amaka_Obi_CV.pdf</li><li>' + I.link + 'Portfolio Linked</li><li>' + I.spark + 'Profile 85%</li></ul></div>' +
-      '<div class="ap-app"><small class="axv-lab">Application</small><b>Product Designer</b><small>Kosana Tech · Hybrid</small>' +
+      '<div class="ap-app"><small class="axv-lab">Application</small>' + (LG("Kosana Tech") ? '<div class="ap-co"><span class="ap-lg">' + LG("Kosana Tech") + '</span><div><b>Product Designer</b><small>Kosana Tech · Hybrid</small></div></div>' : '<b>Product Designer</b><small>Kosana Tech · Hybrid</small>') +
       '<div class="ap-slot"><span class="ap-ph">Profile Carries Over</span><span class="ap-ticks"><em>' + I.check + 'CV</em><em>' + I.check + 'Portfolio</em><em>' + I.check + 'Profile</em></span></div>' +
       '<button class="ap-btn" type="button" tabindex="-1"><span class="ap-l1">Apply In 1 Click</span><span class="ap-l2">Applied ' + I.check + '</span><i class="axv-rip"></i></button></div>' +
       '<div class="ap-ghost">' + av("AO", 1, "Amaka Obi") + '<div><b>Amaka Obi</b><small>CV + Portfolio</small></div></div>' +
@@ -256,7 +258,7 @@
     var rows = [["Sales Representative", "Lagos · Full Time", 41, 56, 1, 0], ["Product Designer", "Remote · Full Time", 108, 127, 1, 1], ["Backend Engineer", "Abuja · Contract", 86, 86, 0, 2]];
     var html = hd(I.brief, "Job Posts", I.plus + " New Post") + '<div class="ps">';
     rows.forEach(function (r) {
-      html += '<div class="ps-row' + (r[4] ? '' : ' off') + '"><span class="ps-ic h' + r[5] + '">' + I.brief + '</span><div class="ps-t"><b>' + r[0] + '</b><small>' + r[1] + '</small></div>' +
+      html += '<div class="ps-row' + (r[4] ? '' : ' off') + '">' + (LG("Kosana Tech") ? '<span class="ps-ic lg">' + LG("Kosana Tech") + '</span>' : '<span class="ps-ic h' + r[5] + '">' + I.brief + '</span>') + '<div class="ps-t"><b>' + r[0] + '</b><small>' + r[1] + '</small></div>' +
         '<div class="ps-n"><b><span class="ps-v">' + r[2] + '</span><em class="ps-plus">+1</em></b><small>Applicants</small></div>' +
         '<span class="ps-pill">' + (r[4] ? 'Open' : 'Closed') + '</span></div>';
     });
