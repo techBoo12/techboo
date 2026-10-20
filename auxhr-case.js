@@ -100,9 +100,25 @@
     </div>
   </section>
 
-  <!-- chapter I: talent -->
+  <!-- chapter I: recruiter (Oct 20 2026 7:34 PM, her words "make recruiter come before talent": recruiter is now Chapter I, talent Chapter II). Was chapter II. Oct 20 2026 6:34 PM, her word "do this chapter two like chapter one the way i arranged it remove the unnecessary things": same order as chapter I (label, headline, dashboard, four feature rows, landing page); the three live cards strip is gone -->
+  <section class="ax ax-sec rv" id="ax-rec">
+    ${eyebrow("Chapter I · Recruiter")}
+    <h2 class="ax-h2">Hire better. <em>Move faster.</em></h2>
+    ${stage(`<div class="axd" data-axd="rec" data-base="${A}" aria-label="Animated recruiter dashboard: Philip shortlists a scored candidate"></div>`, "Recruiter Dashboard", "ax-dstage", "rec")}
+    <div class="ax-rows">
+      ${row("Post","Every role and its state in one list","Open and closed roles with applicant counts.","", `<div class="ax-row-media vig"><div class="axv" data-axv="post"></div></div>`, false)}
+      ${row("Screen","A brief, not a CV to decode","Three scores first, then a suggested next step.","", `<div class="ax-row-media vig"><div class="axv" data-axv="screen"></div></div>`, true)}
+      ${row("Pipeline","Candidates arrive already scored","Applied to Shortlisted in one click.","", `<div class="ax-row-media vig"><div class="axv" data-axv="pipeline"></div></div>`, false)}
+      ${row("Collaborate","The whole hiring team in one view","Hiring managers and recruiters aligned.","", `<div class="ax-row-media vig"><div class="axv" data-axv="collaborate"></div></div>`, true)}
+    </div>
+    ${stage(swin("fig_recruiter_full.webp","auxhr.com · recruiter","Recruiter landing page, full design"), "Recruiter Landing · Designed", "deep", "rec")}
+  </section>
+
+  <div class="axi-wrap rv"><div class="axi" data-axi="marquee"></div></div>
+
+  <!-- chapter II: talent (was chapter I until her 7:34 PM ask) -->
   <section class="ax ax-sec rv" id="ax-talent">
-    ${eyebrow("Chapter I · Talent")}
+    ${eyebrow("Chapter II · Talent")}
     <h2 class="ax-h2">Stand out. Get matched. <em>Land the role.</em></h2>
     ${stage(`<div class="axd" data-axd="talent" data-base="${A}" aria-label="Animated talent dashboard: Amaka applies to a matched role in one click"></div>`, "Talent Dashboard", "ax-dstage", "talent")}
     <div class="ax-rows">
@@ -113,22 +129,6 @@
     </div>
     <!-- Oct 20 2026 6:31 PM, her word "make this part the full landing page remove the phone": phone card hidden, the browser card now auto-scrolls the full talent landing (auxhr-motion.js) -->
     ${stage(swin("fig_talent_full.webp","auxhr.com · talent","Talent landing page, full design: Stand out. Get matched. Land your dream role."), "Talent Landing · Designed, In Build", "deep", "talent")}
-  </section>
-
-  <div class="axi-wrap rv"><div class="axi" data-axi="marquee"></div></div>
-
-  <!-- chapter II: recruiter. Oct 20 2026 6:34 PM, her word "do this chapter two like chapter one the way i arranged it remove the unnecessary things": same order as chapter I (label, headline, dashboard, four feature rows, landing page); the three live cards strip is gone -->
-  <section class="ax ax-sec rv" id="ax-rec">
-    ${eyebrow("Chapter II · Recruiter")}
-    <h2 class="ax-h2">Hire better. <em>Move faster.</em></h2>
-    ${stage(`<div class="axd" data-axd="rec" data-base="${A}" aria-label="Animated recruiter dashboard: Philip shortlists a scored candidate"></div>`, "Recruiter Dashboard", "ax-dstage", "rec")}
-    <div class="ax-rows">
-      ${row("Post","Every role and its state in one list","Open and closed roles with applicant counts.","", `<div class="ax-row-media vig"><div class="axv" data-axv="post"></div></div>`, false)}
-      ${row("Screen","A brief, not a CV to decode","Three scores first, then a suggested next step.","", `<div class="ax-row-media vig"><div class="axv" data-axv="screen"></div></div>`, true)}
-      ${row("Pipeline","Candidates arrive already scored","Applied to Shortlisted in one click.","", `<div class="ax-row-media vig"><div class="axv" data-axv="pipeline"></div></div>`, false)}
-      ${row("Collaborate","The whole hiring team in one view","Hiring managers and recruiters aligned.","", `<div class="ax-row-media vig"><div class="axv" data-axv="collaborate"></div></div>`, true)}
-    </div>
-    ${stage(swin("fig_recruiter_full.webp","auxhr.com · recruiter","Recruiter landing page, full design"), "Recruiter Landing · Designed", "deep", "rec")}
   </section>
 
   <div class="axi-wrap rv"><div class="axi" data-axi="passmark"></div></div>
