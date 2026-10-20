@@ -87,6 +87,9 @@
 
     <div class="ax-goal rv"><span class="ax-goal-k">${ico("goal")}Goal</span><p>Bridge the rift between open roles and the people who fit them.</p></div>
 
+    <!-- interlude (her 6:12 PM voice note + 6:28 PM "don't forget the banners") -->
+    <div class="axi-wrap rv"><div class="axi" data-axi="funnel"></div></div>
+
     <div style="margin-top:56px">${eyebrow("The Solution")}</div>
     <h2 class="ax-h2">Set the criteria once. Let the platform run the pipeline with you.</h2>
     <p class="ax-lede">A recruiter creates a role and configures how the AI screens it. Talent applies in one click from a profile that already carries their experience. The AI scores everyone against the same bar, and both sides watch the same pipeline from their own dashboard.</p>
@@ -101,30 +104,34 @@
   <section class="ax ax-sec rv" id="ax-talent">
     ${eyebrow("Chapter I · Talent")}
     <h2 class="ax-h2">Stand out. Get matched. <em>Land the role.</em></h2>
-    ${stage(win("dash_t5.webp","app.auxhr.com · talent dashboard","Talent dashboard: matched roles ranked by fit, profile strength, applications and assessments at a glance"), "Talent Dashboard", "", "talent")}
+    ${stage(`<div class="axd" data-axd="talent" data-base="${A}" aria-label="Animated talent dashboard: Amaka applies to a matched role in one click"></div>`, "Talent Dashboard", "ax-dstage", "talent")}
     <div class="ax-rows">
-      ${row("Discover","Roles ranked by real fit, not posting date","Fit score, salary range and requirements are visible before applying.","", img("fig_talent_f1.webp","Discover the right roles","beige"), false)}
-      ${row("Assess","Assessments inside the flow, results shared back","Talent takes the test as part of applying and moves on automatically when they pass.","", pad("dash_t6.webp","app.auxhr.com · assessment","Talent assessment screen: one question at a time with progress and timer"), true)}
-      ${row("Track","Every application in one place, with a status that means something","The same stage names the recruiter uses, so the talent view mirrors the pipeline.","", pad("dash_t7.webp","app.auxhr.com · my applications","Talent applications list with stage and status per role"), false)}
-      ${row("Apply","Apply to any role in one click","No repeated forms. The profile carries over.","", img("fig_talent_apply.webp","Apply to any role in one click","beige"), true)}
+      ${row("Discover","Roles ranked by real fit","Fit score and pay visible before applying.","", `<div class="ax-row-media vig"><div class="axv" data-axv="discover"></div></div>`, false)}
+      ${row("Assess","Tests inside the flow","Pass and move on automatically.","", `<div class="ax-row-media vig"><div class="axv" data-axv="assess"></div></div>`, true)}
+      ${row("Track","Every application, one live status","The same stages the recruiter sees.","", `<div class="ax-row-media vig"><div class="axv" data-axv="track"></div></div>`, false)}
+      ${row("Apply","Apply in one click","The profile carries over. No forms.","", `<div class="ax-row-media vig"><div class="axv" data-axv="apply"></div></div>`, true)}
     </div>
     <!-- Oct 20 2026 6:31 PM, her word "make this part the full landing page remove the phone": phone card hidden, the browser card now auto-scrolls the full talent landing (auxhr-motion.js) -->
     ${stage(swin("fig_talent_full.webp","auxhr.com · talent","Talent landing page, full design: Stand out. Get matched. Land your dream role."), "Talent Landing · Designed, In Build", "deep", "talent")}
   </section>
 
+  <div class="axi-wrap rv"><div class="axi" data-axi="marquee"></div></div>
+
   <!-- chapter II: recruiter. Oct 20 2026 6:34 PM, her word "do this chapter two like chapter one the way i arranged it remove the unnecessary things": same order as chapter I (label, headline, dashboard, four feature rows, landing page); the three live cards strip is gone -->
   <section class="ax ax-sec rv" id="ax-rec">
     ${eyebrow("Chapter II · Recruiter")}
     <h2 class="ax-h2">Hire better. <em>Move faster.</em></h2>
-    ${stage(win("dash_r1.webp","app.auxhr.com · recruiter dashboard","Recruiter dashboard: open roles, applicants, shortlisted and time to hire; recent candidates with match and stage; the week's pipeline"), "Recruiter Dashboard", "", "rec")}
+    ${stage(`<div class="axd" data-axd="rec" data-base="${A}" aria-label="Animated recruiter dashboard: Philip shortlists a scored candidate"></div>`, "Recruiter Dashboard", "ax-dstage", "rec")}
     <div class="ax-rows">
-      ${row("Post","Every role and its state in one list","Open and closed roles with applicant counts.","", img("live_jobs.webp","Job posts list: Sales Representative, Product Designer, Backend Engineer with applicant counts","beige"), false)}
-      ${row("Screen","A brief, not a CV to decode","Three scores first, then a suggested next step.","", pad("dash_r4.webp","app.auxhr.com · candidate","Candidate profile with diagnostic brief, strong matches and suggested next step"), true)}
-      ${row("Pipeline","Candidates arrive already scored","Applied to Shortlisted in one click.","", pad("dash_r3.webp","app.auxhr.com · candidates","Candidates list with CV match, screening and personality scores per person"), false)}
-      ${row("Collaborate","The whole hiring team in one view","Hiring managers and recruiters aligned.","", img("live_collab.webp","Collaborative hiring: hiring managers and recruiters in one workspace","beige"), true)}
+      ${row("Post","Every role and its state in one list","Open and closed roles with applicant counts.","", `<div class="ax-row-media vig"><div class="axv" data-axv="post"></div></div>`, false)}
+      ${row("Screen","A brief, not a CV to decode","Three scores first, then a suggested next step.","", `<div class="ax-row-media vig"><div class="axv" data-axv="screen"></div></div>`, true)}
+      ${row("Pipeline","Candidates arrive already scored","Applied to Shortlisted in one click.","", `<div class="ax-row-media vig"><div class="axv" data-axv="pipeline"></div></div>`, false)}
+      ${row("Collaborate","The whole hiring team in one view","Hiring managers and recruiters aligned.","", `<div class="ax-row-media vig"><div class="axv" data-axv="collaborate"></div></div>`, true)}
     </div>
     ${stage(swin("fig_recruiter_full.webp","auxhr.com · recruiter","Recruiter landing page, full design"), "Recruiter Landing · Designed", "deep", "rec")}
   </section>
+
+  <div class="axi-wrap rv"><div class="axi" data-axi="passmark"></div></div>
 
   <!-- chapter III: AI configuration. Oct 20 2026 6:36 PM, her word "same as chapter 3": mirrors chapter I (label, headline, frame, short feature rows); the long lede paragraph is gone -->
   <section class="ax ax-sec rv" id="ax-ai">
@@ -132,8 +139,8 @@
     <h2 class="ax-h2">Set the bar once. The AI holds <em>everyone</em> to it.</h2>
     ${stage(win("dash_r2.webp","app.auxhr.com · post a job · screening","Post a job: screening setup with skill weights, pre-screening questions and personality assessment toggles"), "Post A Job · Screening Setup", "", "")}
     <div class="ax-rows">
-      ${row("Configure","Questions, tests and weights, set once per role","Toggles switch each test on, sliders carry the weights.","", img("fig_feat_ai.webp","AI Configuration and CV Matching: set the questions, weights and benchmarks once","beige"), false)}
-      ${row("Score","Three scores travel with every candidate","CV match, screening and personality fit.","", img("live_scores.webp","CV Match, Screening Answers and Personality Fit scores","pad"), true)}
+      ${row("Configure","Questions, tests and weights, set once per role","Toggles switch each test on, sliders carry the weights.","", `<div class="ax-row-media vig"><div class="axv" data-axv="configure"></div></div>`, false)}
+      ${row("Score","Three scores travel with every candidate","CV match, screening and personality fit.","", `<div class="ax-row-media vig"><div class="axv" data-axv="score"></div></div>`, true)}
     </div>
   </section>
 
