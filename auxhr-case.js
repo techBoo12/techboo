@@ -122,7 +122,7 @@
       ${row("Pipeline","Candidates arrive already scored","Applied to Shortlisted in one click.","", pad("dash_r3.webp","app.auxhr.com · candidates","Candidates list with CV match, screening and personality scores per person"), false)}
       ${row("Collaborate","The whole hiring team in one view","Hiring managers and recruiters aligned.","", img("live_collab.webp","Collaborative hiring: hiring managers and recruiters in one workspace","beige"), true)}
     </div>
-    ${stage(swin("live_full.webp","auxhr.com","AuxHR recruiter site, full page, live at auxhr.com"), "Recruiter Landing · Live", "deep", "rec")}
+    ${stage(swin("fig_recruiter_full.webp","auxhr.com · recruiter","Recruiter landing page, full design"), "Recruiter Landing · Designed", "deep", "rec")}
   </section>
 
   <!-- chapter III: AI configuration. Oct 20 2026 6:36 PM, her word "same as chapter 3": mirrors chapter I (label, headline, frame, short feature rows); the long lede paragraph is gone -->
@@ -136,16 +136,7 @@
     </div>
   </section>
 
-  <!-- website (was in About / Solution / Process) -->
-  <section class="ax ax-sec rv" id="ax-site">
-    ${eyebrow("Website","auxhr.com")}
-    <div class="ax-under"><span>The recruiter landing above is the site as it is live today.</span><a href="https://www.auxhr.com" target="_blank" rel="noopener">Open auxhr.com ↗</a></div>
-    ${stage(win("live_steps.webp","auxhr.com · how it works","How AuxHR works: create your role, let AI find the fit, review your matches, make your move"), "How It Works · Live", "deep")}
-    <div class="ax-duo">
-      ${stage(win("fig_recruiter_full.webp","Figma · Recruiter landing page","Recruiter landing page, full design in Figma","tall"), "Recruiter Site · Figma", "deep", "rec")}
-      ${stage(win("fig_talent_full.webp","Figma · Talent landing page","Talent landing page, full design in Figma","tall"), "Talent Site · Figma", "deep", "talent")}
-    </div>
-  </section>
+  <!-- Oct 20 2026 6:38 PM, her word "remove this part i already told you where to put recruiters and talents full landing pages": the Website section (live mock, How It Works, both Figma site cards) is gone; the full landing pages live inside chapters I and II. Old markup in files/auxhr_case/short_v4/ -->
 
   <!-- brand -->
   <section class="ax ax-sec rv" id="ax-brand">
