@@ -424,3 +424,6 @@
 /* her 6:50 PM: the lede under the film is as big as "Hiring breaks in both directions." (same size, weight, line-height as .ax-h2) */
 .ax-page .case-hero .case-lede{font-family:"General Sans","Manrope",sans-serif;font-size:clamp(30px,4.2vw,54px);font-weight:600;line-height:1.08;letter-spacing:-.03em;color:#fff;max-width:900px}
 @media (max-width:760px){.ax-page .case-hero .case-lede{font-size:30px}}
+
+/* interlude tags fit at 390 (the marquee tag clipped at 12px) */
+@media (max-width:520px){.ax-page .mq-tag,.ax-page .fn-tag,.ax-page .pm-lab{font-size:10px;padding:0 10px;gap:6px;max-width:calc(100% - 28px);overflow:hidden;text-overflow:ellipsis}}
