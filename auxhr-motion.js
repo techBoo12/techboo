@@ -14,4 +14,10 @@
     if(RM){ w.classList.add("manual"); return; }
     seen(w, ()=>{ fit(); w.classList.add("play"); }, ()=>w.classList.remove("play"), .25);
   });
+
+  /* 2. the rebrand story (her 6:40 PM): CSS keyframes, played only on screen; reduced motion shows the final AuxHR frame */
+  root.querySelectorAll("[data-axr]").forEach(s=>{
+    if(RM){ s.classList.add("done"); return; }
+    seen(s, ()=>s.classList.add("play"), ()=>s.classList.remove("play"), .35);
+  });
 })();
