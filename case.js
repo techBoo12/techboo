@@ -16,7 +16,8 @@
   const gal = (k.gallery||[]).map(m=> m.type==="image"
       ? `<figure class="case-module rv">${m.slices.map(([s,w,h],j)=>`<img src="${up(s)}" width="${w}" height="${h}" alt="${esc(k.title)}" loading="lazy" decoding="async" data-lb="case" data-cap="${esc(k.title)} · ${j+1}">`).join("")}</figure>`
       : `<figure class="case-module video rv"><video data-vsrc="${up(m.src)}" poster="${up(m.poster)}"${m.loop?" muted loop autoplay":" controls"} playsinline preload="none" width="${m.w}" height="${m.h}"></video></figure>`).join("");
-  const peers = all.filter(x=>(window.TBTabOfCase?TBTabOfCase(x.slug):"uiux")===tabId); const pool = peers.length>1?peers:all;
+  const peers = all.filter(x=>(window.TBTabOfCase?TBTabOfCase(x.slug):"uiux")===tabId); const ORD=((C.groups||{})[tabId]||{}).cases||[]; const oi=x=>{const n=ORD.indexOf(x.slug); return n<0?999:n;}; peers.sort((a,b)=>oi(a)-oi(b));   /* Oct 20 2026 10:01 PM: next project follows the page order */
+  const pool = peers.length>1?peers:all;
   const i = pool.indexOf(k), nx = pool[(i+1)%pool.length];
   /* Oct 20 2026 8:29 PM her ask "put thanks for scrolling in all of my case studies": the paid-receipt ending from Invora, restyled per case. Invora has its own; hm-trades and warblelive get theirs from their redesigns; motion pieces are not case studies. */
   const TY_SKIP = ["invora","hm-trades","warblelive","sphinx-ai-promo","spenda-motion","navra"];   // navra: own Payment Successful ending
