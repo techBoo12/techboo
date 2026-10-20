@@ -77,6 +77,7 @@
   /* Oct 18 2026 (her words: each section has its own thumbnail and it keeps updating as the site grows):
      the landing tile shows the FIRST visible item of that section, video if it has one. explore.img is only a fallback. */
   function autoThumb(g){
+    if(g.explore && g.explore.cover) return {img:g.explore.cover, vid:g.explore.coverVid||null}; /* Oct 20 2026 her ask: each category tile is a top-4 highlight collage */
     const fromMedia = (m)=> m ? (m.type==="video" ? {vid:m.src, img:m.poster||""} : {img:m.src||"", vid:null}) : null;
     const tryCases = ()=>{ for(const id of (g.cases||[])){ const k=C.work.cases.find(c=>(c.slug||c.key)===id); if(k && !k.hidden && k.media && k.media.src) return fromMedia(k.media); } return null; };
     const trySecs = ()=>{ for(const sid of (g.sections||[])){ const s=C.sections.find(x=>x.id===sid); for(const it of ((s&&s.items)||[])){ if(!it.soon && it.src) return /\.mp4/.test(it.src)?{vid:it.src,img:it.poster||""}:{img:it.src,vid:null}; } } return null; };
