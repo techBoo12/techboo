@@ -12,7 +12,7 @@
   if(!k){ $("case").innerHTML = `<section class="case-hero"><h1 class="case-title">Case not found</h1><p><a class="back" href="../${backHref}">← ${backLabel}</a></p></section>`; return; }
   document.title = `${k.title} | ${C.nav.first} ${C.nav.last}`;
   const meta = [["Role", k.role]];
-  const descHTML = (k.outcome && k.outcome!==k.title ? `<p class="case-lede">${esc(k.outcome)}</p>` : "") + (k.desc ? `<p class="case-desc">${esc(k.desc)}</p>` : "");
+  const descHTML = (k.outcome && k.outcome!==k.title ? `<p class="case-lede">${esc(k.outcome)}</p>` : "") + (k.desc && !["auxhr","invora"].includes(slug) ? `<p class="case-desc">${esc(k.desc)}</p>` : "");
   const gal = (k.gallery||[]).map(m=> m.type==="image"
       ? `<figure class="case-module rv">${m.slices.map(([s,w,h],j)=>`<img src="${up(s)}" width="${w}" height="${h}" alt="${esc(k.title)}" loading="lazy" decoding="async" data-lb="case" data-cap="${esc(k.title)} · ${j+1}">`).join("")}</figure>`
       : `<figure class="case-module video rv"><video data-vsrc="${up(m.src)}" poster="${up(m.poster)}"${m.loop?" muted loop autoplay":" controls"} playsinline preload="none" width="${m.w}" height="${m.h}"></video></figure>`).join("");
