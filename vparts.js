@@ -27,6 +27,17 @@ window.VPARTS = {
  "assets/media/sofavault_card2.mp4": 2,
  "assets/media/stikboo_card2.mp4": 2
 };
+/* Oct 20 2026 9:19 PM her ask ("in desktop view for the motion design section, the videos don't play before they click it"): the biggest motion files are 25 MB in 30 parts, so a card stayed on its poster until every part had downloaded. Muted card previews now play a light 8 s clip (assets/media/prev/) right away; the click / lightbox still plays the full film. */
+window.VPREV = {
+ "assets/media/motion_auxhr3.mp4": "assets/media/prev/motion_auxhr3.mp4",
+ "assets/media/motion_creditrolls.mp4": "assets/media/prev/motion_creditrolls.mp4",
+ "assets/media/motion_axisrecap.mp4": "assets/media/prev/motion_axisrecap.mp4",
+ "assets/media/motion_bolapsd_v2.mp4": "assets/media/prev/motion_bolapsd_v2.mp4",
+ "assets/media/motion_spenda_v2.mp4": "assets/media/prev/motion_spenda_v2.mp4",
+ "assets/media/motion_axiscard.mp4": "assets/media/prev/motion_axiscard.mp4",
+ "assets/cases/sphinx-ai-promo/video01.mp4": "assets/media/prev/sphinx_video01.mp4",
+ "assets/media/ai_axis.mp4": "assets/media/prev/ai_axis.mp4"
+};
 (function(){
   const P = window.VPARTS, cache = {};
   function prefix(v){ return v.dataset.vbase || ""; }
@@ -34,6 +45,8 @@ window.VPARTS = {
     if(v.dataset.vloaded) return; v.dataset.vloaded = "1";
     const rel = v.dataset.vsrc, key = rel.replace(/^(\.\.\/)+/, ""), n = P[key];
     const done = (url)=>{ v.src = url; if((v.muted || v.closest(".vtile")) && v.dataset.noauto!=="1" && !matchMedia("(prefers-reduced-motion: reduce)").matches){ const r=v.getBoundingClientRect(); if(r.bottom>0 && r.top<innerHeight) v.play().catch(()=>{}); } v.dispatchEvent(new Event("vready")); };
+    const pv = (window.VPREV||{})[key];
+    if(pv && v.dataset.noauto!=="1" && v.closest(".mp-media, .mp-reelwrap, .tb-ex-img")){ done(rel.slice(0, rel.length-key.length)+pv); return; }
     if(!n){ done(rel); return; }
     const base = rel;
     cache[key] = cache[key] || Promise.all(Array.from({length:n},(_,i)=>fetch(base+".part"+i).then(r=>{ if(!r.ok) throw new Error(r.status); return r.arrayBuffer(); })))
