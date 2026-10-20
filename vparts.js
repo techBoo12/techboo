@@ -25,7 +25,10 @@ window.VPARTS = {
  "assets/media/stikboo_mint1.mp4": 1,
  "assets/media/sofavault_ai_demo1.mp4": 1,
  "assets/media/sofavault_card2.mp4": 2,
- "assets/media/stikboo_card2.mp4": 2
+ "assets/media/stikboo_card2.mp4": 2,
+ "assets/media/video_robo.mp4": 14,
+ "assets/media/video_movie.mp4": 10,
+ "assets/media/video_toki.mp4": 25   /* Oct 20 2026 9:35 PM her ask: her 3 X videos on UGC / Video Edits */
 };
 /* Oct 20 2026 9:19 PM her ask ("in desktop view for the motion design section, the videos don't play before they click it"): the biggest motion files are 25 MB in 30 parts, so a card stayed on its poster until every part had downloaded. Muted card previews now play a light 8 s clip (assets/media/prev/) right away; the click / lightbox still plays the full film. */
 window.VPREV = {
