@@ -304,3 +304,117 @@ body.iv-page{overflow-x:clip}
 
 /* Oct 20 2026 live: the card outcome line lives in content.js; on this page About already says it, so the lede stays hidden */
 .iv-page .case-hero .case-lede{display:none}
+
+/* OPENING MOTION (her Oct 20 8:04 PM correction): Create, Send, Paid loop before About The Project. Pure CSS, runs only while on screen (.on), static final state for reduced motion. */
+.iv-flow{position:relative;margin:0;border-radius:28px;overflow:hidden;height:clamp(280px,26vw,360px);isolation:isolate;background:radial-gradient(50% 80% at 50% 55%,rgba(46,211,183,.20),rgba(14,147,132,.05) 55%,transparent 78%),#060d0c;border:1px solid rgba(46,211,183,.14);font-family:Inter,sans-serif}
+.iv-flow::before{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:40px 40px;-webkit-mask-image:radial-gradient(70% 80% at 50% 50%,#000,transparent);mask-image:radial-gradient(70% 80% at 50% 50%,#000,transparent)}
+.iv-flow:not(.on) *{animation-play-state:paused!important}
+.iv-flow-mq{position:absolute;left:0;right:0;top:16px;overflow:hidden;white-space:nowrap;z-index:0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.iv-flow-mq-in{display:inline-flex;align-items:center;gap:22px;padding-right:22px;animation:ivMarq 30s linear infinite}
+.iv-flow-mq span{font:600 12px/1 var(--mono,monospace);letter-spacing:.2em;text-transform:uppercase;color:rgba(95,227,203,.42)}
+.iv-flow-mq i{width:5px;height:5px;border-radius:50%;background:rgba(95,227,203,.35)}
+.iv-flow-stage{position:absolute;inset:44px 0 0;display:flex;align-items:center;justify-content:center}
+.iv-flow-track{position:relative;width:min(760px,84%);height:100%}
+.iv-flow-line{position:absolute;left:0;right:0;bottom:30%;height:2px;border-radius:2px;background:rgba(255,255,255,.1)}
+.iv-flow-line i{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:2px;background:var(--iv-grad);box-shadow:0 0 14px #2ED3B7;animation:ivFlowLine 7s cubic-bezier(.65,0,.35,1) infinite}
+.iv-flow-node{position:absolute;bottom:30%;transform:translate(-50%,50%);display:flex;flex-direction:column;align-items:center;z-index:1}
+.iv-flow-node.n1{left:0}.iv-flow-node.n2{left:50%}.iv-flow-node.n3{left:100%}
+.iv-flow-node span{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.55);background:#0b1715;border:1px solid rgba(95,227,203,.25)}
+.iv-flow-node b{position:absolute;top:100%;margin-top:12px;font-size:14px;font-weight:600;letter-spacing:-.01em;color:rgba(255,255,255,.6);white-space:nowrap}
+.iv-flow-node.n1 span{animation:ivNode1 7s infinite}.iv-flow-node.n2 span{animation:ivNode2 7s infinite}.iv-flow-node.n3 span{animation:ivNode3 7s infinite}
+.iv-flow-node.n1 b{animation:ivLab1 7s infinite}.iv-flow-node.n2 b{animation:ivLab2 7s infinite}.iv-flow-node.n3 b{animation:ivLab3 7s infinite}
+.iv-flow-card{position:absolute;left:0;bottom:calc(30% + 40px);width:178px;transform:translateX(-50%);background:#fff;color:#101828;border-radius:16px;padding:12px 13px;box-shadow:0 22px 50px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.6);z-index:2;animation:ivFlowCard 7s cubic-bezier(.65,0,.35,1) infinite}
+.iv-flow-card-top{display:flex;align-items:center;gap:8px}
+.iv-flow-card-top .iv-mark{width:22px;height:22px;flex-basis:22px;border-radius:7px}
+.iv-flow-card-top .iv-mark svg{width:13px;height:13px}
+.iv-flow-card-top b{display:block;font-size:12px;font-weight:600}
+.iv-flow-card-top small{display:block;font-size:10px;color:#667085;margin-top:1px}
+.iv-flow-amt{font-size:20px;font-weight:700;letter-spacing:-.04em;margin:8px 0 8px}
+.iv-flow-st{display:grid}
+.iv-flow-st .iv-pill{grid-area:1/1;justify-self:start;font-size:10.5px;padding:5px 9px}
+.iv-flow-st .iv-pill.d{background:#F2F4F7;color:#475467;border-color:#D0D5DD}
+.iv-flow-st .iv-pill:nth-child(1){animation:ivSt1 7s infinite}.iv-flow-st .iv-pill:nth-child(2){animation:ivSt2 7s infinite}.iv-flow-st .iv-pill:nth-child(3){animation:ivSt3 7s infinite}
+.iv-flow-toast{position:absolute;left:100%;bottom:calc(30% + 40px);transform:translate(-100%,0);display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:#fff;padding:8px 12px 8px 8px;border-radius:999px;background:var(--iv-grad);box-shadow:0 14px 34px rgba(46,211,183,.45);white-space:nowrap;z-index:3;opacity:0;animation:ivToast 7s infinite}
+.iv-flow-toast span{width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.22);display:inline-flex;align-items:center;justify-content:center}
+.iv-flow-toast svg{width:12px;height:12px}
+@keyframes ivFlowLine{0%,8%{width:0}38%,46%{width:50%}76%,92%{width:100%}100%{width:100%;opacity:0}}
+@keyframes ivFlowCard{0%{left:0;opacity:0;transform:translateX(-50%) translateY(10px)}5%,8%{left:0;opacity:1;transform:translateX(-50%)}38%,46%{left:50%;opacity:1;transform:translateX(-50%)}76%,90%{left:100%;opacity:1;transform:translateX(-50%)}97%,100%{left:100%;opacity:0;transform:translateX(-50%) translateY(-8px)}}
+@keyframes ivNode1{0%,3%{background:#0b1715;color:rgba(255,255,255,.55);box-shadow:none;border-color:rgba(95,227,203,.25)}6%,94%{background:var(--iv-grad);color:#fff;border-color:transparent;box-shadow:0 0 0 7px rgba(46,211,183,.1),0 0 26px rgba(46,211,183,.45)}100%{background:#0b1715;color:rgba(255,255,255,.55)}}
+@keyframes ivNode2{0%,37%{background:#0b1715;color:rgba(255,255,255,.55);box-shadow:none;border-color:rgba(95,227,203,.25)}40%,94%{background:var(--iv-grad);color:#fff;border-color:transparent;box-shadow:0 0 0 7px rgba(46,211,183,.1),0 0 26px rgba(46,211,183,.45)}100%{background:#0b1715;color:rgba(255,255,255,.55)}}
+@keyframes ivNode3{0%,75%{background:#0b1715;color:rgba(255,255,255,.55);box-shadow:none;border-color:rgba(95,227,203,.25)}78%,94%{background:var(--iv-grad);color:#fff;border-color:transparent;box-shadow:0 0 0 7px rgba(46,211,183,.12),0 0 32px rgba(46,211,183,.6)}100%{background:#0b1715;color:rgba(255,255,255,.55)}}
+@keyframes ivLab1{0%,3%{color:rgba(255,255,255,.6)}6%,94%{color:#fff}100%{color:rgba(255,255,255,.6)}}
+@keyframes ivLab2{0%,37%{color:rgba(255,255,255,.6)}40%,94%{color:#fff}100%{color:rgba(255,255,255,.6)}}
+@keyframes ivLab3{0%,75%{color:rgba(255,255,255,.6)}78%,94%{color:#5FE3CB}100%{color:rgba(255,255,255,.6)}}
+@keyframes ivSt1{0%,38%{opacity:1}41%,100%{opacity:0}}
+@keyframes ivSt2{0%,38%{opacity:0}41%,75%{opacity:1}78%,100%{opacity:0}}
+@keyframes ivSt3{0%,75%{opacity:0}78%,100%{opacity:1}}
+@keyframes ivToast{0%,79%{opacity:0;transform:translate(-100%,8px) scale(.9)}83%,91%{opacity:1;transform:translate(-100%,-118px) scale(1)}96%,100%{opacity:0;transform:translate(-100%,-126px) scale(1)}}
+.iv-intro-h{margin:0;max-width:900px}
+#iv-intro + #iv-overview{padding-top:28px}
+@media (max-width:600px){
+  .iv-flow{border-radius:20px;height:270px}
+  .iv-flow-mq{top:14px}
+  .iv-flow-mq span{font-size:10.5px}
+  .iv-flow-track{width:calc(100% - 128px)}
+  .iv-flow-card{width:136px;padding:10px 11px;border-radius:14px;bottom:calc(30% + 34px)}
+  .iv-flow-amt{font-size:16px;margin:6px 0}
+  .iv-flow-card-top b{font-size:11px}.iv-flow-card-top small{font-size:9.5px}
+  .iv-flow-st .iv-pill{font-size:9.5px;padding:4px 8px}
+  .iv-flow-node span{width:38px;height:38px;border-radius:12px}
+  .iv-flow-node span svg{width:17px;height:17px}
+  .iv-flow-node b{font-size:12.5px;margin-top:10px}
+  .iv-flow-toast{font-size:11px;bottom:calc(30% + 34px)}
+  @keyframes ivToast{0%,79%{opacity:0;transform:translate(-78%,8px) scale(.9)}83%,91%{opacity:1;transform:translate(-78%,-104px) scale(1)}96%,100%{opacity:0;transform:translate(-78%,-110px) scale(1)}}
+  .iv-intro-h{font-size:34px}
+  #iv-intro + #iv-overview{padding-top:22px}
+}
+@media (prefers-reduced-motion:reduce){
+  .iv-flow *{animation:none!important}
+  .iv-flow-line i{width:100%}
+  .iv-flow-card{left:100%;opacity:1}
+  .iv-flow-node span{background:var(--iv-grad);color:#fff;border-color:transparent}
+  .iv-flow-node b{color:#fff}
+  .iv-flow-st .iv-pill:nth-child(-n+2){opacity:0}
+}
+
+/* her Oct 20 8:05 PM correction: the chase plays on its own (no sticky scroll), sits before Personas, chips stay inside the card */
+.iv-chase{height:auto;margin-top:96px}
+.iv-chase-pin{position:relative;top:auto;height:clamp(540px,46vw,640px)!important}
+.iv-chase-head span{transition:none}
+.iv-frag{top:56%;width:min(240px,40%)}
+/* her Oct 20 8:06 PM correction: glass circles, line through their centres (placed by JS) */
+.iv-proc-line{z-index:0}
+.iv-node{color:rgba(255,255,255,.6);background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(46,211,183,.05));border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
+.iv-proc.go .iv-node{color:#fff;background:linear-gradient(145deg,rgba(95,227,203,.30) 0%,rgba(46,211,183,.14) 45%,rgba(14,147,132,.10) 100%);border:1px solid rgba(150,240,222,.55);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -10px 18px rgba(14,147,132,.22),0 0 0 6px rgba(46,211,183,.07),0 12px 30px rgba(46,211,183,.28)}
+.iv-node svg{filter:drop-shadow(0 1px 2px rgba(0,0,0,.35))}
+@media (max-width:600px){
+  .iv-chase{margin-top:72px;height:auto}
+  .iv-chase-pin{height:580px!important}
+  .iv-chase-head{top:7%}
+  .iv-frag{width:min(158px,44%);padding:10px 11px}
+  .iv-frag b{font-size:10px}
+  .iv-frag span{font-size:12px}
+}
+
+/* her Oct 20 8:07 PM correction: small numbers, each in its own glass circle, block aligned with the frame's left edge */
+.iv-screen-text{grid-template-columns:auto 1fr;column-gap:14px;align-items:center;margin-left:0;padding-left:0}
+.iv-n{grid-row:span 2;align-self:start;width:46px;height:46px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font:600 15px/1 Inter,sans-serif;letter-spacing:-.01em;color:#fff;-webkit-text-fill-color:#fff;background:linear-gradient(145deg,rgba(95,227,203,.30) 0%,rgba(46,211,183,.14) 45%,rgba(14,147,132,.10) 100%);-webkit-background-clip:border-box;background-clip:border-box;border:1px solid rgba(150,240,222,.55);backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -8px 14px rgba(14,147,132,.22),0 0 0 5px rgba(46,211,183,.06),0 10px 26px rgba(46,211,183,.22);font-variant-numeric:tabular-nums}
+.iv-screen-text h3{align-self:end}
+.iv-screen-text p{margin-top:4px}
+@media (max-width:600px){
+  .iv-n{width:38px;height:38px;font-size:13px}
+  .iv-screen-text{column-gap:12px}
+  .iv-screen-text h3{font-size:22px}
+}
+
+/* motion polish: toast drops in at the top centre, clear of the card; card stays inside the frame at 390 */
+.iv-flow-toast{left:50%;top:6px;bottom:auto;transform:translate(-50%,-10px);animation-name:ivToast2}
+@keyframes ivToast2{0%,78%{opacity:0;transform:translate(-50%,-10px) scale(.92)}82%,91%{opacity:1;transform:translate(-50%,0) scale(1)}96%,100%{opacity:0;transform:translate(-50%,-6px) scale(1)}}
+.iv-n{box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -8px 14px rgba(14,147,132,.22),0 10px 26px rgba(46,211,183,.22)}
+@media (max-width:600px){
+  .iv-flow{height:290px}
+  .iv-flow-track{width:calc(100% - 160px)}
+  .iv-flow-toast{top:4px;animation-name:ivToast2}
+}
+@media (prefers-reduced-motion:reduce){.iv-flow-toast{opacity:1;transform:translate(-50%,0)}}
+@media (max-width:600px){.iv-flow-toast{left:30%}}
