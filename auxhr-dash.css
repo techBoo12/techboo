@@ -166,3 +166,6 @@
 .axd-fr b{text-align:right;font-weight:650;font-size:12px;display:inline-block}
 /* reduced motion: no transitions */
 .axd.axd-static *{transition:none!important;animation:none!important}
+
+/* Oct 20 2026: URL text regular weight + muted, like a real browser */
+.axd-url{width:300px;font-weight:400;color:#8A8F99}
