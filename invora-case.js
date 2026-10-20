@@ -219,6 +219,26 @@
     ${eyebrow("","Target Users")}
   </section>
   <div class="iv-bands" aria-label="Freelance designers, developers, creators and small agencies">${band("l")}${band("r")}</div>
+
+  <!-- CLOSE (her Oct 20 8:08 PM correction): Thanks For Scrolling in a new style, a paid receipt in Invora glass. Replaces the next-project card on this page. -->
+  <section class="iv iv-sec" id="iv-thanks">
+    <div class="iv-ty">
+      <div class="iv-ty-glow" aria-hidden="true"></div>
+      <h2 class="iv-ty-h">Thanks For <span>Scrolling</span></h2>
+      <div class="iv-ty-rc">
+        <div class="iv-ty-rc-top">${mark}<div><b>Receipt</b><small>Invora Case Study</small></div></div>
+        <div class="iv-ty-row"><span>Designed By</span><b>Adaikem Ajufo</b></div>
+        <div class="iv-ty-row"><span>Role</span><b>Product Designer</b></div>
+        <div class="iv-ty-row"><span>Screens</span><b>5 Screens, Figma</b></div>
+        <div class="iv-ty-row tot"><span>Your Time</span><b>Paid In Full</b></div>
+        <div class="iv-ty-stamp" aria-hidden="true"><span>Thank You</span></div>
+      </div>
+      <div class="iv-ty-act">
+        <a class="iv-ty-btn" href="../ui-ux-designs"><span aria-hidden="true">←</span> Back To Projects</a>
+        <button class="iv-ty-btn ghost" type="button" data-top>Back To Top <span aria-hidden="true">↑</span></button>
+      </div>
+    </div>
+  </section>
   `;
   gal.innerHTML = html;
 
@@ -234,7 +254,7 @@
   inview(rvs,"in");
   inview(gal.querySelectorAll("#iv-proc"),"go","0px 0px -25% 0px");
   /* stamp + link loops run only while on screen */
-  const live = gal.querySelectorAll("#iv-flow,#iv-stamp,#iv-link,#iv-fx,.iv-bands");
+  const live = gal.querySelectorAll("#iv-flow,#iv-stamp,#iv-link,#iv-fx,.iv-bands,#iv-thanks");
   if("IntersectionObserver" in window){
     const io2 = new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle("on", e.isIntersecting)),{rootMargin:"0px 0px -15% 0px"});
     live.forEach(el=>io2.observe(el));
@@ -322,6 +342,8 @@
       : {left:ax+"px", top:(ay-1)+"px", width:(bx-ax)+"px", height:"2px", right:"auto", bottom:"auto"});
   };
   placeLine(); addEventListener("resize", placeLine); addEventListener("load", placeLine); setTimeout(placeLine, 600);
+  const topBtn = gal.querySelector("[data-top]");
+  if(topBtn) topBtn.addEventListener("click", ()=>scrollTo({top:0, behavior: reduce ? "auto" : "smooth"}));
   const onScroll = ()=>{ if(!ticking){ ticking = true; requestAnimationFrame(frame); } };
   addEventListener("scroll", onScroll, {passive:true});
   addEventListener("resize", ()=>{ hdr(); onScroll(); });
