@@ -19,67 +19,70 @@
   const peers = all.filter(x=>(window.TBTabOfCase?TBTabOfCase(x.slug):"uiux")===tabId); const pool = peers.length>1?peers:all;
   const i = pool.indexOf(k), nx = pool[(i+1)%pool.length];
   /* Oct 20 2026 8:29 PM her ask "put thanks for scrolling in all of my case studies": the paid-receipt ending from Invora, restyled per case. Invora has its own; hm-trades and warblelive get theirs from their redesigns; motion pieces are not case studies. */
-  const TY_SKIP = ["invora","hm-trades","warblelive","sphinx-ai-promo","spenda-motion"];
-  const TY_THEME = {
-    auxhr:{a:"#4266ff",b:"#63eafd",c:"#91b6ff",bg:"#07091d",font:"'General Sans','Manrope',sans-serif",head:"'General Sans','Manrope',sans-serif",ink:"#fff"},
-    sofavault:{a:"#B5CCC8",b:"#1C5A63",c:"#F7F4EF",bg:"#0b1a1c",font:"'Poppins','Manrope',sans-serif",head:"'Poppins','Manrope',sans-serif",ink:"#F7F4EF"},
-    stikboo:{a:"#D4FF4A",b:"#8B5CF6",c:"#7DF9FF",bg:"#0d0a1b",font:"'Space Grotesk','Manrope',sans-serif",head:"'Tiny5',monospace",ink:"#fff",pixel:1}
-  };
+  const TY_SKIP = ["invora","hm-trades","warblelive","sphinx-ai-promo","spenda-motion","navra"];   // navra: own Payment Successful ending
+  /* Oct 20 2026 8:55 PM her voice note: "not everything should be receipt form". Each case now ends on an artefact from its own product world (endings.css). */
   const tyOn = !TY_SKIP.includes(slug) && tabId === "uiux";
-  const th = TY_THEME[slug] || {a:k.dot||"#C4A0FF",b:"#C4A0FF",c:"#fff",bg:"#0b0b10",font:"'Inter','Manrope',sans-serif",head:"'Inter','Manrope',sans-serif",ink:"#fff"};
-  const TY_NAME = {auxhr:"AuxHR",sofavault:"SofaVault",stikboo:"Stikboo",chainai:"ChainAI","replicated-soft-ui":"Soft UI","responsive-ecommerce":"E-Commerce Website","splash-signin-signup":"Splash And Auth Screens","train-app-onboarding":"Train App Onboarding"};
-  const tyName = TY_NAME[slug] || (k.brand||k.title||"").toLowerCase().replace(/(^|[\s·&-])([a-z])/g,(m,p,ch)=>p+ch.toUpperCase());
-  const tyHTML = !tyOn ? "" : `<div class="tb-ty${th.pixel?" px":""}" id="tb-ty" style="--ty-a:${th.a};--ty-b:${th.b};--ty-c:${th.c};--ty-bg:${th.bg};--ty-font:${th.font};--ty-head:${th.head};--ty-ink:${th.ink}">
-        <div class="tb-ty-glow" aria-hidden="true"></div>
-        <h2 class="tb-ty-h">Thanks For <span>Scrolling</span></h2>
-        <div class="tb-ty-rc">
-          <div class="tb-ty-top"><span class="tb-ty-mk" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span><div><b>Receipt</b><small>${esc(tyName)} Case Study</small></div></div>
-          <div class="tb-ty-row"><span>Designed By</span><b>Adaikem Ajufo</b></div>
-          <div class="tb-ty-row"><span>Role</span><b>${esc(k.role||"Product Designer")}</b></div>
-          <div class="tb-ty-row tot"><span>Your Time</span><b>Paid In Full</b></div>
-          <div class="tb-ty-stamp" aria-hidden="true"><span>Thank You</span></div>
-        </div>
-        <div class="tb-ty-act"><a class="tb-ty-btn" href="../${backHref}"><span aria-hidden="true">←</span> Back To Projects</a><button class="tb-ty-btn ghost" type="button" data-ty-top>Back To Top <span aria-hidden="true">↑</span></button>${k.website?`<a class="tb-ty-btn ghost" href="${k.website}" target="_blank" rel="noopener">Visit ${esc(k.website.replace(/^https?:\/\/(www\.)?/,"").replace(/\/.*$/,""))} <span aria-hidden="true">↗</span></a>`:""}</div>
+  const role = esc(k.role||"Product Designer"), D = "Adaikem Ajufo";
+  const row = (a,b,c)=>`<div class="tbe-row"><span>${a}</span><b${c?` class="${c}"`:""}>${b}</b></div>`;
+  const ck = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>`;
+  const PIX = ["..........",".LL....LL.","LLLL..LLLL","LLWLLLLLLL","LLLLLLLLLL",".LLLLLLLL.","..LLLLLL..","...LLLL...","....LL....",".........."];
+  const TY_FONT = {sofavault:"Poppins:wght@400;500;600;700", "investment-dashboard":"Inter:wght@400;500;600;700", "presale-memecoin-landing":"Poppins:wght@400;500;600;700;800", "e-learning-dashboard":"Poppins:wght@400;500;600", "splash-signin-signup":"Nunito:wght@400;600;700;800", "auth-wiki":"Poppins:wght@400;500;600&family=IBM+Plex+Mono:wght@500", "responsive-ecommerce":"DM+Serif+Display&family=Manrope:wght@400;500;600;700", "replicated-soft-ui":"Poppins:wght@400;500;600", "train-app-onboarding":"Poppins:wght@400;500;600", stikboo:"Tiny5&family=Space+Grotesk:wght@400;500;600;700"};
+  const TY_ART = {
+    auxhr:()=>[`<div class="ax-cc"><div class="ax-cc-top"><span class="tbe-k">Application Update</span><span class="ax-chip">${ck} Shortlisted</span></div>
+      <div class="ax-who"><span class="ax-av" aria-hidden="true">AA</span><div><b>${D}</b><small>Designed By</small></div></div>
+      <div class="ax-pipe" aria-label="Applied, Screened, Shortlisted, Hired"><div class="ax-st"><i></i>Applied</div><div class="ax-st"><i></i>Screened</div><div class="ax-st"><i></i>Shortlisted</div><div class="ax-st now"><i></i>Hired</div></div>
+      ${row("Role",role)}${row("Status","Offer Sent To You")}</div>`, "Thanks for reviewing this case. You made the shortlist."],
+    sofavault:()=>[`<div class="sv-wrap"><span class="sv-string" aria-hidden="true"></span><div class="sv-tag">
+      <div class="sv-head"><span class="sv-ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12V9a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3"/><path d="M2 12h20v5H2zM5 17v2M19 17v2"/></svg></span><div><b>SofaVault</b><small>Delivery Note</small></div></div>
+      <div class="sv-to">Delivered To<b>Your Space</b></div>
+      ${row("Designed By",D)}${row("Role",role)}${row("Status","Delivered")}
+      <div class="sv-care">${ck} Handle With Care</div></div></div>`, "Hope it fits your space. Come back for another look anytime."],
+    stikboo:()=>{ let px=""; PIX.forEach((r,y)=>[...r].forEach((c,x)=>{ const n=y*10+x; px+=`<i style="background:${c==="L"?"#D4FF4A":c==="W"?"#fff":"#8B5CF6"};animation-delay:${((n*37)%100)*9}ms"></i>`; }));
+      return [`<div class="sb-card"><div class="sb-art" role="img" aria-label="Pixel heart">${px}<span class="sb-badge">Mint Successful</span></div>
+      <div class="sb-meta"><div class="sb-name">Thanks #001 <small>1 Of 1</small></div>${row("Designed By",D)}${row("Role",role)}${row("Owner","You")}</div></div>`, "Minted just for you. Thanks for scrolling all the way down."]; },
+    "investment-dashboard":()=>[`<div class="iv-card"><div class="iv-top"><span class="tbe-k">Portfolio Statement</span><span class="iv-live">Live</span></div>
+      <div class="iv-bal">Your Time</div><div class="iv-big">Well Invested <span class="iv-up">↑ Up</span></div>
+      <svg class="iv-chart" viewBox="0 0 300 92" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ivg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3DE0F2" stop-opacity=".35"/><stop offset="1" stop-color="#3DE0F2" stop-opacity="0"/></linearGradient></defs><path class="f" d="M2 78 L34 70 L62 74 L92 58 L120 63 L150 46 L178 52 L206 34 L236 40 L264 20 L298 10 L298 92 L2 92Z"/><path class="l" d="M2 78 L34 70 L62 74 L92 58 L120 63 L150 46 L178 52 L206 34 L236 40 L264 20 L298 10"/></svg>
+      ${row("Designed By",D)}${row("Role",role)}</div>`, "Thanks for spending your time here. Hope the return was worth it."],
+    "presale-memecoin-landing":()=>[`<div class="mc-card"><div class="mc-coin" aria-hidden="true">MEO</div><div class="mc-done">Presale Complete</div>
+      <div class="mc-clock" aria-label="Countdown finished"><b data-cd="h">00<small>HRS</small></b><b data-cd="m">00<small>MIN</small></b><b data-cd="s">03<small>SEC</small></b></div>
+      <span class="mc-claim">${ck} Tokens Claimed</span>${row("Designed By",D)}${row("Role",role)}</div>`, "You made it to the end before the presale closed. Thanks for scrolling."],
+    "e-learning-dashboard":()=>[`<div class="el-cert"><span class="el-seal" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span>
+      <span class="tbe-k">Certificate Of Completion</span><div class="el-title">Course Completed</div><p class="el-sub">You finished the E-Learning Dashboard case study.</p>
+      <div class="el-prog"><span>Course Progress</span><b>Complete</b></div><div class="el-bar"><i></i></div>
+      ${row("Designed By",D)}${row("Role",role)}</div>`, "Lesson over. Thanks for learning your way through this one."],
+    "splash-signin-signup":()=>[`<div class="sp-card"><div class="sp-ok" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></div>
+      <h3>Welcome Favourite Human!</h3><p>You've signed in to the end of this case.</p>
+      <div class="sp-in"><div><small>Designed By</small><b>${D}</b></div>${ck}</div>
+      <div class="sp-in"><div><small>Role</small><b>${role}</b></div>${ck}</div>
+      <div class="sp-go">Signed In</div></div>`, "Thanks for signing all the way in. See you on the next screen."],
+    "auth-wiki":()=>{ const L=[`<span class="aw-k">import</span> { thank } <span class="aw-k">from</span> <span class="aw-s">"auth-wiki"</span>;`,`&nbsp;`,`<span class="aw-k">await</span> thank({`,`  designedBy: <span class="aw-s">"${D}"</span>,`,`  role: <span class="aw-s">"${role}"</span>,`,`});`,`<span class="aw-c">// you read the whole case</span>`];
+      return [`<div class="aw-ed"><div class="aw-bar" aria-hidden="true"><i></i><i></i><i></i><span>thanks.js</span></div><pre class="aw-code">${L.map((l,i)=>`<span style="transition-delay:${400+i*180}ms">${l}</span>`).join("")}</pre></div>
+      <div class="aw-toast"><i aria-hidden="true">✓</i> Authenticated · Reader Verified</div>`, "Thanks for reading the docs to the very last line."]; },
+    "responsive-ecommerce":()=>[`<div class="ec-bag"><div class="ec-lab"><span class="ec-st">Order Ready</span><span class="tbe-k">Tom's Place</span><h3>Your Order Is Ready</h3>
+      ${row("Designed By",D)}${row("Role",role)}${row("Served To","You")}</div></div>`, "Freshly served. Thanks for staying till dessert."],
+    "replicated-soft-ui":()=>[`<div class="su-card"><div class="su-art" aria-hidden="true"></div><span class="su-np">Now Playing</span><h3>Thanks For Scrolling</h3><p>${D}</p>
+      <div class="su-eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><div class="su-bar"><i></i></div><div class="su-time"><span>Start</span><span>The End</span></div>
+      <div class="su-ctl" aria-hidden="true"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></span><span class="pl"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></span><span><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg></span></div>
+      ${row("Designed By",D)}${row("Role",role)}</div>`, "That's the last track. Thanks for listening all the way through."],
+    "train-app-onboarding":()=>[`<div class="tr-tk"><div class="tr-head"><span>E-Ticket</span><span>Arrived ${ck}</span></div>
+      <div class="tr-route"><div class="tr-ends"><div><small>From</small><b>First Screen</b></div><div><small>To</small><b>The End</b></div></div>
+      <div class="tr-line" aria-hidden="true"><span class="dot s"></span><span class="dot e"></span><svg class="train" width="30" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="background:#fff;border-radius:6px"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M9 21l-2-4M15 21l2-4"/><circle cx="9" cy="14" r=".6"/><circle cx="15" cy="14" r=".6"/></svg></div></div>
+      <div class="tr-perf" aria-hidden="true"></div>
+      <div class="tr-body"><div class="rows">${row("Designed By",D)}${row("Role",role)}</div><span class="tr-qr" aria-hidden="true"></span></div></div>`, "You've reached your final stop. Thanks for riding along."]
+  };
+  const art = (TY_ART[slug] || (()=>[`<div class="nt-card">${row("Designed By",D)}${row("Role",role)}</div>`, "Thanks for taking the time to look through this one."]))();
+  const tyHTML = !tyOn ? "" : `<div class="tbe tbe-${TY_ART[slug]?slug:"note"}" id="tb-ty">
+        <div class="tbe-bg" aria-hidden="true"></div>
+        <h2 class="tbe-h">Thanks For <span>Scrolling</span></h2>
+        <div class="tbe-art">${art[0]}</div>
+        <p class="tbe-sign">${art[1]}</p>
+        <div class="tbe-act"><a class="tbe-btn" href="../${backHref}"><span aria-hidden="true">←</span> Back To Projects</a><button class="tbe-btn ghost" type="button" data-ty-top>Back To Top <span aria-hidden="true">↑</span></button>${k.website?`<a class="tbe-btn ghost" href="${k.website}" target="_blank" rel="noopener">Visit ${esc(k.website.replace(/^https?:\/\/(www\.)?/,"").replace(/\/.*$/,""))} <span aria-hidden="true">↗</span></a>`:""}</div>
       </div>`;
   if(tyOn && !document.getElementById("tb-ty-css")){
-    const st = document.createElement("style"); st.id = "tb-ty-css";
-    st.textContent = `
-body[data-slug="auxhr"] #ax-close{display:none}
-.tb-ty{position:relative;overflow:hidden;isolation:isolate;border-radius:30px;padding:84px 24px 64px;margin:20px 0 48px;display:flex;flex-direction:column;align-items:center;text-align:center;background:var(--ty-bg);border:1px solid color-mix(in srgb,var(--ty-a) 22%,transparent);font-family:var(--ty-font);color:var(--ty-ink)}
-.tb-ty-glow{position:absolute;inset:-30%;z-index:-1;background:conic-gradient(from 0deg at 50% 60%,transparent 0deg,color-mix(in srgb,var(--ty-a) 26%,transparent) 60deg,transparent 140deg,color-mix(in srgb,var(--ty-b) 26%,transparent) 220deg,transparent 300deg);filter:blur(40px);animation:tbTySpin 16s linear infinite}
-.tb-ty::after{content:"";position:absolute;inset:0;z-index:-1;background-image:radial-gradient(color-mix(in srgb,var(--ty-a) 18%,transparent) 1px,transparent 1px);background-size:22px 22px;-webkit-mask-image:radial-gradient(60% 60% at 50% 45%,#000,transparent);mask-image:radial-gradient(60% 60% at 50% 45%,#000,transparent)}
-.tb-ty-h{margin:0;font:700 clamp(44px,7.2vw,104px)/.98 var(--ty-head);letter-spacing:-.05em;color:var(--ty-ink);max-width:11ch}
-.tb-ty.px .tb-ty-h{font-weight:400;letter-spacing:.01em;line-height:1.02;text-transform:uppercase}
-.tb-ty-h span{display:inline-block;padding:0 .04em .1em;margin-bottom:-.1em;background:linear-gradient(100deg,var(--ty-b) 0%,var(--ty-a) 30%,#fff 45%,var(--ty-a) 60%,var(--ty-b) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:tbTySheen 5s ease-in-out infinite}
-.tb-ty-rc{position:relative;margin-top:44px;width:min(380px,100%);text-align:left;padding:20px 22px 30px;border-radius:20px 20px 6px 6px;background:linear-gradient(160deg,rgba(255,255,255,.12),color-mix(in srgb,var(--ty-a) 7%,transparent) 60%,rgba(255,255,255,.03));border:1px solid color-mix(in srgb,var(--ty-a) 32%,transparent);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 30px 70px rgba(0,0,0,.45);-webkit-mask:linear-gradient(#000,#000) top/100% calc(100% - 10px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/18px 10px repeat-x;mask:linear-gradient(#000,#000) top/100% calc(100% - 10px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/18px 10px repeat-x;transform:translateY(24px);opacity:0;transition:transform .9s cubic-bezier(.2,.8,.2,1),opacity .9s}
-.tb-ty.on .tb-ty-rc{transform:none;opacity:1}
-.tb-ty-top{display:flex;align-items:center;gap:10px;padding-bottom:14px;margin-bottom:6px;border-bottom:1px dashed rgba(255,255,255,.2)}
-.tb-ty-top>div{flex:1;min-width:0}
-.tb-ty-mk{width:28px;height:28px;flex:0 0 28px;border-radius:9px;display:inline-flex;align-items:center;justify-content:center;color:#fff;background:linear-gradient(135deg,var(--ty-b),var(--ty-a))}
-.tb-ty.px .tb-ty-mk{border-radius:4px;color:#0d0a1b}
-.tb-ty-top b{display:block;font-size:15px;font-weight:700;color:var(--ty-ink)}
-.tb-ty-top small{display:block;font-size:12px;color:rgba(255,255,255,.6);padding-right:96px}
-.tb-ty-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;font-size:14px}
-.tb-ty-row span{color:rgba(255,255,255,.6);flex:none}
-.tb-ty-row b{color:var(--ty-ink);font-weight:600;text-align:right}
-.tb-ty-row.tot{margin-top:6px;padding-top:14px;border-top:1px dashed rgba(255,255,255,.2);font-size:16px}
-.tb-ty-row.tot b{color:var(--ty-a)}
-body[data-slug="sofavault"] .tb-ty-row.tot b{color:var(--ty-c)}
-.tb-ty-stamp{position:absolute;right:18px;top:20px;padding:6px 10px;border:2.5px solid var(--ty-a);border-radius:10px;color:var(--ty-a);font:800 12.5px/1 var(--ty-font);letter-spacing:.12em;text-transform:uppercase;transform:rotate(-12deg) scale(2.2);opacity:0;background:color-mix(in srgb,var(--ty-bg) 50%,transparent)}
-.tb-ty.px .tb-ty-stamp{font-family:"Tiny5",monospace;font-weight:400;border-radius:3px}
-.tb-ty.on .tb-ty-stamp{animation:tbTyStamp .6s cubic-bezier(.3,1.4,.5,1) 1s forwards}
-.tb-ty-act{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:38px}
-.tb-ty-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:999px;font:600 15px/1 var(--ty-font);color:var(--ty-bg);background:linear-gradient(135deg,var(--ty-a),color-mix(in srgb,var(--ty-a) 70%,#fff));border:0;cursor:pointer;text-decoration:none;transition:transform .2s;box-shadow:0 12px 30px color-mix(in srgb,var(--ty-a) 30%,transparent)}
-.tb-ty-btn:hover{transform:translateY(-2px)}
-.tb-ty-btn.ghost{color:var(--ty-ink);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.2);box-shadow:none}
-.tb-ty.px .tb-ty-btn{border-radius:6px}
-@keyframes tbTySpin{to{transform:rotate(360deg)}}
-@keyframes tbTySheen{0%,20%{background-position:100% 0}60%,100%{background-position:0 0}}
-@keyframes tbTyStamp{to{opacity:1;transform:rotate(-12deg) scale(1)}}
-.tb-ty:not(.on) .tb-ty-glow,.tb-ty:not(.on) .tb-ty-h span{animation-play-state:paused}
-@media (max-width:600px){.tb-ty{border-radius:22px;padding:60px 18px 48px;margin:10px 0 36px}.tb-ty-h{font-size:46px}.tb-ty.px .tb-ty-h{font-size:40px}.tb-ty-rc{margin-top:34px;padding:18px 18px 28px}.tb-ty-row{font-size:13.5px}.tb-ty-act{margin-top:30px;gap:10px}.tb-ty-btn{padding:13px 18px;font-size:14px}.tb-ty-stamp{right:14px;top:22px;font-size:11.5px;padding:5px 9px}}
-@media (prefers-reduced-motion:reduce){.tb-ty-glow,.tb-ty-h span{animation:none!important}.tb-ty-rc{transform:none;opacity:1;transition:none}.tb-ty-stamp{opacity:1;transform:rotate(-12deg);animation:none!important}}`;
-    document.head.appendChild(st);
+    const ln = document.createElement("link"); ln.id = "tb-ty-css"; ln.rel = "stylesheet"; ln.href = "../endings.css?v=1"; document.head.appendChild(ln);
+    if(TY_FONT[slug]){ const fl = document.createElement("link"); fl.rel = "stylesheet"; fl.href = "https://fonts.googleapis.com/css2?family="+TY_FONT[slug]+"&display=swap"; document.head.appendChild(fl); }
+    const st = document.createElement("style"); st.textContent = `body[data-slug="auxhr"] #ax-close{display:none}`; document.head.appendChild(st);
   }
   const coverHTML = k.media.type==="video"
       ? `<video data-vsrc="${up(k.media.src)}" poster="${up(k.media.poster)}" muted loop autoplay playsinline></video>`
@@ -117,7 +120,9 @@ body[data-slug="sofavault"] .tb-ty-row.tot b{color:var(--ty-c)}
   const tyEl = document.getElementById("tb-ty");
   if(tyEl){
     const rm = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if("IntersectionObserver" in window && !rm){ new IntersectionObserver(es=>es.forEach(e=>tyEl.classList.toggle("on", e.isIntersecting)),{rootMargin:"0px 0px -10% 0px"}).observe(tyEl); } else tyEl.classList.add("on");
+    const cd = tyEl.querySelector('[data-cd="s"]'); let cdRun = false;
+    const tick = ()=>{ if(!cd || cdRun) return; cdRun = true; if(rm){ cd.firstChild.nodeValue = "00"; return; } let n = 3; const t = setInterval(()=>{ n--; cd.firstChild.nodeValue = "0"+Math.max(n,0); if(n<=0) clearInterval(t); }, 700); };
+    if("IntersectionObserver" in window && !rm){ new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ tyEl.classList.add("on"); tick(); } }),{rootMargin:"0px 0px -10% 0px"}).observe(tyEl); } else { tyEl.classList.add("on"); tick(); }
     const tb = tyEl.querySelector("[data-ty-top]"); if(tb) tb.addEventListener("click", ()=>scrollTo({top:0, behavior: rm ? "auto" : "smooth"}));
   }
   /* shared lightbox: tap any frame to view it large (lightbox.js) */
