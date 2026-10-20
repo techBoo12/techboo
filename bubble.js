@@ -12,7 +12,7 @@
    in about a third of a second. Her bubble's look is drawn into the texture from the same gradients as the CSS, so
    colours, size and position are unchanged. Renders only while something moves; falls back to the static CSS bubble
    (with a CSS spin-in) without WebGL; nothing runs under prefers-reduced-motion. pointer-events:none, no layout change.
-   The small follower bubble (further down) is unchanged. */
+   The small follower bubble that used to sit further down was removed Oct 20 2026 (her ask). */
 (function(){
   if(!window.matchMedia || matchMedia("(prefers-reduced-motion: reduce)").matches || !window.requestAnimationFrame) return;
   var probe = document.createElement("canvas");
@@ -196,114 +196,23 @@
   }};
 })();
 
-/* SMALL FOLLOWER BUBBLE (unchanged): once she scrolls a small copy pops out of the big bubble and follows the cursor
-   (desktop) or floats by the right edge with the scroll (touch). Back at the top it flies home into the big bubble. */
+/* SMALL FOLLOWER BUBBLE: removed Oct 20 2026 10:51 PM, her voice note ("that small bubble, stop following me around").
+   It was a small copy of the hero bubble (#tb-bf, position:fixed) that popped out once she scrolled past the top and then
+   chased the cursor (desktop) / finger and the scroll (phones), even after a click. Nothing follows her now. All that stays
+   is what the big hero bubble needs: the one-time dance-in class and the liquid-trail hookup when the About page renders. */
 (function(){
   if(!window.matchMedia || matchMedia("(prefers-reduced-motion: reduce)").matches || !window.requestAnimationFrame) return;
   var page = document.getElementById("page") || document.querySelector("main");
-  var TOP = 60;                                  // within this many px of the top = "at the top"
-  var touchMode = matchMedia("(hover: none), (pointer: coarse)").matches;
-  var orbWrap = null, orbEl = null, first = true;
-  var bf = null;
-  var mx = -1, my = -1, hasMouse = false;        // last cursor position
-  var tx = -1, ty = -1, hasTouch = false;        // last finger position (phones)
-  var x = 0, y = 0, vx = 0, vy = 0;              // follower position + smoothed velocity
-  var s = 0, op = 0;                             // follower scale + opacity
-  var state = "home";                            // home | pop | out | back
-  var popT = 0, lastSY = scrollY, sv = 0, running = false, lastTs = 0;
-
+  var orbWrap = null, first = true;
   function grabOrb(){
     var w = page && page.querySelector(".tb-hero .tb-orb");
     if(w !== orbWrap){
-      orbWrap = w; orbEl = w ? w.querySelector(".orb") : null;
+      orbWrap = w;
       if(w && first) w.classList.add("tb-orb-intro");   // the slow dance-in plays on first load only; a tab switch shows it at once
       if(w) first = false;
       if(window.tbBigBubble) window.tbBigBubble.attach(w);
-      if(!w && state !== "home") hide();                 // a page with no hero: nothing to pop out of
     }
   }
-  function orbCenter(){
-    if(!orbEl) return null;
-    var r = orbEl.getBoundingClientRect();
-    if(r.bottom < 0 || r.top > innerHeight) return null;
-    return {x: r.left + r.width/2, y: r.top + r.height/2, w: r.width};
-  }
-  function make(){
-    bf = document.createElement("div"); bf.id = "tb-bf"; bf.setAttribute("aria-hidden","true");
-    bf.innerHTML = '<div class="bf-in"><div class="bf-core"></div><div class="bf-ring"></div><div class="bf-gloss"></div></div>';
-    document.body.appendChild(bf);
-  }
-  function hide(){ state = "home"; s = 0; op = 0; if(bf){ bf.style.opacity = "0"; bf.style.transform = "translate3d(-300px,-300px,0)"; } }
-  function homePoint(){
-    var c = orbCenter();
-    if(c){ // a spot on the bubble's visible part (on phones the bubble hangs off the right edge)
-      var hx = Math.min(c.x, innerWidth - 60); return {x: hx, y: c.y};
-    }
-    return {x: innerWidth - 60, y: 120};
-  }
-  function target(){
-    if(!touchMode && hasMouse) return {x: mx + 26, y: my + 22};      // just off the pointer so it never covers what she points at
-    if(touchMode && hasTouch) return {x: Math.max(30, Math.min(innerWidth-30, tx)), y: Math.max(30, ty - 70)};  // phones: follows the finger, just above it
-    var bob = Math.sin(performance.now()/900) * 6;
-    var yy = innerHeight * 0.58 - Math.max(-140, Math.min(140, sv * 9)) + bob;  // lags behind the scroll, then settles
-    return {x: innerWidth - (touchMode ? 19 : 46), y: yy};   // on phones it hugs the edge, beside the text column
-  }
-  function kick(){ if(!running){ running = true; lastTs = 0; requestAnimationFrame(tick); } }
-  function easeOutBack(t){ var c1 = 1.9, c3 = c1 + 1; return 1 + c3*Math.pow(t-1,3) + c1*Math.pow(t-1,2); }
-
-  function tick(ts){
-    var dt = lastTs ? Math.min(50, ts - lastTs) : 16; lastTs = ts;
-    var k = dt / 16.67;
-    var sy = scrollY; sv += ((sy - lastSY) - sv) * Math.min(1, .25*k); lastSY = sy;
-    var atTop = sy <= TOP;
-
-    // the follower
-    if(!orbWrap && state !== "home") hide();
-    if(state === "home" && !atTop && orbWrap){
-      if(!bf) make();
-      var h = homePoint(); x = h.x; y = h.y; s = .2; op = 0; vx = vy = 0; popT = 0; state = "pop";
-    }
-    if((state === "pop" || state === "out") && atTop) state = "back";
-    if(state === "back" && !atTop) state = "out";
-    if(state !== "home" && bf){
-      var t = state === "back" ? homePoint() : target();
-      var ease = state === "pop" ? .16 : state === "back" ? .14 : (touchMode || !hasMouse ? .09 : .12);
-      var nx = x + (t.x - x) * Math.min(1, ease*k), ny = y + (t.y - y) * Math.min(1, ease*k);
-      vx += ((nx - x) - vx) * .3; vy += ((ny - y) - vy) * .3; x = nx; y = ny;
-      if(state === "pop"){
-        popT = Math.min(1, popT + dt/420);
-        s = .2 + .8*easeOutBack(popT); op = Math.min(1, popT*2.2);
-        if(popT >= 1){ state = "out"; s = 1; }
-      } else if(state === "out"){ s += (1 - s)*.2*k; op += (1 - op)*.2*k; }
-      else { // back: shrink into the big bubble and vanish
-        var d = Math.hypot(t.x - x, t.y - y);
-        s += ((d < 40 ? .15 : .7) - s)*.16*k; op += ((d < 30 ? 0 : 1) - op)*.2*k;
-        if(d < 14 && op < .06){ hide(); }
-      }
-      if(state !== "home"){
-        var sp = Math.min(.14, Math.hypot(vx, vy)/120), a = Math.atan2(vy, vx)*57.2958;   // a little liquid stretch along the motion
-        bf.style.transform = "translate3d(" + x.toFixed(1) + "px," + y.toFixed(1) + "px,0) rotate(" + a.toFixed(1) + "deg) scale(" + (s*(1+sp)).toFixed(3) + "," + (s*(1-sp*.6)).toFixed(3) + ") rotate(" + (-a).toFixed(1) + "deg)";
-        bf.style.opacity = Math.max(0, Math.min(1, op)).toFixed(3);
-      }
-    }
-
-    var stop = (state === "home" ||
-      (state === "out" && !touchMode && hasMouse && Math.abs(x - mx - 26) < .3 && Math.abs(y - my - 22) < .3 && Math.abs(sv) < .05 && Math.abs(s - 1) < .002 && op > .995));
-    if(stop){ running = false; return; }
-    requestAnimationFrame(tick);
-  }
-
-  addEventListener("scroll", kick, {passive:true});
-  addEventListener("pointermove", function(e){
-    if(e.pointerType === "mouse"){ mx = e.clientX; my = e.clientY; hasMouse = true; touchMode = false; kick(); }
-  }, {passive:true});
-  function fing(e){ var t = e.touches && e.touches[0]; if(t){ tx = t.clientX; ty = t.clientY; hasTouch = true; kick(); } }
-  addEventListener("touchstart", fing, {passive:true});
-  addEventListener("touchmove", fing, {passive:true});
-  addEventListener("resize", kick, {passive:true});
-  document.addEventListener("mouseleave", function(){ /* keep the last spot; it settles there */ });
-
   grabOrb();
-  if(page) new MutationObserver(function(){ grabOrb(); kick(); }).observe(page, {childList:true});
-  if(scrollY > TOP) kick();
+  if(page) new MutationObserver(grabOrb).observe(page, {childList:true});
 })();
