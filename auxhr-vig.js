@@ -24,7 +24,17 @@
   function hd(icon, title, right) {
     return '<div class="axv-hd"><span class="axv-ic">' + icon + '</span><b>' + title + '</b>' + (right ? '<span class="axv-chip">' + right + '</span>' : '') + '</div>';
   }
-  function av(ini, hue) { return '<span class="axv-av h' + (hue || 0) + '">' + ini + '</span>'; }
+  /* stock-style headshots for every avatar circle (Oct 20 2026, her word: "put them with actual stock pictures") */
+  var FB = (document.body.getAttribute("data-base") || "../") + "assets/cases/auxhr/avatars/";
+  var FACE = { "Amaka Obi": "amaka_obi", "Adaeze Okonkwo": "adaeze_okonkwo", "Adaeze O.": "adaeze_okonkwo", "Tunde Bakare": "tunde_bakare",
+    "Chidi Eze": "chidi_eze", "Bola A.": "bola_adeyemi", "Bola Adeyemi": "bola_adeyemi", "Ifeoma N.": "ifeoma_nwosu", "Ifeoma Nwosu": "ifeoma_nwosu",
+    "Kunle Adebayo": "kunle_adebayo", "Ngozi Eze": "ngozi_eze", "Emeka Uche": "emeka_uche", "Zainab Bello": "zainab_bello", "Seun Ogunleye": "seun_ogunleye",
+    "Funmi Alade": "funmi_alade", "Yemi Oladipo": "yemi_oladipo", "Chiamaka Ibe": "chiamaka_ibe", "Musa Garba": "musa_garba", "Tolu Fashola": "tolu_fashola" };
+  function av(ini, hue, nm) {
+    var f = nm && FACE[nm];
+    if (!f) return '<span class="axv-av h' + (hue || 0) + '">' + ini + '</span>';
+    return '<span class="axv-av ph h' + (hue || 0) + '"><img src="' + FB + f + '-96.webp" srcset="' + FB + f + '-96.webp 96w, ' + FB + f + '-192.webp 192w" sizes="40px" alt="' + nm + '" width="40" height="40" decoding="async"></span>';
+  }
 
   /* ---------------- runner ---------------- */
   function Runner(root, scene) {
@@ -214,13 +224,13 @@
 
   /* apply: one click, profile carries over */
   S.apply = function () {
-    var html = '<div class="ap-prof"><small class="axv-lab">Your Profile</small>' + av("AO", 1) +
+    var html = '<div class="ap-prof"><small class="axv-lab">Your Profile</small>' + av("AO", 1, "Amaka Obi") +
       '<b>Amaka Obi</b><small>Product Designer · Lagos</small>' +
       '<ul><li>' + I.doc + 'Amaka_Obi_CV.pdf</li><li>' + I.link + 'Portfolio Linked</li><li>' + I.spark + 'Profile 85%</li></ul></div>' +
       '<div class="ap-app"><small class="axv-lab">Application</small><b>Product Designer</b><small>Kosana Tech · Hybrid</small>' +
       '<div class="ap-slot"><span class="ap-ph">Profile Carries Over</span><span class="ap-ticks"><em>' + I.check + 'CV</em><em>' + I.check + 'Portfolio</em><em>' + I.check + 'Profile</em></span></div>' +
       '<button class="ap-btn" type="button" tabindex="-1"><span class="ap-l1">Apply In 1 Click</span><span class="ap-l2">Applied ' + I.check + '</span><i class="axv-rip"></i></button></div>' +
-      '<div class="ap-ghost">' + av("AO", 1) + '<div><b>Amaka Obi</b><small>CV + Portfolio</small></div></div>' +
+      '<div class="ap-ghost">' + av("AO", 1, "Amaka Obi") + '<div><b>Amaka Obi</b><small>CV + Portfolio</small></div></div>' +
       '<span class="axv-cur">' + I.cursor + '</span>';
     return {
       html: html,
@@ -275,7 +285,7 @@
   /* screen: candidate brief with three score bars */
   S.screen = function () {
     var bars = [["CV Match", 88], ["Screening", 84], ["Personality Fit", 82]];
-    var html = '<div class="sc-top">' + av("TB", 0) + '<div><b>Tunde Bakare</b><small>Sales Representative · Applied Today</small></div>' +
+    var html = '<div class="sc-top">' + av("TB", 0, "Tunde Bakare") + '<div><b>Tunde Bakare</b><small>Sales Representative · Applied Today</small></div>' +
       '<div class="sc-ov"><b class="sc-total">0</b><small>Overall</small></div></div><div class="sc-bars">';
     bars.forEach(function (b, i) { html += '<div class="sc-b b' + i + '"><span>' + b[0] + '</span><b class="sc-v">0%</b><i><u></u></i></div>'; });
     html += '</div><div class="sc-next"><span class="sc-ni">' + I.arrow + '</span>Suggested Next Step: <b>Interview</b></div>';
@@ -302,7 +312,7 @@
       '<div class="pp-col c1"><div class="pp-h">Shortlisted <b class="pp-c1">6</b></div></div>';
     var rows = [["AO", "Adaeze O.", 92, 1], ["CE", "Chidi Eze", 71, 2], ["BA", "Bola A.", 64, 0], ["IN", "Ifeoma N.", 88, 3]];
     rows.forEach(function (r, i) {
-      html += '<div class="pp-row r' + i + '">' + av(r[0], r[3]) + '<b>' + r[1] + '</b><span class="pp-s">' + r[2] + '</span></div>';
+      html += '<div class="pp-row r' + i + '">' + av(r[0], r[3], r[1]) + '<b>' + r[1] + '</b><span class="pp-s">' + r[2] + '</span></div>';
     });
     return {
       html: html,
@@ -326,12 +336,13 @@
   /* collaborate: team joins one candidate card */
   S.collaborate = function () {
     var team = [["TB", "Hiring Manager", 0], ["NE", "Recruiter", 2], ["KA", "Executive", 3]];
-    var html = '<div class="cb-card">' + av("AO", 1) + '<div class="cb-who"><b>Adaeze Okonkwo</b><small>Product Designer · 91% Match</small></div>' +
+    var TEAMN = { TB: "Tunde Bakare", NE: "Ngozi Eze", KA: "Kunle Adebayo" };
+    var html = '<div class="cb-card">' + av("AO", 1, "Adaeze Okonkwo") + '<div class="cb-who"><b>Adaeze Okonkwo</b><small>Product Designer · 91% Match</small></div>' +
       '<div class="cb-stack">';
-    team.forEach(function (t) { html += '<span class="cb-a">' + av(t[0], t[2]) + '</span>'; });
+    team.forEach(function (t) { html += '<span class="cb-a">' + av(t[0], t[2], TEAMN[t[0]]) + '</span>'; });
     html += '<small class="cb-rev"><span class="cb-n">0</span> Reviewing</small></div></div><div class="cb-team">';
-    team.forEach(function (t) { html += '<span class="cb-m">' + av(t[0], t[2]) + t[1] + '</span>'; });
-    html += '</div><div class="cb-in">Write A Comment</div><div class="cb-cmt">' + av("TB", 0) + '<div><small>Tunde · Hiring Manager</small><p>Strong portfolio. Move her to interview.</p></div><span class="cb-like">' + I.thumb + '<b class="cb-lc">1</b></span></div>';
+    team.forEach(function (t) { html += '<span class="cb-m">' + av(t[0], t[2], TEAMN[t[0]]) + t[1] + '</span>'; });
+    html += '</div><div class="cb-in">Write A Comment</div><div class="cb-cmt">' + av("TB", 0, "Tunde Bakare") + '<div><small>Tunde · Hiring Manager</small><p>Strong portfolio. Move her to interview.</p></div><span class="cb-like">' + I.thumb + '<b class="cb-lc">1</b></span></div>';
     return {
       html: html,
       init: function (A) {
@@ -414,7 +425,7 @@
   ];
   function ini(n) { return n.split(" ").map(function (p) { return p[0]; }).join(""); }
   function mqCard(p, k) {
-    return '<div class="mq-c">' + av(ini(p[0]), k % 4) + '<div><b>' + p[0] + '</b><small>' + p[1] + '</small></div><span class="mq-p">' + p[2] + '%</span></div>';
+    return '<div class="mq-c">' + av(ini(p[0]), k % 4, p[0]) + '<div><b>' + p[0] + '</b><small>' + p[1] + '</small></div><span class="mq-p">' + p[2] + '%</span></div>';
   }
   var X = {};
   X.marquee = function (root) {
@@ -448,7 +459,7 @@
       '<div class="pm-sl"><i class="pm-tr"><u></u></i><span class="pm-th"><b class="pm-v">70%</b></span></div><div class="pm-grid">';
     scores.forEach(function (s, i) {
       var p = PEOPLE[i];
-      h += '<div class="pm-c" data-s="' + s + '">' + av(ini(p[0]), i % 4) + '<b>' + s + '</b></div>';
+      h += '<div class="pm-c" data-s="' + s + '">' + av(ini(p[0]), i % 4, p[0]) + '<b>' + s + '</b></div>';
     });
     root.innerHTML = h + '</div>';
     var tr = root.querySelector(".pm-tr"), fill = root.querySelector(".pm-tr u"), th = root.querySelector(".pm-th"), v = root.querySelector(".pm-v");
