@@ -437,3 +437,7 @@ body[data-tab="uiux"] .tb-split .tb-cw{display:flex;flex-direction:column;min-wi
 
 /* Oct 19 11:10 AM her ask: "take that down" = footer copyright lower inside the dome. Desktop only. */
 @media (min-width:761px){.tb-contact .rights{padding-top:370px}}
+
+/* Oct 20 2026 8:21 PM her ask "there should be space": breathing room between the tag pills and VIEW PROJECT on every project card (cards with no description) */
+.card .card-side:has(>.card-cta:first-child){padding-top:22px}
+@media (max-width:600px){.card .card-side:has(>.card-cta:first-child){padding-top:20px}}
