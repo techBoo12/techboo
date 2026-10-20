@@ -56,7 +56,7 @@ window.VPREV = {
     const base = rel;
     cache[key] = cache[key] || Promise.all(Array.from({length:n},(_,i)=>fetch(base+".part"+i).then(r=>{ if(!r.ok) throw new Error(r.status); return r.arrayBuffer(); })))
       .then(bufs=>URL.createObjectURL(new Blob(bufs,{type:"video/mp4"})));
-    cache[key].then(done).catch(()=>{ v.dataset.vloaded=""; });
+    cache[key].then(done).catch(()=>{ delete cache[key]; v.dataset.vloaded=""; });   /* Oct 20 2026: a failed part is fetched again on the next try, not cached as a failure */
   }
   const io = "IntersectionObserver" in window ? new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ io.unobserve(e.target); load(e.target); } }),{rootMargin:"400px 0px"}) : null;
   window.vhydrate = function(root){ (root||document).querySelectorAll("video[data-vsrc]").forEach(v=>{ if(v.dataset.vobs) return; v.dataset.vobs="1"; io ? io.observe(v) : load(v); }); };
