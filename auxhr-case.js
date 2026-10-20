@@ -125,15 +125,14 @@
     ${stage(swin("live_full.webp","auxhr.com","AuxHR recruiter site, full page, live at auxhr.com"), "Recruiter Landing · Live", "deep", "rec")}
   </section>
 
-  <!-- chapter III: AI configuration -->
+  <!-- chapter III: AI configuration. Oct 20 2026 6:36 PM, her word "same as chapter 3": mirrors chapter I (label, headline, frame, short feature rows); the long lede paragraph is gone -->
   <section class="ax ax-sec rv" id="ax-ai">
     ${eyebrow("Chapter III","AI Configuration")}
     <h2 class="ax-h2">Set the bar once. The AI holds <em>everyone</em> to it.</h2>
-    <p class="ax-lede">While posting a role, the recruiter sets the questions, the personality tests, the CV requirements and how much each one weighs. Every applicant is tested against the same criteria.</p>
     ${stage(win("dash_r2.webp","app.auxhr.com · post a job · screening","Post a job: screening setup with skill weights, pre-screening questions and personality assessment toggles"), "Post A Job · Screening Setup", "", "")}
     <div class="ax-rows">
-      ${row("Output","Three scores that travel with the candidate","CV match, screening answers and personality fit, on the card, in the pipeline and in the brief.","", img("live_scores.webp","CV Match, Screening Answers and Personality Fit scores","pad"), false)}
-      ${row("Design","The configuration screen itself","Role details, screening setup, publish. Toggles switch each assessment on, sliders carry the weights.","", img("fig_feat_ai.webp","AI Configuration and CV Matching: set the questions, weights and benchmarks once","beige"), true)}
+      ${row("Configure","Questions, tests and weights, set once per role","Toggles switch each test on, sliders carry the weights.","", img("fig_feat_ai.webp","AI Configuration and CV Matching: set the questions, weights and benchmarks once","beige"), false)}
+      ${row("Score","Three scores travel with every candidate","CV match, screening and personality fit.","", img("live_scores.webp","CV Match, Screening Answers and Personality Fit scores","pad"), true)}
     </div>
   </section>
 
