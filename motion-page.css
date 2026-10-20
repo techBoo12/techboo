@@ -191,3 +191,8 @@ html.mp-lock,html.mp-lock body{overflow:hidden}
 
 /* Oct 19 11:00 AM her ask: on big screens the AI / Motion heading sat to the right of the logo; widen the hero to match the nav so they line up */
 @media (min-width:1600px){.mp-hero,.mp-pills{max-width:1480px}}
+
+/* Oct 20 2026 11:25 PM: "View case study" under a motion card = plain text link like WATCH VIDEO (no glass box from v3.css .tb-page .mp-case) */
+.tb-page .mp-card .card-side .mp-case,.mp-card .card-side .mp-case{background:none!important;border:0!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;outline:0;padding:0;border-radius:0;display:inline-flex;gap:8px;align-items:center;font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--lilac)}
+.tb-page .mp-card .card-side .mp-case:hover,.mp-card .card-side .mp-case:hover{color:#fff;border:0!important}
+.mp-card .card-side .mp-case:focus-visible{outline:1px solid var(--lilac);outline-offset:3px}
