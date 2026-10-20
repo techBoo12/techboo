@@ -54,7 +54,8 @@
         ${media(p)}<span class="mp-rt-t"><b>${pad(idx(p)+1)}</b>${esc(p.title)}</span>
       </button>`;
     const pb = (p)=> `<span class="mp-pb" aria-hidden="true"><span class="mp-pb-i">${ICON.play}</span></span>`;
-    const card = (p, big)=> `
+    const rawItem = (p)=>{ for(const s of secs){ const it = s.items.find(x=>x.src===p.src && x.title===p.title); if(it) return it; } return {}; };
+    const card = (p, big)=> (rawItem(p).film && window.TBFilmCard) ? TBFilmCard(p, rawItem(p), idx(p)) : `
       <article class="card mp-card${big?" big":""}">
         <button class="card-media mp-media" type="button" data-open="${idx(p)}" aria-label="${esc(p.cta)}: ${esc(p.title)}, full screen with sound">
           ${media(p)}${pb(p)}
