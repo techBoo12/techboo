@@ -37,20 +37,30 @@
     </div>
   </section>
 
-  <!-- overview: problem + solution, kept short like her other case studies (Oct 20 2026, her voice note) -->
+  <!-- overview: about, problem, goal, solution. Oct 20 2026: rebalanced after the short cut went too far ("why did you remove all the problems solution"); all wording trimmed from short_v1/auxhr-case.BEFORE.js -->
   <section class="ax ax-sec tight rv" id="ax-overview">
-    ${eyebrow("01","The Problem")}
+    ${eyebrow("About","The Project")}
+    <p class="ax-lede">AuxHR is SalesPlat's AI-powered talent acquisition platform. The first designs shipped fast as an MVP; using it showed us where the screens got in the way, so we redesigned the whole product around how recruiters and candidates actually move through a hiring week. I led that redesign.</p>
+
+    <div style="margin-top:56px">${eyebrow("Problem","The Problem")}</div>
+    <h2 class="ax-h2">Hiring breaks in both directions.</h2>
+    <p class="ax-lede">The product requirements and the user research named the same pains from two sides of the table. The MVP proved the idea, but each flow was its own page, with no shared language between the recruiter side and the talent side.</p>
     <div class="ax-grid c2">
       <div class="ax-card rec"><span class="ax-tag"><i></i>Recruiter</span>
-        <ul><li>Reading CVs one by one.</li><li>Unqualified applicants bury the strong ones.</li><li>No view of the overall pipeline.</li></ul></div>
+        <ul><li>Too much time on manual tasks: reading CVs one by one, the same outreach again and again.</li><li>Unqualified applicants flooding every post, so the strong ones get lost in the pile.</li><li>No visibility into the overall pipeline. Candidates stall, hiring managers ask for updates nobody has.</li><li>Specialised skills are hard to find from a CV alone, and hard to compare fairly across people.</li></ul></div>
       <div class="ax-card talent"><span class="ax-tag"><i></i>Talent</span>
-        <ul><li>Long forms that ask for the CV they just uploaded.</li><li>Silence after applying.</li><li>No clarity on what recruiters are looking for.</li></ul></div>
+        <ul><li>Long, repetitive application forms that ask for the CV they just uploaded.</li><li>Silence after applying. No idea whether anyone looked, or what happens next.</li><li>Specialised skills and certifications are hard to highlight to the people deciding.</li><li>Entry-level candidates compete blind: no clarity on what recruiters are actually looking for.</li></ul></div>
     </div>
-    <div style="margin-top:48px">${eyebrow("02","The Solution")}</div>
+
+    <div class="ax-card" style="margin-top:22px"><span class="ax-tag"><i></i>Goal</span><p>Bridge the rift between open roles and the people who fit them.</p></div>
+
+    <div style="margin-top:56px">${eyebrow("Solution","The Solution")}</div>
+    <h2 class="ax-h2">Set the criteria once. Let the platform run the pipeline with you.</h2>
+    <p class="ax-lede">A recruiter creates a role and configures how the AI screens it. Talent applies in one click from a profile that already carries their experience. The AI scores everyone against the same bar, and both sides watch the same pipeline from their own dashboard.</p>
     <div class="ax-grid c3">
-      <div class="ax-card rec"><span class="ax-tag"><i></i>Recruiter</span><p>Every applicant arrives scored. Candidate briefs instead of raw CVs.</p></div>
+      <div class="ax-card rec"><span class="ax-tag"><i></i>Recruiter</span><p>Every application sorted, filtered and scored on arrival. Candidate briefs instead of raw CVs.</p></div>
       <div class="ax-card talent"><span class="ax-tag"><i></i>Talent</span><p>One profile does the applying. Roles ranked by real fit, with a status on every application.</p></div>
-      <div class="ax-card ai"><span class="ax-tag"><i></i>AI Configuration</span><p>Questions, weights and pass marks set once per role, applied to every applicant the same way.</p></div>
+      <div class="ax-card ai"><span class="ax-tag"><i></i>AI Configuration</span><p>Screening questions, weights and pass marks set per role by the hiring manager, applied to every applicant the same way.</p></div>
     </div>
   </section>
 
