@@ -111,8 +111,9 @@
       ${row("Track","Every application, one live status","The same stages the recruiter sees.","", `<div class="ax-row-media vig"><div class="axv" data-axv="track"></div></div>`, false)}
       ${row("Apply","Apply in one click","The profile carries over. No forms.","", `<div class="ax-row-media vig"><div class="axv" data-axv="apply"></div></div>`, true)}
     </div>
+    <!-- Oct 20 2026 7:46 PM, her words "those dots should be logos of the company" + "why remove": fig_talent_full_v2.webp has real company logo chips on the 6 job cards and a clean talent CTA banner (the Figma frame had the recruiter CTA text stacked over the talent copy). Original: fig_talent_full.webp -->
     <!-- Oct 20 2026 6:31 PM, her word "make this part the full landing page remove the phone": phone card hidden, the browser card now auto-scrolls the full talent landing (auxhr-motion.js) -->
-    ${stage(swin("fig_talent_full.webp","auxhr.com · talent","Talent landing page, full design: Stand out. Get matched. Land your dream role."), "Talent Landing · Designed, In Build", "deep", "talent")}
+    ${stage(swin("fig_talent_full_v2.webp","auxhr.com · talent","Talent landing page, full design: Stand out. Get matched. Land your dream role."), "Talent Landing · Designed, In Build", "deep", "talent")}
   </section>
 
   <div class="axi-wrap rv"><div class="axi" data-axi="marquee"></div></div>
