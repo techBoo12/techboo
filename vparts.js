@@ -33,7 +33,7 @@ window.VPARTS = {
   function load(v){
     if(v.dataset.vloaded) return; v.dataset.vloaded = "1";
     const rel = v.dataset.vsrc, key = rel.replace(/^(\.\.\/)+/, ""), n = P[key];
-    const done = (url)=>{ v.src = url; if((v.muted || v.closest(".vtile")) && v.dataset.noauto!=="1"){ const r=v.getBoundingClientRect(); if(r.bottom>0 && r.top<innerHeight) v.play().catch(()=>{}); } v.dispatchEvent(new Event("vready")); };
+    const done = (url)=>{ v.src = url; if((v.muted || v.closest(".vtile")) && v.dataset.noauto!=="1" && !matchMedia("(prefers-reduced-motion: reduce)").matches){ const r=v.getBoundingClientRect(); if(r.bottom>0 && r.top<innerHeight) v.play().catch(()=>{}); } v.dispatchEvent(new Event("vready")); };
     if(!n){ done(rel); return; }
     const base = rel;
     cache[key] = cache[key] || Promise.all(Array.from({length:n},(_,i)=>fetch(base+".part"+i).then(r=>{ if(!r.ok) throw new Error(r.status); return r.arrayBuffer(); })))
