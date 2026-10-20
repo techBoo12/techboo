@@ -144,7 +144,9 @@ window.CONTENT = {
       intro: "Talking-head brand stories, shot by me and edited with motion.",
       items: [
         { title: "Spenda 2.0 · naira in, stablecoins out", meta: "Video edit for @myspenda · 72 s · 2026", src: "assets/media/video_spenda.mp4", poster: "assets/media/video_spenda.jpg", ar: "16/9", span: 2 },
-        { soon: true, title: "Vertical 9:16 reels", meta: "Coming soon", ar: "8/9", span: 1 }
+        { title: "Robotics Education With @RoboStrategy", meta: "Education video · 110 s · 2026", src: "assets/media/video_robo.mp4", poster: "assets/media/video_robo.jpg", ar: "16/9", span: 1 },   // Oct 20 2026 9:35 PM her ask: all her X videos (x.com/techboo_/status/2092877786230751346)
+        { title: "Short Campaign Movie", meta: "A Day In The Life Of An Axis Robotics Contributor · 45 s · 2026", src: "assets/media/video_movie.mp4", poster: "assets/media/video_movie.jpg", ar: "16/9", span: 1 },   // x.com/techboo_/status/2101950614364135643 (item 1 of 2)
+        { title: "Toki Finance Explainer", meta: "Explainer for @tokifinance · 124 s · 2025", src: "assets/media/video_toki.mp4", poster: "assets/media/video_toki.jpg", ar: "16/9", span: 2 }   // x.com/techboo_/status/2002997764381368520, last per her ask; 1080p web cut of the 4K original
       ] }
   ],
 
