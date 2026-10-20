@@ -229,7 +229,6 @@
         <div class="iv-ty-rc-top">${mark}<div><b>Receipt</b><small>Invora Case Study</small></div></div>
         <div class="iv-ty-row"><span>Designed By</span><b>Adaikem Ajufo</b></div>
         <div class="iv-ty-row"><span>Role</span><b>Product Designer</b></div>
-        <div class="iv-ty-row"><span>Screens</span><b>5 Screens, Figma</b></div>
         <div class="iv-ty-row tot"><span>Your Time</span><b>Paid In Full</b></div>
         <div class="iv-ty-stamp" aria-hidden="true"><span>Thank You</span></div>
       </div>
