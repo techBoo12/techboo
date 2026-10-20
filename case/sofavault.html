@@ -36,6 +36,36 @@ body[data-slug="sofavault"] .next-title i{color:var(--sv-sage)}
 body[data-slug="sofavault"] .sv-h{font-family:"Poppins",sans-serif;font-weight:600;letter-spacing:-.02em;font-variation-settings:normal}
 body[data-slug="sofavault"] .sv-k{font-family:"Poppins",sans-serif;font-weight:600;letter-spacing:.16em;color:var(--sv-sage)}
 body[data-slug="sofavault"] .sv-sec{border-color:rgba(181,204,200,.16);background:linear-gradient(160deg,rgba(28,90,99,.28),rgba(18,63,70,.12))}
+
+/* Oct 20 2026 9:28 PM her ask "fix the mobile frame for sofa": the 9 mobile screens sit in clean glass phone frames (coded), replacing the three pre-rendered phone boards (m01-m03) that cropped the phones */
+.sv-mob{border-radius:24px;border:1px solid rgba(181,204,200,.16);background:linear-gradient(160deg,rgba(28,90,99,.26),rgba(18,63,70,.10));padding:44px 40px 40px}
+.sv-mob-row{display:flex;flex-wrap:wrap;justify-content:center;gap:40px 28px;margin:0;padding:0;list-style:none}
+.sv-mob-item{flex:none;width:196px;margin:0;display:flex;flex-direction:column;align-items:center;gap:14px}
+.sv-phone{position:relative;width:100%;padding:6px;border-radius:38px;border:1px solid rgba(255,255,255,.26);background:linear-gradient(155deg,rgba(255,255,255,.16),rgba(255,255,255,.04) 45%,rgba(255,255,255,.08));-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 14px 30px -14px rgba(0,0,0,.65),0 2px 6px rgba(0,0,0,.25);transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+.sv-phone .scr{position:relative;display:flex;flex-direction:column;border-radius:32px;overflow:hidden;aspect-ratio:390/844;background:#F9F3EE;line-height:0;box-shadow:0 0 0 1px rgba(0,0,0,.35);container-type:inline-size}
+.sv-phone .scr img{display:block;width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:top;cursor:zoom-in}
+.sv-phone .sb{flex:none;height:12.4cqw;display:flex;align-items:center;justify-content:space-between;padding:1.4cqw 7.5cqw 0 9cqw;font-family:"Poppins",sans-serif;font-weight:600;font-size:4.1cqw;line-height:1;color:#123E46;background:#F9F3EE}
+.sv-phone .sb i{display:flex;align-items:center;gap:1.4cqw}
+.sv-phone .sb i:before{content:"";width:5cqw;height:3cqw;background:linear-gradient(90deg,#123E46 18%,transparent 18% 27%,#123E46 27% 45%,transparent 45% 54%,#123E46 54% 72%,transparent 72% 81%,#123E46 81%);-webkit-mask:linear-gradient(to top,#000 100%,#000);clip-path:polygon(0 75%,18% 75%,18% 100%,27% 100%,27% 50%,45% 50%,45% 100%,54% 100%,54% 25%,72% 25%,72% 100%,81% 100%,81% 0,100% 0,100% 100%,0 100%)}
+.sv-phone .sb i:after{content:"";width:6.4cqw;height:3cqw;border-radius:.9cqw;border:.35cqw solid rgba(18,62,70,.55);background:linear-gradient(90deg,#123E46 72%,transparent 72%);background-clip:content-box;padding:.35cqw;box-sizing:border-box}
+.sv-phone .scr:after{content:"";position:absolute;left:50%;top:2.6cqw;width:29cqw;height:8.2cqw;transform:translateX(-50%);border-radius:5cqw;background:#0b0f10;pointer-events:none}
+#case .sv-head{display:block}
+.sv-mob-item figcaption{font-family:"Poppins",sans-serif;font-weight:500;font-size:13px;letter-spacing:.02em;color:rgba(247,244,239,.78);line-height:1.2}
+.sv-mob-item figcaption b{font-weight:600;color:var(--sv-sage,#B5CCC8);margin-right:6px}
+.sv-mob-hint{display:none}
+@media (hover:hover){.sv-mob-item:hover .sv-phone{transform:translateY(-6px);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 22px 40px -16px rgba(0,0,0,.7),0 2px 6px rgba(0,0,0,.25)}}
+@media (max-width:1180px){.sv-mob-item{width:170px}}
+@media (max-width:760px){
+  .sv-mob{padding:26px 0 22px;border-radius:16px}
+  .sv-mob-row{flex-wrap:nowrap;justify-content:flex-start;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:4px 22px 10px;scroll-padding:0 22px;scrollbar-width:none}
+  .sv-mob-row::-webkit-scrollbar{display:none}
+  .sv-mob-item{width:min(62vw,240px);scroll-snap-align:center}
+  .sv-mob-hint{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:14px;font-family:"Poppins",sans-serif;font-size:12px;font-weight:500;letter-spacing:.08em;color:rgba(181,204,200,.8)}
+  .sv-mob-hint i{display:block;width:6px;height:6px;border-radius:50%;background:rgba(181,204,200,.3);transition:background .2s,width .2s}
+  .sv-mob-hint i.on{width:18px;border-radius:4px;background:#B5CCC8}
+  .sv-mob-hint span{margin-left:8px}
+}
+@media (prefers-reduced-motion:reduce){.sv-phone,.sv-mob-hint i{transition:none}.sv-mob-item:hover .sv-phone{transform:none}.sv-mob-row{scroll-behavior:auto}}
 </style>
 <link rel="icon" href="../assets/logo.jpg">
 <meta property="og:title" content="SofaVault E-commerce Store | Adaikem Ajufo">
@@ -79,6 +109,29 @@ body[data-slug="sofavault"] .sv-sec{border-color:rgba(181,204,200,.16);backgroun
     var tmp = document.createElement("div"); tmp.innerHTML = before[i];
     while(tmp.firstChild) gal.insertBefore(tmp.firstChild, figs[i]);
   }
+  /* mobile screens: swap the three phone boards for coded glass phone frames (same 9 screens, full fold, nothing cropped) */
+  (function(){
+    var board = null;
+    gal.querySelectorAll(".case-module").forEach(function(f){ if(f.querySelector('img[src*="sofavault/m01"]')) board = f; });
+    if(!board) return;
+    var base = (document.body.getAttribute("data-base")||"../") + "assets/cases/sofavault/mob/";
+    var scr = [["01-menu_open","Menu"],["02-home","Home"],["03-shop","Shop"],["04-product","Product"],["05-cart","Cart"],["06-checkout","Checkout"],["07-confirmation","Order Confirmed"],["08-signin","Sign In"],["09-create_account","Create Account"]];
+    var items = scr.map(function(s,i){
+      return '<li><figure class="sv-mob-item"><div class="sv-phone"><div class="scr"><div class="sb" aria-hidden="true"><span>9:41</span><i></i></div><img src="'+base+s[0]+'.webp" width="780" height="1688" alt="SofaVault mobile: '+s[1]+'" loading="lazy" decoding="async" data-lb="case" data-cap="SofaVault Mobile \u00b7 '+s[1]+'"></div></div><figcaption><b>'+(i<9?"0":"")+(i+1)+'</b>'+s[1]+'</figcaption></figure></li>';
+    }).join("");
+    var dots = scr.map(function(_,i){ return '<i'+(i===0?' class="on"':'')+'></i>'; }).join("");
+    var sec = el('<section class="sv-mob" aria-label="SofaVault mobile screens"><ul class="sv-mob-row">'+items+'</ul><div class="sv-mob-hint" aria-hidden="true">'+dots+'<span>Swipe</span></div></section>');
+    board.parentNode.replaceChild(sec, board);
+    if(window.TBLightbox) window.TBLightbox.bind(sec);
+    var row = sec.querySelector(".sv-mob-row"), ds = sec.querySelectorAll(".sv-mob-hint i"), lis = row.children, raf = 0;
+    row.addEventListener("scroll", function(){
+      if(raf) return; raf = requestAnimationFrame(function(){ raf = 0;
+        var mid = row.scrollLeft + row.clientWidth/2, best = 0, bd = 1e9;
+        for(var i=0;i<lis.length;i++){ var c = lis[i].offsetLeft + lis[i].offsetWidth/2, dd = Math.abs(c-mid); if(dd<bd){bd=dd;best=i;} }
+        ds.forEach(function(d,i){ d.classList.toggle("on", i===best); });
+      });
+    }, {passive:true});
+  })();
   gal.appendChild(el('<section class="sv-sec"><span class="sv-k">Closing</span><h2 class="sv-h">Let the furniture do the talking</h2><p class="sv-p">SofaVault came down to restraint: one accent colour, real photos and one clear choice per step. The result feels calm on a big screen and just as easy on a phone.</p></section>'));
 })();
 </script>
