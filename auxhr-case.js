@@ -4,6 +4,8 @@
   const A = "../assets/cases/auxhr/";
   const esc = (s)=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
   const win = (src, url, alt, cls="")=>`<div class="ax-win ${cls}"><div class="bar"><i></i><i></i><i></i><span>${esc(url)}</span></div><img src="${A}${src}" alt="${esc(alt)}" loading="lazy" decoding="async" data-lb="case" data-cap="${esc(alt)}"></div>`;
+  /* auto-scrolling browser window for a full-length page (auxhr-motion.js drives it) */
+  const swin = (src, url, alt)=>`<div class="ax-win ax-swin"><div class="bar"><i></i><i></i><i></i><span>${esc(url)}</span></div><div class="ax-swin-vp"><img src="${A}${src}" alt="${esc(alt)}" loading="lazy" decoding="async" data-lb="case" data-cap="${esc(alt)}"></div></div>`;
   const phone = (src, alt)=>`<div class="ax-phone"><div class="scr"><img src="${A}${src}" alt="${esc(alt)}" loading="lazy" decoding="async" data-lb="case" data-cap="${esc(alt)}"></div></div>`;
   const eyebrow = (n, t)=>`<div class="ax-eyebrow"><b>${n}</b><i></i>${esc(t)}</div>`;
   /* Oct 20 2026 6:25 PM, her word: label dots become icons inside their own glass chip, across the page */
@@ -48,17 +50,10 @@
       goals:["Find a role that matches his skills and offers growth","Show his experience and certifications clearly","Apply without retyping his CV","Hear back quickly on every application"],
       frus:["Long, repetitive forms that ask for the CV he just uploaded","Silence after applying, no idea what happens next","Hard to highlight specialised skills and certifications","No clarity on what recruiters actually want"] }
   ];
-  const avatar = (p)=>`<svg class="ax-av" viewBox="0 0 96 96" aria-hidden="true">
-      <defs><linearGradient id="avg-${p.cls}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${p.cls==="rec"?"#91b6ff":"#b5b0ff"}"/><stop offset="1" stop-color="${p.cls==="rec"?"#4266ff":"#7b74ff"}"/></linearGradient>
-      <clipPath id="avc-${p.cls}"><circle cx="48" cy="48" r="44"/></clipPath></defs>
-      <circle cx="48" cy="48" r="44" fill="url(#avg-${p.cls})"/>
-      <g clip-path="url(#avc-${p.cls})">
-        <path d="M14 98c2-22 16-33 34-33s32 11 34 33z" fill="${p.cls==="rec"?"#0f1652":"#160040"}" opacity=".9"/>
-        <circle cx="48" cy="40" r="15" fill="#f5f3ee"/>
-        ${p.cls==="rec"
-          ? `<path d="M41 66l7 12 7-12" fill="none" stroke="#63eafd" stroke-width="3" stroke-linejoin="round"/><rect x="55" y="74" width="12" height="9" rx="2" fill="#63eafd"/>`
-          : `<path d="M31 42a17 17 0 0 1 34 0" fill="none" stroke="#63eafd" stroke-width="4" stroke-linecap="round"/><rect x="27" y="38" width="7" height="12" rx="3" fill="#63eafd"/><rect x="62" y="38" width="7" height="12" rx="3" fill="#63eafd"/><path d="M65 50c0 6-5 9-11 9" fill="none" stroke="#63eafd" stroke-width="2.5" stroke-linecap="round"/>`}
-      </g></svg><span class="ax-ini">${p.ini}</span>`;
+  /* her 6:33 PM: "put stock pictures in the persona". Free-licence Pexels photos (commercial use, no attribution needed):
+     recruiter https://www.pexels.com/photo/professional-man-smiling-in-modern-office-environment-28426642/
+     talent    https://www.pexels.com/photo/close-up-shot-of-a-man-in-black-suit-smiling-7163464/ */
+  const avatar = (p)=>`<img class="ax-av" src="${A}persona_${p.cls==="rec"?"recruiter":"talent"}.webp" alt="${esc(p.name)}, ${esc(p.role)}" width="240" height="240" loading="lazy" decoding="async">`;
   const pf = (k, label, body)=>`<div class="ax-pf ${k}"><span class="ax-chip"><i class="ax-ic" aria-hidden="true">${PI[k]}</i>${label}</span>${body}</div>`;
   const persona = (p, n)=>`<article class="ax-persona ${p.cls} rv" style="transition-delay:${n*.12}s">
       <header class="ax-ph"><div class="ax-avw">${avatar(p)}</div><div><span class="ax-ptag">${ico(p.cls)}${p.tag}</span><h3>${esc(p.name)}</h3><p>${esc(p.role)}</p></div></header>
@@ -73,6 +68,11 @@
 
   const html = `
   <!-- Oct 20 2026 6:22 PM: hero dashboard visual removed on her word ("remove the recruiter dashboard in the beginning"); About The Project now opens the page. Old markup in files/auxhr_case/short_v4/auxhr-case.js.BEFORE -->
+  <!-- film. Oct 20 2026 6:32 PM, her word "this should be in a better place maybe at the top before AI powered": moved into the hero (see the move below the render), no eyebrow -->
+  <section class="ax ax-sec ax-film-hero" id="ax-film">
+    <div class="ax-video"><video data-vsrc="../assets/media/motion_auxhr3.mp4" poster="../assets/media/motion_auxhr3.jpg" controls playsinline preload="none" data-noauto="1" width="1920" height="1080"></video></div>
+  </section>
+
   <!-- overview: about, problem, goal, solution. Oct 20 2026: rebalanced after the short cut went too far ("why did you remove all the problems solution"); all wording trimmed from short_v1/auxhr-case.BEFORE.js -->
   <section class="ax ax-sec tight rv" id="ax-overview">
     ${eyebrow("Overview","About The Project")}
@@ -107,34 +107,22 @@
       ${row("Track","Every application in one place, with a status that means something","The same stage names the recruiter uses, so the talent view mirrors the pipeline.","", pad("dash_t7.webp","app.auxhr.com · my applications","Talent applications list with stage and status per role"), false)}
       ${row("Apply","Apply to any role in one click","No repeated forms. The profile carries over.","", img("fig_talent_apply.webp","Apply to any role in one click","beige"), true)}
     </div>
-    <div class="ax-duo">
-      ${stage(win("fig_talent_hero.webp","auxhr.com · talent","Talent landing page hero: Stand out. Get matched. Land your dream role."), "Talent Landing · Designed, In Build", "deep", "talent")}
-      ${stage(`<div style="display:flex;justify-content:center">${phone("fig_m_talent_hero.webp","Talent landing page on a phone")}</div>`, "Talent Landing · Mobile", "deep", "talent")}
-    </div>
+    <!-- Oct 20 2026 6:31 PM, her word "make this part the full landing page remove the phone": phone card hidden, the browser card now auto-scrolls the full talent landing (auxhr-motion.js) -->
+    ${stage(swin("fig_talent_full.webp","auxhr.com · talent","Talent landing page, full design: Stand out. Get matched. Land your dream role."), "Talent Landing · Designed, In Build", "deep", "talent")}
   </section>
 
-  <!-- film -->
-  <section class="ax ax-sec rv" id="ax-film">
-    ${eyebrow("Film","The Product In Motion")}
-    <div class="ax-video" style="margin-top:24px"><video data-vsrc="../assets/media/motion_auxhr3.mp4" poster="../assets/media/motion_auxhr3.jpg" controls playsinline preload="none" data-noauto="1" width="1920" height="1080"></video></div>
-  </section>
-
-  <!-- chapter II: recruiter -->
+  <!-- chapter II: recruiter. Oct 20 2026 6:34 PM, her word "do this chapter two like chapter one the way i arranged it remove the unnecessary things": same order as chapter I (label, headline, dashboard, four feature rows, landing page); the three live cards strip is gone -->
   <section class="ax ax-sec rv" id="ax-rec">
     ${eyebrow("Chapter II","Recruiter")}
     <h2 class="ax-h2">Hire better. <em>Move faster.</em></h2>
     ${stage(win("dash_r1.webp","app.auxhr.com · recruiter dashboard","Recruiter dashboard: open roles, applicants, shortlisted and time to hire; recent candidates with match and stage; the week's pipeline"), "Recruiter Dashboard", "", "rec")}
     <div class="ax-rows">
-      ${row("Pipeline","Candidates, already scored","CV match, screening score and personality fit on every row. Applied to Shortlisted in one click.","", pad("dash_r3.webp","app.auxhr.com · candidates","Candidates list with CV match, screening and personality scores per person"), false)}
-      ${row("Brief","A candidate brief, not a CV to decode","The three scores first, then strong matches and a suggested next step.","", pad("dash_r4.webp","app.auxhr.com · candidate","Candidate profile with diagnostic brief, strong matches and suggested next step"), true)}
-      ${row("Roles","Job posts with the state of each role in one list","Open and closed roles, department, type and applicant count.","", img("live_jobs.webp","Job posts list: Sales Representative, Product Designer, Backend Engineer with applicant counts","beige"), false)}
-      ${row("Team","Collaborative hiring in one workspace","Hiring managers, recruiters and executives aligned in one view.","", img("live_collab.webp","Collaborative hiring: hiring managers and recruiters in one workspace","beige"), true)}
+      ${row("Post","Every role and its state in one list","Open and closed roles with applicant counts.","", img("live_jobs.webp","Job posts list: Sales Representative, Product Designer, Backend Engineer with applicant counts","beige"), false)}
+      ${row("Screen","A brief, not a CV to decode","Three scores first, then a suggested next step.","", pad("dash_r4.webp","app.auxhr.com · candidate","Candidate profile with diagnostic brief, strong matches and suggested next step"), true)}
+      ${row("Pipeline","Candidates arrive already scored","Applied to Shortlisted in one click.","", pad("dash_r3.webp","app.auxhr.com · candidates","Candidates list with CV match, screening and personality scores per person"), false)}
+      ${row("Collaborate","The whole hiring team in one view","Hiring managers and recruiters aligned.","", img("live_collab.webp","Collaborative hiring: hiring managers and recruiters in one workspace","beige"), true)}
     </div>
-    <div class="ax-strip">
-      ${stage(`<img src="${A}live_brief.webp" alt="Candidate diagnostic brief card" loading="lazy" data-lb="case" data-cap="Candidate diagnostic brief">`, "Diagnostic Brief · Live", "", "rec")}
-      ${stage(`<img src="${A}live_stats.webp" alt="Pipeline stats card" loading="lazy" data-lb="case" data-cap="Pipeline stats">`, "Pipeline At A Glance · Live", "soft", "rec")}
-      ${stage(`<img src="${A}live_candidate.webp" alt="Candidate card with fit score" loading="lazy" data-lb="case" data-cap="Candidate card">`, "Candidate Card · Live", "deep", "rec")}
-    </div>
+    ${stage(swin("live_full.webp","auxhr.com","AuxHR recruiter site, full page, live at auxhr.com"), "Recruiter Landing · Live", "deep", "rec")}
   </section>
 
   <!-- chapter III: AI configuration -->
@@ -152,8 +140,7 @@
   <!-- website (was in About / Solution / Process) -->
   <section class="ax ax-sec rv" id="ax-site">
     ${eyebrow("Website","auxhr.com")}
-    ${stage(`<div class="ax-hero-stage">${win("live_home_fold.webp","auxhr.com","AuxHR recruiter site, live at auxhr.com")}${phone("live_home_fold_m.webp","AuxHR site on a phone")}</div>`, "Live · auxhr.com", "", "")}
-    <div class="ax-under"><span>The recruiter site as it is live today, desktop and phone.</span><a href="https://www.auxhr.com" target="_blank" rel="noopener">Open auxhr.com ↗</a></div>
+    <div class="ax-under"><span>The recruiter landing above is the site as it is live today.</span><a href="https://www.auxhr.com" target="_blank" rel="noopener">Open auxhr.com ↗</a></div>
     ${stage(win("live_steps.webp","auxhr.com · how it works","How AuxHR works: create your role, let AI find the fit, review your matches, make your move"), "How It Works · Live", "deep")}
     <div class="ax-duo">
       ${stage(win("fig_recruiter_full.webp","Figma · Recruiter landing page","Recruiter landing page, full design in Figma","tall"), "Recruiter Site · Figma", "deep", "rec")}
@@ -200,6 +187,8 @@
   </section>`;
 
   gal.innerHTML = html;
+  /* the film sits in the hero, between the title/meta and the lede (her 6:32 PM ask) */
+  { const f = gal.querySelector("#ax-film"), hero = document.querySelector("#case .case-hero"); if(f && hero){ const t = hero.querySelector(".case-text"); t ? hero.insertBefore(f, t) : hero.appendChild(f); } }
   if(window.vhydrate) vhydrate(gal);
   const els = gal.querySelectorAll(".rv");
   if("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches){
