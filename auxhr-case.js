@@ -39,10 +39,10 @@
 
   <!-- overview: about, problem, goal, solution. Oct 20 2026: rebalanced after the short cut went too far ("why did you remove all the problems solution"); all wording trimmed from short_v1/auxhr-case.BEFORE.js -->
   <section class="ax ax-sec tight rv" id="ax-overview">
-    ${eyebrow("About","The Project")}
+    ${eyebrow("Overview","About The Project")}
     <p class="ax-lede">AuxHR is SalesPlat's AI-powered talent acquisition platform. The first designs shipped fast as an MVP; using it showed us where the screens got in the way, so we redesigned the whole product around how recruiters and candidates actually move through a hiring week. I led that redesign.</p>
 
-    <div style="margin-top:56px">${eyebrow("Problem","The Problem")}</div>
+    <div style="margin-top:56px">${eyebrow("Overview","The Problem")}</div>
     <h2 class="ax-h2">Hiring breaks in both directions.</h2>
     <p class="ax-lede">The product requirements and the user research named the same pains from two sides of the table. The MVP proved the idea, but each flow was its own page, with no shared language between the recruiter side and the talent side.</p>
     <div class="ax-grid c2">
@@ -54,7 +54,7 @@
 
     <div class="ax-card" style="margin-top:22px"><span class="ax-tag"><i></i>Goal</span><p>Bridge the rift between open roles and the people who fit them.</p></div>
 
-    <div style="margin-top:56px">${eyebrow("Solution","The Solution")}</div>
+    <div style="margin-top:56px">${eyebrow("Overview","The Solution")}</div>
     <h2 class="ax-h2">Set the criteria once. Let the platform run the pipeline with you.</h2>
     <p class="ax-lede">A recruiter creates a role and configures how the AI screens it. Talent applies in one click from a profile that already carries their experience. The AI scores everyone against the same bar, and both sides watch the same pipeline from their own dashboard.</p>
     <div class="ax-grid c3">
