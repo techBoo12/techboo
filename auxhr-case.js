@@ -113,7 +113,7 @@
     </div>
     <!-- Oct 20 2026 7:46 PM, her words "those dots should be logos of the company" + "why remove": fig_talent_full_v2.webp has real company logo chips on the 6 job cards and a clean talent CTA banner (the Figma frame had the recruiter CTA text stacked over the talent copy). Original: fig_talent_full.webp -->
     <!-- Oct 20 2026 6:31 PM, her word "make this part the full landing page remove the phone": phone card hidden, the browser card now auto-scrolls the full talent landing (auxhr-motion.js) -->
-    ${stage(swin("fig_talent_full_v2.webp","auxhr.com · talent","Talent landing page, full design: Stand out. Get matched. Land your dream role."), "Talent Landing · Designed, In Build", "deep", "talent")}
+    ${stage(swin("fig_talent_full_v2_faces.webp","auxhr.com · talent","Talent landing page, full design: Stand out. Get matched. Land your dream role."), "Talent Landing · Designed, In Build", "deep", "talent")}
   </section>
 
   <div class="axi-wrap rv"><div class="axi" data-axi="marquee"></div></div>
@@ -138,7 +138,7 @@
   <section class="ax ax-sec rv" id="ax-ai">
     ${eyebrow("Chapter III · AI Configuration")}
     <h2 class="ax-h2">Set the bar once. The AI holds <em>everyone</em> to it.</h2>
-    ${stage(win("dash_r2.webp","app.auxhr.com · post a job · screening","Post a job: screening setup with skill weights, pre-screening questions and personality assessment toggles"), "Post A Job · Screening Setup", "", "")}
+    ${stage(win("dash_r2_faces.webp","app.auxhr.com · post a job · screening","Post a job: screening setup with skill weights, pre-screening questions and personality assessment toggles"), "Post A Job · Screening Setup", "", "")}
     <div class="ax-rows">
       ${row("Configure","Questions, tests and weights, set once per role","Toggles switch each test on, sliders carry the weights.","", `<div class="ax-row-media vig"><div class="axv" data-axv="configure"></div></div>`, false)}
       ${row("Score","Three scores travel with every candidate","CV match, screening and personality fit.","", `<div class="ax-row-media vig"><div class="axv" data-axv="score"></div></div>`, true)}
