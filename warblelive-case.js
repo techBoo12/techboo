@@ -15,11 +15,6 @@
     chain:'<svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>',
     ai:'<svg viewBox="0 0 24 24"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8zM19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z"/></svg>'
   };
-  /* decorative QR built from a fixed seed, with the three finder squares */
-  const qr = (()=>{ const n=21; let s=7, out=""; const rnd=()=>{ s=(s*9301+49297)%233280; return s/233280; };
-    const fin=(x,y)=>`<rect x="${x}" y="${y}" width="7" height="7" fill="#000"/><rect x="${x+1}" y="${y+1}" width="5" height="5" fill="#fff"/><rect x="${x+2}" y="${y+2}" width="3" height="3" fill="#000"/>`;
-    for(let y=0;y<n;y++) for(let x=0;x<n;x++){ const inF=(x<8&&y<8)||(x>12&&y<8)||(x<8&&y>12); if(!inF && rnd()>.52) out+=`<rect x="${x}" y="${y}" width="1" height="1"/>`; }
-    return `<svg class="wlp-qr" viewBox="-1 -1 23 23" aria-hidden="true"><rect x="-1" y="-1" width="23" height="23" fill="#fff"/><g fill="#000">${out}</g>${fin(0,0)}${fin(14,0)}${fin(0,14)}</svg>`; })();
   const nav = (on)=>`<div class="wlp-nav">${["Home","Events","Wallet","Market"].map(n=>`<b class="${n===on?"on":""}"><i></i>${n}</b>`).join("")}</div>`;
 
   /* --- INTERLUDE: promise marquee + poster ribbon --- */
@@ -124,23 +119,6 @@
       <div class="wlp-minted" id="wrb2-minted"><span>✓</span><b>Ticket Minted</b><small>Saved to your ticket wallet</small></div>
     </div>`;
 
-  /* --- SCREEN 04: QR SCAN TO VERIFIED --- */
-  const tixScr = `<div class="wlp">
-      <div class="wlp-top"><span class="wlp-hi">Ticket Wallet<small>techBoo Meta</small></span><span class="wlp-bell">⋯</span></div>
-      <div class="wlp-wstat"><span>Total Ticket NFT<b data-to="55">0</b></span><span>On Sale<b data-to="2">0</b></span></div>
-      <div class="wlp-tix"><div class="wlp-tixh"><img src="${L}poster3.webp" alt=""><span><b>Mixtape Listening Event</b><small>Mavin Music Organization</small></span></div>
-        <div class="wlp-perf"></div>
-        <div class="wlp-qrw">${qr}<i class="wlp-laser"></i></div>
-        <div class="wlp-off">Offline Validation</div></div>
-      ${nav("Wallet")}
-    </div>`;
-  const scanScr = `<div class="wlp wlp-scan" id="wrb2-scan">
-      <div class="wlp-top"><span class="wlp-hi">Scan Ticket<small>Gate A · Organizer</small></span><span class="wlp-bell">⚡</span></div>
-      <div class="wlp-cam"><span class="c tl"></span><span class="c tr"></span><span class="c bl"></span><span class="c br"></span>${qr}<i class="wlp-laser"></i></div>
-      <div class="wlp-res"><div class="wait"><span class="dot"></span>Scanning…</div>
-        <div class="ok"><span class="tick">✓</span><b>Verified</b><small>Checked offline · No signal needed</small></div></div>
-    </div>`;
-
   const show = (id,num,title,em,lines,phones,flip)=>`<section class="cs2-sec wrb2-show ${flip?"flip":""}" ${id?`id="${id}"`:""}>
       <div class="wrb2-copy cs2-rv"><span class="wrb2-num">${num}</span><h3 class="cs2-h3">${title} <em>${em}</em></h3>${lines.map(l=>`<p class="cs2-p">${l}</p>`).join("")}</div>
       <div class="cs2-phones cs2-rv d1">${phones}</div>
@@ -148,8 +126,7 @@
   const screens =
     show("wrb2-disc","01","Discovery","That Knows You",["Trending posters roll, categories filter in a tap, and your ticket count sits up top.","Try the category chips."],phone(discScr)) +
     show("wrb2-det","02","Event Detail","At A Glance",["Host, date, time and how many tickets are left, before you scroll.","Pick Regular or VIP and buy from the same screen."],phone(detScr),1) +
-    show("wrb2-buy","03","Checkout","With No Surprises",["Seller, type and price are on the page. The total updates as you change the quantity, so there's nothing hidden.","Tap Buy Ticket."],phone(buyScr)) +
-    show("wrb2-ver","04","Scan To Verified","Even Offline",["Every ticket carries a QR that validates offline, so the gate keeps moving with no signal.","Fakes and copies don't scan."],phone(tixScr)+phone(scanScr),1);
+    show("wrb2-buy","03","Checkout","With No Surprises",["Seller, type and price are on the page. The total updates as you change the quantity, so there's nothing hidden.","Tap Buy Ticket."],phone(buyScr));
 
   /* --- ORGANIZER INTERLUDE --- */
   const org = `<section class="cs2-band wrb2-org"><div class="cs2-sec">
@@ -173,16 +150,12 @@
       </div>
     </section>`;
 
-  /* --- OUTCOME + ORIGINAL BOARDS --- */
+  /* --- OUTCOME --- (original boards removed Oct 20 2026: both carried the ticket artwork) */
   const out = `<section class="cs2-sec cs2-center">
       <span class="cs2-eb cs2-rv"><i></i>The Outcome</span>
       <h2 class="cs2-h2 cs2-rv" style="max-width:18ch">Real Ownership. <em>Smarter Pricing.</em></h2>
       <p class="cs2-p cs2-rv" style="margin:18px auto 0;max-width:46ch">One platform for fans and organizers: tickets that can't be faked, a door that works offline and events that find you.</p>
       <div class="wrb2-out cs2-rv"><span>AI event discovery</span><span>NFT tickets</span><span>Offline verification</span><span>Organizer dashboard</span></div>
-      <div class="cs2-orig cs2-rv" style="width:100%;text-align:left">
-        <figure><img src="${A}img01-01b.webp" alt="WarbleLive original board: overview" loading="lazy" decoding="async" data-lb="case" data-cap="WarbleLive · Original board"><figcaption>Original Board · Overview</figcaption></figure>
-        <figure><img src="${A}img01-10.webp" alt="WarbleLive original board: app screens" loading="lazy" decoding="async" data-lb="case" data-cap="WarbleLive · Original board"><figcaption>Original Board · App Screens</figcaption></figure>
-      </div>
     </section>`;
 
   /* keep the live hero frame from wl-hero.js, replace everything after it */
@@ -211,29 +184,14 @@
   const pay = root.querySelector("#wrb2-pay"), mint = root.querySelector("#wrb2-minted");
   pay.addEventListener("click", ()=>{ mint.classList.add("on"); setTimeout(()=>mint.classList.remove("on"), 2600); });
   if(!RM) onView(pay, ()=>{ setInterval(()=>{ mint.classList.add("on"); setTimeout(()=>mint.classList.remove("on"), 2200); }, 5200); });
-  /* scan loop: scanning, then verified */
-  const sc = root.querySelector("#wrb2-scan");
-  onView(sc, ()=>{ if(RM){ sc.classList.add("ok"); return; } const go=()=>{ sc.classList.remove("ok"); setTimeout(()=>sc.classList.add("ok"), 1800); }; go(); setInterval(go, 4600); });
   /* organizer dashboard draws in */
   const dash = root.querySelector("#wrb2-dash"); onView(dash, ()=>dash.classList.add("on"));
   /* solution core pulses */
   const dual = root.querySelector("#wrb2-dual"); onView(dual, ()=>dual.classList.add("on"));
 
-  /* ending: an event ticket stub (her 8:55 PM word: no receipts outside Invora) */
-  const bars = Array.from({length:38},(_,i)=>`<i style="width:${[1,2,1,3,1,2][i%6]}px"></i>`).join("");
-  mountEnding({cls:"cs2 wrb2", a:"#FF2AF9", b:"#751F72", bg:"#050507", card:`<div class="wrb2-stub">
-      <div class="wrb2-stub-main">
-        <div class="wrb2-stub-top"><img src="${L}logo_mark.webp" alt=""><span>WarbleLive</span><em>Admit One</em></div>
-        <h3>WarbleLive Case Study</h3>
-        <div class="wrb2-stub-grid">
-          <div><span>Designed By</span><b>Adaikem Ajufo</b></div>
-          <div><span>Role</span><b>Product Designer</b></div>
-          <div><span>Venue</span><b>techBoo Portfolio</b></div>
-          <div><span>Status</span><b class="ok">✓ Verified</b></div>
-        </div>
-        <p class="bye">Thanks for spending a few minutes here. See you at the next one.</p>
-      </div>
-      <div class="wrb2-stub-tear" aria-hidden="true"></div>
-      <div class="wrb2-stub-side"><span>Seat</span><b>Front Row</b><div class="wrb2-bc" aria-hidden="true">${bars}</div></div>
+  /* ending: plain "Thanks For Scrolling" in the WarbleLive brand (Oct 20 2026 10:35 PM her word: no ticket anywhere) */
+  mountEnding({cls:"cs2 wrb2 wrb2-plain", a:"#FF2AF9", b:"#751F72", bg:"#000", card:`<div class="wrb2-bye">
+      <img src="${L}logo_mark.webp" alt="" width="44" height="44">
+      <p>Thanks for spending a few minutes here. See you at the next one.</p>
     </div>`});
 })();
