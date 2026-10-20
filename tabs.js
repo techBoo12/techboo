@@ -108,7 +108,7 @@
       </section>
 
       <section class="tb-loop" aria-label="Adaikem">
-        <div class="tb-loop-m"><video data-vsrc="${(L.src4k && window.matchMedia && matchMedia("(min-width: 901px)").matches) ? L.src4k : L.src}" poster="${L.poster}" autoplay muted loop playsinline preload="auto" disablepictureinpicture aria-label="${esc(L.alt)}"></video></div>
+        <div class="tb-loop-m"><video data-vsrc="${L.src}" poster="${L.poster}" autoplay muted loop playsinline preload="auto" disablepictureinpicture aria-label="${esc(L.alt)}"></video></div>
       </section>
 
       <section class="tb-about" id="about">
@@ -134,7 +134,31 @@
       ${contactBlock(true)}`;
       const H2 = H; const tick = ()=>{ const el=document.getElementById("w-time"); if(el) el.innerHTML = esc(new Date().toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit",timeZone:H2.timezone})).replace(":","<span class=\"tb-colon\">:</span>"); };
       tick(); clockTimer = setInterval(tick, 15000);
-      const lv = main.querySelector(".tb-loop video"); if(lv){ lv.muted = true; if(window.vload) vload(lv); else { lv.src = lv.dataset.vsrc; } lv.addEventListener("vready", ()=>lv.play().catch(()=>{}), {once:true}); }
+      /* Oct 20 2026 10:50 PM her voice note ("the thumbnail on the landing page about us is not playing"): the About loop waited for
+         all 9 parts (7.9 MB) of the 4K file before it could start, never retried a failed part, and never re-tried play() when the
+         browser refused or paused it. Now: the 1.8 MB 1080p cut starts first on every screen, desktops swap to 4K once it is in
+         (staying on 1080p if that fails), a failed load retries, and it plays whenever it is on screen (or on the first touch/scroll
+         if the browser blocked autoplay). */
+      const lv = main.querySelector(".tb-loop video");
+      if(lv){
+        lv.muted = true; lv.defaultMuted = true;
+        const go = ()=>{ if(!lv.isConnected || !lv.paused || !lv.currentSrc) return; lv.play().catch(()=>{ const once=()=>{ if(lv.isConnected && lv.paused) lv.play().catch(()=>{}); }; ["pointerdown","touchstart","scroll","keydown"].forEach(ev=>addEventListener(ev, once, {once:true, passive:true})); }); };
+        const ld = (v)=>{ if(window.vload) vload(v); else v.src = v.dataset.vsrc; };
+        lv.addEventListener("vready", go); lv.addEventListener("loadeddata", go); lv.addEventListener("canplay", go);
+        ld(lv);
+        let tries = 0; const rt = setInterval(()=>{ if(!lv.isConnected || lv.currentSrc || ++tries > 6){ clearInterval(rt); return; } if(lv.dataset.vloaded === "") ld(lv); }, 3000);
+        if(L.src4k && window.vload && window.matchMedia && matchMedia("(min-width: 901px)").matches){
+          const hi = document.createElement("video"); hi.muted = true; hi.preload = "none"; hi.dataset.noauto = "1"; hi.dataset.vsrc = L.src4k;
+          hi.addEventListener("vready", ()=>{ const u = hi.src; hi.removeAttribute("src"); if(!lv.isConnected || !u) return;
+            const lo = lv.currentSrc, t0 = lv.currentTime;
+            const back = ()=>{ if(lo){ lv.src = lo; go(); } };
+            lv.addEventListener("error", back, {once:true});
+            lv.addEventListener("loadedmetadata", ()=>{ lv.removeEventListener("error", back); try{ lv.currentTime = t0 % (lv.duration || 4.5); }catch(_){} go(); }, {once:true});
+            lv.src = u; go(); }, {once:true});
+          lv.addEventListener("playing", ()=>vload(hi), {once:true});   // fetch the 4K parts only after the 1080p cut is moving
+        }
+        if("IntersectionObserver" in window) new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting) go(); }),{threshold:0.1}).observe(lv);
+      }
       main.querySelectorAll(".tb-ex-img video").forEach(v=>{ v.muted=true; const go=()=>{ if(window.vload) vload(v); else v.src=v.dataset.vsrc; }; if("IntersectionObserver" in window){ const io=new IntersectionObserver(es=>{ if(es.some(e=>e.isIntersecting)){ io.disconnect(); go(); } },{rootMargin:"300px"}); io.observe(v); } else go(); v.addEventListener("vready", ()=>v.play().catch(()=>{}), {once:true}); v.addEventListener("loadeddata", ()=>v.play().catch(()=>{}), {once:true}); });
       document.title = C.meta.title;
     },
