@@ -420,3 +420,7 @@
 .ax-thanks .cta{position:relative;margin-top:34px;display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:999px;background:#fff;color:#0f1652;font-weight:600;font-size:15px;transition:background .25s}
 .ax-thanks .cta:hover{background:#63eafd}
 @media (max-width:760px){.ax-thanks{padding:64px 18px 56px;border-radius:22px}.th-react{margin-bottom:22px}}
+
+/* her 6:50 PM: the lede under the film is as big as "Hiring breaks in both directions." (same size, weight, line-height as .ax-h2) */
+.ax-page .case-hero .case-lede{font-family:"General Sans","Manrope",sans-serif;font-size:clamp(30px,4.2vw,54px);font-weight:600;line-height:1.08;letter-spacing:-.03em;color:#fff;max-width:900px}
+@media (max-width:760px){.ax-page .case-hero .case-lede{font-size:30px}}
