@@ -28,15 +28,7 @@
   const BRAND = window.AX_BRAND || {};
 
   const html = `
-  <!-- 00 hero visual -->
-  <section class="ax ax-sec tight rv" id="ax-live">
-    <div class="ax-stage ax-hero2"><span class="ax-wm" aria-hidden="true">AuxHR</span>
-      <div class="ax-hero2-win">${win("dash_r1.webp","app.auxhr.com · dashboard","AuxHR recruiter dashboard")}</div>
-      <div class="ax-hero2-card"><img src="${A}live_brief.webp" alt="Candidate diagnostic brief" loading="lazy" decoding="async"></div>
-      <span class="ax-cap rec" style="left:auto;right:28px"><i></i>Recruiter Dashboard</span>
-    </div>
-  </section>
-
+  <!-- Oct 20 2026 6:22 PM: hero dashboard visual removed on her word ("remove the recruiter dashboard in the beginning"); About The Project now opens the page. Old markup in files/auxhr_case/short_v4/auxhr-case.js.BEFORE -->
   <!-- overview: about, problem, goal, solution. Oct 20 2026: rebalanced after the short cut went too far ("why did you remove all the problems solution"); all wording trimmed from short_v1/auxhr-case.BEFORE.js -->
   <section class="ax ax-sec tight rv" id="ax-overview">
     ${eyebrow("Overview","About The Project")}
