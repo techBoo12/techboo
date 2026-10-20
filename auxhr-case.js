@@ -6,7 +6,11 @@
   const win = (src, url, alt, cls="")=>`<div class="ax-win ${cls}"><div class="bar"><i></i><i></i><i></i><span>${esc(url)}</span></div><img src="${A}${src}" alt="${esc(alt)}" loading="lazy" decoding="async" data-lb="case" data-cap="${esc(alt)}"></div>`;
   const phone = (src, alt)=>`<div class="ax-phone"><div class="scr"><img src="${A}${src}" alt="${esc(alt)}" loading="lazy" decoding="async" data-lb="case" data-cap="${esc(alt)}"></div></div>`;
   const eyebrow = (n, t)=>`<div class="ax-eyebrow"><b>${n}</b><i></i>${esc(t)}</div>`;
-  const stage = (inner, cap, cls="", capCls="")=>`<div class="ax-stage ${cls}">${cap?`<span class="ax-cap ${capCls}"><i></i>${esc(cap)}</span>`:""}${inner}</div>`;
+  /* Oct 20 2026 6:25 PM, her word: label dots become icons inside their own glass chip, across the page */
+  const LI = {"rec": "<svg viewBox=\"0 0 24 24\"><rect x=\"3\" y=\"7\" width=\"18\" height=\"13\" rx=\"2.5\"/><path d=\"M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7M3 13h18\"/></svg>", "talent": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"8\" r=\"4\"/><path d=\"M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7\"/></svg>", "ai": "<svg viewBox=\"0 0 24 24\"><path d=\"M4 7h9M17 7h3M4 17h3M11 17h9\"/><circle cx=\"15\" cy=\"7\" r=\"2\"/><circle cx=\"9\" cy=\"17\" r=\"2\"/><path d=\"M19 11.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z\"/></svg>", "goal": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><circle cx=\"12\" cy=\"12\" r=\"5\"/><circle cx=\"12\" cy=\"12\" r=\"1.4\"/></svg>", "live": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z\"/></svg>", "figma": "<svg viewBox=\"0 0 24 24\"><path d=\"M12 19l7-7 2 2-7 7z\"/><path d=\"M18 13l-1.5-7.5L3 2l3.5 13.5L14 17z\"/><circle cx=\"11\" cy=\"11\" r=\"2\"/></svg>", "screen": "<svg viewBox=\"0 0 24 24\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"13\" rx=\"2\"/><path d=\"M8 21h8M12 17v4\"/></svg>"};
+  const ico = (k)=>`<i class="ax-ic k-${k}" aria-hidden="true">${LI[k]||LI.screen}</i>`;
+  const capIco = (cap, capCls)=> capCls==="rec"||capCls==="talent" ? capCls : /figma/i.test(cap) ? "figma" : /live|auxhr\.com/i.test(cap) ? "live" : /screening|setup/i.test(cap) ? "ai" : "screen";
+  const stage = (inner, cap, cls="", capCls="")=>`<div class="ax-stage ${cls}">${cap?`<span class="ax-cap ${capCls}">${ico(capIco(cap, capCls))}${esc(cap)}</span>`:""}${inner}</div>`;
   const row = (k, h, p, dec, media, flip)=>`<div class="ax-row ${flip?"flip":""} rv"><div class="ax-row-text"><span class="ax-k">${esc(k)}</span><h3>${esc(h)}</h3>${p?`<p>${esc(p)}</p>`:""}${dec?`<div class="ax-dec"><b>Design decision.</b> ${esc(dec)}</div>`:""}</div>${media}</div>`;
   const pad = (src, url, alt, cls="pad")=>`<div class="ax-row-media ${cls}">${win(src, url, alt)}</div>`;
   const img = (src, alt, cls="")=>`<div class="ax-row-media ${cls}"><img src="${A}${src}" alt="${esc(alt)}" loading="lazy" decoding="async" data-lb="case" data-cap="${esc(alt)}"></div>`;
@@ -27,6 +31,46 @@
   /* BRAND assets: filled from what the public web still holds (see files/auxhr_case/branding/NOTES.md) */
   const BRAND = window.AX_BRAND || {};
 
+
+  /* PERSONAS (Oct 20 2026). Avatars are drawn in SVG, no photos. */
+  const PI = {"about": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"8\" r=\"4\"/><path d=\"M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7\"/></svg>", "demo": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z\"/><circle cx=\"12\" cy=\"10\" r=\"2.6\"/></svg>", "moti": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M13 2 4 14h7l-1 8 9-12h-7z\"/></svg>", "goal": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><circle cx=\"12\" cy=\"12\" r=\"5\"/><circle cx=\"12\" cy=\"12\" r=\"1.4\"/></svg>", "frus": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3 2 20h20z\"/><path d=\"M12 10v4M12 17v.5\"/></svg>"};
+  const PERSONAS = [
+    { cls:"rec", tag:"Recruiter", name:"Philip Kosana", role:"Tech Startup Recruiter", ini:"PK",
+      about:"Recruits for a fast-paced tech startup. Handles high-volume openings on tight deadlines. Data-driven and focused on efficiency.",
+      demo:[["Role","In-house Recruiter"],["Company","Tech startup, scaling"],["Based","Lagos, hires remote"],["Experience","Mid-level"],["Tools","LinkedIn, ATS, spreadsheets"]],
+      moti:"Fill every role fast without lowering the bar.",
+      goals:["Spot qualified candidates fast in a large pool","Automate CV screening and first outreach","Track the pipeline and report on hiring","Cut time to hire"],
+      frus:["Hours of manual work: CVs one by one, the same outreach again","Unqualified applicants bury the strong ones","No view of the pipeline, so candidates stall","Specialised skills are hard to spot and compare from a CV"] },
+    { cls:"talent", tag:"Talent", name:"Paul Akakuigbe", role:"Customer Support Specialist", ini:"PA",
+      about:"5+ years in customer support, mostly at tech startups. Skilled across support tools. Wants a role where he can grow.",
+      demo:[["Role","Support Specialist"],["Background","Tech startups"],["Based","Lagos, open to remote"],["Experience","5+ years"],["Tools","Helpdesk, live chat, LinkedIn"]],
+      moti:"A next role that uses his skills and moves his career forward.",
+      goals:["Find a role that matches his skills and offers growth","Show his experience and certifications clearly","Apply without retyping his CV","Hear back quickly on every application"],
+      frus:["Long, repetitive forms that ask for the CV he just uploaded","Silence after applying, no idea what happens next","Hard to highlight specialised skills and certifications","No clarity on what recruiters actually want"] }
+  ];
+  const avatar = (p)=>`<svg class="ax-av" viewBox="0 0 96 96" aria-hidden="true">
+      <defs><linearGradient id="avg-${p.cls}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${p.cls==="rec"?"#91b6ff":"#b5b0ff"}"/><stop offset="1" stop-color="${p.cls==="rec"?"#4266ff":"#7b74ff"}"/></linearGradient>
+      <clipPath id="avc-${p.cls}"><circle cx="48" cy="48" r="44"/></clipPath></defs>
+      <circle cx="48" cy="48" r="44" fill="url(#avg-${p.cls})"/>
+      <g clip-path="url(#avc-${p.cls})">
+        <path d="M14 98c2-22 16-33 34-33s32 11 34 33z" fill="${p.cls==="rec"?"#0f1652":"#160040"}" opacity=".9"/>
+        <circle cx="48" cy="40" r="15" fill="#f5f3ee"/>
+        ${p.cls==="rec"
+          ? `<path d="M41 66l7 12 7-12" fill="none" stroke="#63eafd" stroke-width="3" stroke-linejoin="round"/><rect x="55" y="74" width="12" height="9" rx="2" fill="#63eafd"/>`
+          : `<path d="M31 42a17 17 0 0 1 34 0" fill="none" stroke="#63eafd" stroke-width="4" stroke-linecap="round"/><rect x="27" y="38" width="7" height="12" rx="3" fill="#63eafd"/><rect x="62" y="38" width="7" height="12" rx="3" fill="#63eafd"/><path d="M65 50c0 6-5 9-11 9" fill="none" stroke="#63eafd" stroke-width="2.5" stroke-linecap="round"/>`}
+      </g></svg><span class="ax-ini">${p.ini}</span>`;
+  const pf = (k, label, body)=>`<div class="ax-pf ${k}"><span class="ax-chip"><i class="ax-ic" aria-hidden="true">${PI[k]}</i>${label}</span>${body}</div>`;
+  const persona = (p, n)=>`<article class="ax-persona ${p.cls} rv" style="transition-delay:${n*.12}s">
+      <header class="ax-ph"><div class="ax-avw">${avatar(p)}</div><div><span class="ax-ptag">${ico(p.cls)}${p.tag}</span><h3>${esc(p.name)}</h3><p>${esc(p.role)}</p></div></header>
+      ${pf("about","About",`<p>${esc(p.about)}</p>`)}
+      ${pf("demo","Demographics",`<dl>${p.demo.map(([a,b])=>`<div><dt>${a}</dt><dd>${esc(b)}</dd></div>`).join("")}</dl>`)}
+      ${pf("moti","Motivation",`<p class="q">${esc(p.moti)}</p>`)}
+      <div class="ax-pcols">
+        ${pf("goal","Goals",`<ul>${p.goals.map(g=>`<li>${esc(g)}</li>`).join("")}</ul>`)}
+        ${pf("frus","Frustrations",`<ul>${p.frus.map(g=>`<li>${esc(g)}</li>`).join("")}</ul>`)}
+      </div>
+    </article>`;
+
   const html = `
   <!-- Oct 20 2026 6:22 PM: hero dashboard visual removed on her word ("remove the recruiter dashboard in the beginning"); About The Project now opens the page. Old markup in files/auxhr_case/short_v4/auxhr-case.js.BEFORE -->
   <!-- overview: about, problem, goal, solution. Oct 20 2026: rebalanced after the short cut went too far ("why did you remove all the problems solution"); all wording trimmed from short_v1/auxhr-case.BEFORE.js -->
@@ -37,22 +81,18 @@
     <div style="margin-top:56px">${eyebrow("Overview","The Problem")}</div>
     <h2 class="ax-h2">Hiring breaks in both directions.</h2>
     <p class="ax-lede">The product requirements and the user research named the same pains from two sides of the table. The MVP proved the idea, but each flow was its own page, with no shared language between the recruiter side and the talent side.</p>
-    <div class="ax-grid c2">
-      <div class="ax-card rec"><span class="ax-tag"><i></i>Recruiter</span>
-        <ul><li>Too much time on manual tasks: reading CVs one by one, the same outreach again and again.</li><li>Unqualified applicants flooding every post, so the strong ones get lost in the pile.</li><li>No visibility into the overall pipeline. Candidates stall, hiring managers ask for updates nobody has.</li><li>Specialised skills are hard to find from a CV alone, and hard to compare fairly across people.</li></ul></div>
-      <div class="ax-card talent"><span class="ax-tag"><i></i>Talent</span>
-        <ul><li>Long, repetitive application forms that ask for the CV they just uploaded.</li><li>Silence after applying. No idea whether anyone looked, or what happens next.</li><li>Specialised skills and certifications are hard to highlight to the people deciding.</li><li>Entry-level candidates compete blind: no clarity on what recruiters are actually looking for.</li></ul></div>
-    </div>
+    <!-- Oct 20 2026 6:21 PM: her word "we need to identify them with personas". The plain Recruiter/Talent pain cards became two persona cards. Names, about, goals and frustrations come from the AuxHR PRD personas (Philp Kosana, Akakuigbe Paul); frustrations reuse the old pain bullets. Old markup in files/auxhr_case/short_v4/auxhr-case.js.BEFORE -->
+    <div class="ax-personas">${PERSONAS.map(persona).join("")}</div>
 
-    <div class="ax-card" style="margin-top:22px"><span class="ax-tag"><i></i>Goal</span><p>Bridge the rift between open roles and the people who fit them.</p></div>
+    <div class="ax-goal rv"><span class="ax-goal-k">${ico("goal")}Goal</span><p>Bridge the rift between open roles and the people who fit them.</p></div>
 
     <div style="margin-top:56px">${eyebrow("Overview","The Solution")}</div>
     <h2 class="ax-h2">Set the criteria once. Let the platform run the pipeline with you.</h2>
     <p class="ax-lede">A recruiter creates a role and configures how the AI screens it. Talent applies in one click from a profile that already carries their experience. The AI scores everyone against the same bar, and both sides watch the same pipeline from their own dashboard.</p>
     <div class="ax-grid c3">
-      <div class="ax-card rec"><span class="ax-tag"><i></i>Recruiter</span><p>Every application sorted, filtered and scored on arrival. Candidate briefs instead of raw CVs.</p></div>
-      <div class="ax-card talent"><span class="ax-tag"><i></i>Talent</span><p>One profile does the applying. Roles ranked by real fit, with a status on every application.</p></div>
-      <div class="ax-card ai"><span class="ax-tag"><i></i>AI Configuration</span><p>Screening questions, weights and pass marks set per role by the hiring manager, applied to every applicant the same way.</p></div>
+      <div class="ax-card rec"><span class="ax-tag">${ico("rec")}Recruiter</span><p>Every application sorted, filtered and scored on arrival. Candidate briefs instead of raw CVs.</p></div>
+      <div class="ax-card talent"><span class="ax-tag">${ico("talent")}Talent</span><p>One profile does the applying. Roles ranked by real fit, with a status on every application.</p></div>
+      <div class="ax-card ai"><span class="ax-tag">${ico("ai")}AI Configuration</span><p>Screening questions, weights and pass marks set per role by the hiring manager, applied to every applicant the same way.</p></div>
     </div>
   </section>
 
