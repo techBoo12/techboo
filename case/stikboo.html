@@ -60,6 +60,31 @@ body[data-slug="stikboo"] .sb-cap b{font-family:"Tiny5",monospace;font-size:13px
 @media (min-width:701px){.sb-swipe{display:none}}
 .sb-ph-scr{padding-top:10%;background:#0d0a1b}
 .sb-ph-scr img{height:auto}
+
+/* Oct 20 2026 8:50 PM her ask ("not clean glass", "the mockup stuffs is razz"): clean glass frames like AuxHR. Desktop boards sit in a crisp glass browser window; phones get a slim glass edge, real dynamic island, tight soft shadow, no muddy glow. */
+#case .case-module.sb-glass{position:relative;border-radius:18px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.035);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 1px 0 rgba(0,0,0,.4),0 22px 48px -18px rgba(0,0,0,.75);line-height:0}
+#case .case-module.sb-glass > img,#case .case-module.sb-glass > div,#case .case-module.sb-glass > video{border-top:1px solid rgba(255,255,255,.07)}
+.sb-bar{position:relative;display:flex;align-items:center;gap:6px;height:30px;padding:0 13px;line-height:1;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03))}
+.sb-bar i{width:9px;height:9px;border-radius:50%;flex:none;background:#ff5f57}.sb-bar i:nth-child(2){background:#febc2e}.sb-bar i:nth-child(3){background:#28c840}
+.sb-bar span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);height:19px;width:min(34%,300px);display:flex;align-items:center;justify-content:center;padding:0 10px;border-radius:6px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.07);font:400 12px/1 Inter,system-ui,-apple-system,sans-serif;color:rgba(255,255,255,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:600px){#case .case-module.sb-glass{border-radius:12px}.sb-bar{height:20px;padding:0 8px;gap:4px}.sb-bar i{width:6px;height:6px}.sb-bar span{height:13px;width:46%;padding:0 6px;border-radius:4px;font-size:8px}}
+
+.case-module.sb-phones{background:linear-gradient(165deg,rgba(255,255,255,.06),rgba(255,255,255,.015));border:1px solid rgba(255,255,255,.13);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 22px 48px -20px rgba(0,0,0,.7)}
+.case-module.sb-phones::before{background:radial-gradient(50% 60% at 50% 45%,rgba(139,92,246,.10),transparent 72%)}
+.sb-ph{padding:5px;border-radius:46px;border:0;background:linear-gradient(155deg,#34343c 0%,#0c0c11 22%,#08080c 70%,#24242b 100%);-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:0 0 0 1px rgba(255,255,255,.24),inset 0 0 0 1px rgba(255,255,255,.07),0 26px 46px -18px rgba(0,0,0,.8),0 6px 14px rgba(0,0,0,.35)}
+.sb-ph.mid{box-shadow:0 0 0 1px rgba(255,255,255,.3),inset 0 0 0 1px rgba(255,255,255,.08),0 30px 52px -18px rgba(0,0,0,.85),0 8px 16px rgba(0,0,0,.4)}
+.sb-ph-scr{border-radius:41px}
+.sb-ph::before{content:"";position:absolute;inset:5px;border-radius:41px;z-index:3;pointer-events:none;background:linear-gradient(125deg,rgba(255,255,255,.09) 0%,rgba(255,255,255,0) 26%,rgba(255,255,255,0) 74%,rgba(255,255,255,.04) 100%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.05)}
+.sb-ph .isl{top:14px;width:31%;height:20px;background:#000;box-shadow:none;z-index:4}
+.sb-ph .isl::after{content:"";position:absolute;right:9px;top:50%;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#2b3550,#0a0d16 60%);box-shadow:0 0 0 1px rgba(255,255,255,.04)}
+.sb-ph::after{right:-2px;width:2px;border-radius:0 2px 2px 0;background:linear-gradient(180deg,rgba(255,255,255,.35),rgba(255,255,255,.12))}
+@media (max-width:700px){
+  .sb-ph{padding:4px;border-radius:40px}
+  .sb-ph-scr,.sb-ph::before{border-radius:36px}
+  .sb-ph::before{inset:4px}
+  .sb-ph .isl{top:12px;height:17px}
+  .sb-ph .isl::after{right:7px;width:6px;height:6px;margin-top:-3px}
+}
 </style>
 <link rel="icon" href="../assets/logo.jpg">
 <meta property="og:title" content="Stikboo | Adaikem Ajufo">
@@ -125,6 +150,22 @@ body[data-slug="stikboo"] .sb-cap b{font-family:"Tiny5",monospace;font-size:13px
     requestAnimationFrame(center); addEventListener("load",center);
   });
   if(window.TBLightbox) TBLightbox.bind(document.getElementById("case"));
+})();
+</script>
+<script>
+/* Oct 20 2026 8:50 PM her ask: desktop boards + mint flow inside clean glass browser windows (same bar size as every case) */
+(function(){
+  var L={"d01-landing":"stikboo \u00b7 home","d02-crew":"stikboo \u00b7 crew","d03-traits":"stikboo \u00b7 traits","d04-mint":"stikboo \u00b7 mint","stikboo_mint1":"stikboo \u00b7 mint"};
+  document.querySelectorAll("#case .case-gallery .case-module").forEach(function(fig){
+    if(fig.classList.contains("sb-phones")) return;
+    var m=fig.querySelector("img,video"); if(!m) return;
+    var src=(m.getAttribute("src")||"")+" "+(m.getAttribute("data-vsrc")||"")+" "+(m.getAttribute("poster")||"");
+    var k=Object.keys(L).filter(function(x){return src.indexOf(x)>=0;})[0]; if(!k) return;
+    fig.classList.add("sb-glass");
+    var bar=document.createElement("div"); bar.className="sb-bar"; bar.setAttribute("aria-hidden","true");
+    bar.innerHTML="<i></i><i></i><i></i><span>"+L[k]+"</span>";
+    fig.insertBefore(bar, fig.firstChild);
+  });
 })();
 </script>
 </body>
