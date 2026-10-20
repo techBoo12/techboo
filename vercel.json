@@ -11,6 +11,11 @@
       ],
       "destination": "https://adaikemajufo-techboo-portfolio.vercel.app/$1",
       "permanent": true
+    },
+    {
+      "source": "/case/e-learning-dashboard",
+      "destination": "/case/navra",
+      "permanent": true
     }
   ]
 }
