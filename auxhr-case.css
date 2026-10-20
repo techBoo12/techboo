@@ -323,3 +323,20 @@
 /* her 6:27 PM: "don't forget the size of this": Chapter and Discover-style labels get the eyebrow size too */
 .ax-page .ax-row-text .ax-k{font-size:clamp(15px,calc(13px + .45vw),19px);letter-spacing:.14em;margin-bottom:12px}
 .ax-page .ax-step b{font-size:13px;letter-spacing:.16em}
+
+/* her 6:31 PM: full landing pages auto-scroll inside the browser frame */
+.ax-swin .ax-swin-vp{position:relative;aspect-ratio:16/10;overflow:hidden;background:#fff}
+.ax-swin .ax-swin-vp img{position:absolute;left:0;top:0;width:100%;height:auto;will-change:transform}
+.ax-swin.play .ax-swin-vp img{animation:axScroll var(--dur,30s) cubic-bezier(.45,0,.55,1) infinite}
+.ax-swin:not(.play) .ax-swin-vp img{animation-play-state:paused}
+.ax-swin.manual .ax-swin-vp{overflow:auto}.ax-swin.manual .ax-swin-vp img{position:static}
+@keyframes axScroll{0%,6%{transform:translateY(0)}47%,53%{transform:translateY(calc(var(--d,0px) * -1))}94%,100%{transform:translateY(0)}}
+@media (max-width:760px){.ax-swin .ax-swin-vp{aspect-ratio:4/5}}
+
+/* her 6:32 PM: the product film is the hero visual, under title/meta and above the lede */
+.ax-page .case-hero .ax-film-hero{padding:0;margin:34px 0 30px;max-width:none;width:100%}
+.ax-page .case-hero .ax-film-hero .ax-video{margin:0}
+
+/* her 6:33 PM: persona stock photos in a circular frame with a soft brand-tint ring */
+.ax-avw .ax-av{width:74px;height:74px;border-radius:50%;object-fit:cover;border:2px solid rgba(var(--a),.85);box-shadow:0 0 0 5px rgba(var(--a),.18),0 10px 26px rgba(var(--a),.4);filter:none}
+@media (max-width:760px){.ax-avw .ax-av{width:62px;height:62px}}
