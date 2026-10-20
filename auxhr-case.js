@@ -7,7 +7,8 @@
   /* auto-scrolling browser window for a full-length page (auxhr-motion.js drives it) */
   const swin = (src, url, alt)=>`<div class="ax-win ax-swin"><div class="bar"><i></i><i></i><i></i><span>${esc(url)}</span></div><div class="ax-swin-vp"><img src="${A}${src}" alt="${esc(alt)}" loading="lazy" decoding="async" data-lb="case" data-cap="${esc(alt)}"></div></div>`;
   const phone = (src, alt)=>`<div class="ax-phone"><div class="scr"><img src="${A}${src}" alt="${esc(alt)}" loading="lazy" decoding="async" data-lb="case" data-cap="${esc(alt)}"></div></div>`;
-  const eyebrow = (n, t)=>`<div class="ax-eyebrow"><b>${n}</b><i></i>${esc(t)}</div>`;
+  /* Oct 20 2026 6:42 PM: one short eyebrow, then a real h2; no "LABEL line MONO SUBTITLE" split */
+  const eyebrow = (t)=>`<div class="ax-eyebrow"><i></i>${esc(t)}</div>`;
   /* Oct 20 2026 6:25 PM, her word: label dots become icons inside their own glass chip, across the page */
   const LI = {"rec": "<svg viewBox=\"0 0 24 24\"><rect x=\"3\" y=\"7\" width=\"18\" height=\"13\" rx=\"2.5\"/><path d=\"M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7M3 13h18\"/></svg>", "talent": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"8\" r=\"4\"/><path d=\"M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7\"/></svg>", "ai": "<svg viewBox=\"0 0 24 24\"><path d=\"M4 7h9M17 7h3M4 17h3M11 17h9\"/><circle cx=\"15\" cy=\"7\" r=\"2\"/><circle cx=\"9\" cy=\"17\" r=\"2\"/><path d=\"M19 11.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z\"/></svg>", "goal": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><circle cx=\"12\" cy=\"12\" r=\"5\"/><circle cx=\"12\" cy=\"12\" r=\"1.4\"/></svg>", "live": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z\"/></svg>", "figma": "<svg viewBox=\"0 0 24 24\"><path d=\"M12 19l7-7 2 2-7 7z\"/><path d=\"M18 13l-1.5-7.5L3 2l3.5 13.5L14 17z\"/><circle cx=\"11\" cy=\"11\" r=\"2\"/></svg>", "screen": "<svg viewBox=\"0 0 24 24\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"13\" rx=\"2\"/><path d=\"M8 21h8M12 17v4\"/></svg>"};
   const ico = (k)=>`<i class="ax-ic k-${k}" aria-hidden="true">${LI[k]||LI.screen}</i>`;
@@ -34,7 +35,7 @@
   const BRAND = window.AX_BRAND || {};
 
 
-  /* PERSONAS (Oct 20 2026). Avatars are drawn in SVG, no photos. */
+  /* PERSONAS (Oct 20 2026). Avatars: free-licence stock photos (her 6:33 PM ask), see avatar() below. */
   const PI = {"about": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"8\" r=\"4\"/><path d=\"M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7\"/></svg>", "demo": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z\"/><circle cx=\"12\" cy=\"10\" r=\"2.6\"/></svg>", "moti": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M13 2 4 14h7l-1 8 9-12h-7z\"/></svg>", "goal": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><circle cx=\"12\" cy=\"12\" r=\"5\"/><circle cx=\"12\" cy=\"12\" r=\"1.4\"/></svg>", "frus": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3 2 20h20z\"/><path d=\"M12 10v4M12 17v.5\"/></svg>"};
   const PERSONAS = [
     { cls:"rec", tag:"Recruiter", name:"Philip Kosana", role:"Tech Startup Recruiter", ini:"PK",
@@ -75,10 +76,10 @@
 
   <!-- overview: about, problem, goal, solution. Oct 20 2026: rebalanced after the short cut went too far ("why did you remove all the problems solution"); all wording trimmed from short_v1/auxhr-case.BEFORE.js -->
   <section class="ax ax-sec tight rv" id="ax-overview">
-    ${eyebrow("Overview","About The Project")}
+    ${eyebrow("About The Project")}
     <p class="ax-lede">AuxHR is SalesPlat's AI-powered talent acquisition platform. The first designs shipped fast as an MVP; using it showed us where the screens got in the way, so we redesigned the whole product around how recruiters and candidates actually move through a hiring week. I led that redesign.</p>
 
-    <div style="margin-top:56px">${eyebrow("Overview","The Problem")}</div>
+    <div style="margin-top:56px">${eyebrow("The Problem")}</div>
     <h2 class="ax-h2">Hiring breaks in both directions.</h2>
     <p class="ax-lede">The product requirements and the user research named the same pains from two sides of the table. The MVP proved the idea, but each flow was its own page, with no shared language between the recruiter side and the talent side.</p>
     <!-- Oct 20 2026 6:21 PM: her word "we need to identify them with personas". The plain Recruiter/Talent pain cards became two persona cards. Names, about, goals and frustrations come from the AuxHR PRD personas (Philp Kosana, Akakuigbe Paul); frustrations reuse the old pain bullets. Old markup in files/auxhr_case/short_v4/auxhr-case.js.BEFORE -->
@@ -86,7 +87,7 @@
 
     <div class="ax-goal rv"><span class="ax-goal-k">${ico("goal")}Goal</span><p>Bridge the rift between open roles and the people who fit them.</p></div>
 
-    <div style="margin-top:56px">${eyebrow("Overview","The Solution")}</div>
+    <div style="margin-top:56px">${eyebrow("The Solution")}</div>
     <h2 class="ax-h2">Set the criteria once. Let the platform run the pipeline with you.</h2>
     <p class="ax-lede">A recruiter creates a role and configures how the AI screens it. Talent applies in one click from a profile that already carries their experience. The AI scores everyone against the same bar, and both sides watch the same pipeline from their own dashboard.</p>
     <div class="ax-grid c3">
@@ -98,7 +99,7 @@
 
   <!-- chapter I: talent -->
   <section class="ax ax-sec rv" id="ax-talent">
-    ${eyebrow("Chapter I","Talent")}
+    ${eyebrow("Chapter I · Talent")}
     <h2 class="ax-h2">Stand out. Get matched. <em>Land the role.</em></h2>
     ${stage(win("dash_t5.webp","app.auxhr.com · talent dashboard","Talent dashboard: matched roles ranked by fit, profile strength, applications and assessments at a glance"), "Talent Dashboard", "", "talent")}
     <div class="ax-rows">
@@ -113,7 +114,7 @@
 
   <!-- chapter II: recruiter. Oct 20 2026 6:34 PM, her word "do this chapter two like chapter one the way i arranged it remove the unnecessary things": same order as chapter I (label, headline, dashboard, four feature rows, landing page); the three live cards strip is gone -->
   <section class="ax ax-sec rv" id="ax-rec">
-    ${eyebrow("Chapter II","Recruiter")}
+    ${eyebrow("Chapter II · Recruiter")}
     <h2 class="ax-h2">Hire better. <em>Move faster.</em></h2>
     ${stage(win("dash_r1.webp","app.auxhr.com · recruiter dashboard","Recruiter dashboard: open roles, applicants, shortlisted and time to hire; recent candidates with match and stage; the week's pipeline"), "Recruiter Dashboard", "", "rec")}
     <div class="ax-rows">
@@ -127,7 +128,7 @@
 
   <!-- chapter III: AI configuration. Oct 20 2026 6:36 PM, her word "same as chapter 3": mirrors chapter I (label, headline, frame, short feature rows); the long lede paragraph is gone -->
   <section class="ax ax-sec rv" id="ax-ai">
-    ${eyebrow("Chapter III","AI Configuration")}
+    ${eyebrow("Chapter III · AI Configuration")}
     <h2 class="ax-h2">Set the bar once. The AI holds <em>everyone</em> to it.</h2>
     ${stage(win("dash_r2.webp","app.auxhr.com · post a job · screening","Post a job: screening setup with skill weights, pre-screening questions and personality assessment toggles"), "Post A Job · Screening Setup", "", "")}
     <div class="ax-rows">
@@ -138,40 +139,46 @@
 
   <!-- Oct 20 2026 6:38 PM, her word "remove this part i already told you where to put recruiters and talents full landing pages": the Website section (live mock, How It Works, both Figma site cards) is gone; the full landing pages live inside chapters I and II. Old markup in files/auxhr_case/short_v4/ -->
 
-  <!-- brand -->
+  <!-- brand. Oct 20 2026 6:40-6:41 PM, her words "this could be written better and the representation of changing from support pro should be a short motion story film" + remove the three creative cards. The story is coded (auxhr-motion.js), real logo files only -->
   <section class="ax ax-sec rv" id="ax-brand">
-    ${eyebrow("Brand","From SupportPro To AuxHR")}
-    <div class="ax-brand">
-      <div class="ax-logo old light"><span class="lab">Before · SupportPro</span><img src="${A}brand_supportpro_wordmark.png" alt="SupportPro wordmark" style="max-width:78%"></div>
-      <div class="ax-arrow">→</div>
-      <div class="ax-logo new light"><span class="lab">After · AuxHR</span><img src="${A}brand_auxhr_mark.png" alt="AuxHR logo" style="max-height:120px"></div>
-    </div>
-    <div class="ax-grid c3">
-      <div class="ax-stage beige" style="padding:0;overflow:hidden;border-radius:22px;min-height:300px;display:flex;align-items:flex-end"><img src="${A}brand_supportpro_banner.webp" alt="SupportPro LinkedIn banner: Experience Business Exponential Growth with our Top Vetted Talents" loading="lazy" data-lb="case" data-cap="SupportPro, the services brand" style="display:block;width:100%"><span class="ax-cap" style="position:absolute;left:14px;top:12px;font-size:11px;padding:6px 10px">SupportPro · Services Brand</span></div>
-      <div class="ax-stage deep" style="padding:0;overflow:hidden;border-radius:22px;display:flex;justify-content:center"><img src="${A}brand_auxhr_first_post.webp" alt="First public AuxHR creative: Struggling with getting the best talents? Another job board isn't the solution, use AuxHR" loading="lazy" data-lb="case" data-cap="First AuxHR creative" style="display:block;height:300px;width:auto"><span class="ax-cap" style="position:absolute;left:14px;top:12px;font-size:11px;padding:6px 10px">AuxHR · First Public Creative</span></div>
-      <div class="ax-stage soft" style="padding:0;overflow:hidden;border-radius:22px"><img src="${A}brand_auxhr_og.webp" alt="AuxHR social card: AI-powered hiring that finds the right fit" loading="lazy" data-lb="case" data-cap="AuxHR social card" style="display:block;width:100%;height:300px;object-fit:cover"><span class="ax-cap" style="position:absolute;left:14px;top:12px;font-size:11px;padding:6px 10px">AuxHR · Social Card</span></div>
+    ${eyebrow("The Rebrand")}
+    <h2 class="ax-h2">From SupportPro to <em>AuxHR.</em></h2>
+    <p class="ax-lede">A services brand became a product. The name and mark had to say AI powered hiring.</p>
+    <div class="ax-rb" data-axr aria-label="Motion story: the SupportPro wordmark breaks apart and the AuxHR mark draws in">
+      <div class="ax-rb-card"></div>
+      <div class="ax-rb-old"><span class="rb-l">${[[0,125],[145,262],[285,406],[427,549],[562,685],[705,862],[881,1000],[1018,1215]].map((s,i)=>`<i style="--x0:${(s[0]/1400*100).toFixed(2)}%;--x1:${((1400-s[1]-1)/1400*100).toFixed(2)}%;--i:${i}"></i>`).join("")}</span><span class="rb-sw"></span></div>
+      <div class="ax-rb-new"><span class="rb-lines"></span><span class="rb-tri"></span><span class="rb-word"></span></div>
+      <span class="ax-rb-cap a">SupportPro · Services</span><span class="ax-rb-cap b">AuxHR · AI Hiring</span>
     </div>
   </section>
 
-  <!-- style guide -->
+  <!-- style guide. Oct 20 2026 6:42-6:43 PM: proper header, a real type specimen; Surfaces card and the three component cards removed -->
   <section class="ax ax-sec rv" id="ax-style">
-    ${eyebrow("Style Guide","Colour, Type, Components")}
+    ${eyebrow("Style Guide")}
+    <h2 class="ax-h2">Color, Typography, <em>Components</em></h2>
     <div class="ax-ramps">${ramps}</div>
-    <div class="ax-type">
-      <div class="ax-card ax-spec"><span class="mono">General Sans Variable</span><p class="big" style="margin-top:14px">Hire better. Move faster.<br>Build stronger teams.</p><p class="mid">Recruitment shouldn't require hours of repetitive work.</p></div>
-      <div class="ax-card"><span class="ax-tag"><i style="background:var(--ax-violet)"></i>Surfaces</span><h4>Soft, rounded, calm</h4><div style="margin-top:22px" class="ax-abc">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz</div></div>
-    </div>
-    <div class="ax-comp">
-      ${stage(`<img src="${A}live_scores.webp" alt="Score card component" loading="lazy" data-lb="case" data-cap="Score card"><span class="lab">Score Card</span>`, "", "deep")}
-      ${stage(`<img src="${A}live_jobs.webp" alt="Job list component" loading="lazy" data-lb="case" data-cap="Job list"><span class="lab">Job List</span>`, "", "beige")}
-      ${stage(`<img src="${A}live_journey.webp" alt="Candidate journey timeline component" loading="lazy" data-lb="case" data-cap="Candidate journey timeline"><span class="lab">Journey Timeline</span>`, "", "soft")}
+    <div class="ax-spec2">
+      <div class="sp-aa"><b>Aa</b><span class="sp-nm">General Sans</span><span class="sp-ab">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz 0123456789</span>
+        <div class="sp-w"><span style="font-weight:400">Regular</span><span style="font-weight:500">Medium</span><span style="font-weight:600">Semibold</span><span style="font-weight:700">Bold</span></div></div>
+      <div class="sp-scale">
+        <div class="r"><span class="t">H1 · 56px</span><p style="font-size:56px;font-weight:600;letter-spacing:-.03em">Hire better.</p></div>
+        <div class="r"><span class="t">H2 · 40px</span><p style="font-size:40px;font-weight:600;letter-spacing:-.025em">Move faster.</p></div>
+        <div class="r"><span class="t">H3 · 24px</span><p style="font-size:24px;font-weight:600">Build stronger teams</p></div>
+        <div class="r"><span class="t">Body · 16px</span><p style="font-size:16px;font-weight:400">Every applicant arrives scored against the same bar.</p></div>
+        <div class="r"><span class="t">Caption · 12px</span><p style="font-size:12px;font-weight:500;letter-spacing:.04em">Shortlisted · 2 min ago</p></div>
+      </div>
     </div>
   </section>
 
-  <!-- close -->
+  <!-- close. Oct 20 2026 6:44 PM, her words "this should be thanks for scrolling / product designer Ajufo adaikem / like that warble and hm trades ending / leave that visit auxhr" -->
   <section class="ax ax-sec rv" id="ax-close">
-    <div class="ax-close">
-      <h2 class="ax-h2">Recruiters open AuxHR to a scored shortlist, not a stack of CVs.</h2>
+    <div class="ax-thanks">
+      <div class="th-rings" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="th-react" aria-hidden="true"><span><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C1 8.6 3 5 6.6 5c2.1 0 3.6 1.2 5.4 3.2C13.8 6.2 15.3 5 17.4 5 21 5 23 8.6 21.6 11.8 19.5 16.4 12 21 12 21z"/></svg></span><span><svg viewBox="0 0 24 24"><path d="M22 3 2 11l7 3 3 7 10-18z"/><path d="M9 14l5-5"/></svg></span><span><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4z"/></svg></span></div>
+      <h2 class="th-h">Thank You For Scrolling!</h2>
+      <span class="th-by">Case Study By</span>
+      <p class="th-name">Adaikem Ajufo</p>
+      <span class="th-role">Product Designer</span>
       <a class="cta" href="https://www.auxhr.com" target="_blank" rel="noopener">Visit auxhr.com ↗</a>
     </div>
   </section>`;
