@@ -427,3 +427,10 @@
 
 /* interlude tags fit at 390 (the marquee tag clipped at 12px) */
 @media (max-width:520px){.ax-page .mq-tag,.ax-page .fn-tag,.ax-page .pm-lab{font-size:10px;padding:0 10px;gap:6px;max-width:calc(100% - 28px);overflow:hidden;text-overflow:ellipsis}}
+
+/* Oct 20 2026 7:32 PM, her words "too much space" (hero lede to About The Project). The gap was the gallery margin (56) + overview padding (40/56) + the overview's 24px reveal offset, which also left the area blank until scroll. Now about 48px at 390 and 64px at 1440, and the overview shows at once. Desktop section rhythm 84 -> 72. */
+.ax-page .case-gallery{margin-top:0}
+.ax-page #ax-overview{padding-top:64px}
+.ax-page #ax-overview.rv{opacity:1;transform:none}
+.ax-sec{padding-top:72px}
+@media (max-width:760px){.ax-sec{padding-top:56px}.ax-page #ax-overview{padding-top:46px}}
