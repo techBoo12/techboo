@@ -111,18 +111,19 @@ window.CONTENT = {
     { id: "ai-films", page: "ai-motion-designs#ai-films", eyebrow: "Directed by me, made with AI tools", title: "AI Films", cols: 2,
       intro: "Short films built from stills, AI animation and edit.",
       items: [
-        { title: "Sphinx AI promo", meta: "Editing · animation", src: "assets/cases/sphinx-ai-promo/video01.mp4", poster: "assets/cases/sphinx-ai-promo/video01_poster.jpg", ar: "16/9", href: "case/sphinx-ai-promo", cta: "Watch the promo" },   // Oct 18 4:05 PM her ask: moved to AI Films, to be upgraded
+        { title: "Sphinx AI Powered Promotional Video", src: "assets/cases/sphinx-ai-promo/video01.mp4", poster: "assets/cases/sphinx-ai-promo/poster_8.webp", preview: "assets/cases/sphinx-ai-promo/film_preview.mp4", ar: "16/9", href: "case/sphinx-ai-promo", cta: "Open The Film",
+          film: { client: "Sphinx AI", runtime: "0:35", logline: "The market never sleeps. Neither does Sphinx." } },   // Oct 18 4:05 PM her ask: moved to AI Films, to be upgraded
         { soon: true, title: "More AI films on the way", meta: "Coming soon", ar: "16/9", span: 1 }
       ] },
     { id: "motion", page: "ai-motion-designs#motion", eyebrow: "Motion design & graphics", title: "Motion Designs", cols: 2,
       intro: "Product promos, brand motion and launch animations.",
       items: [
+        { title: "Axis Robotics · September recap", outcome: "Axis Robotics Recap", meta: "Recap film · 52 s · 2026", src: "assets/media/motion_axisrecap.mp4", poster: "assets/media/motion_axisrecap.jpg", ar: "16/9",
+          caseKey: "axis", short: "Motion design for Axis Robotics recap 3D data graphics", cta: "Watch video" },   // Oct 20 2026 9:35 PM her ask: Axis first in Motion Designs (Oct 18 12:13: intro cut, intro cut, starts on the trajectories screen)
         { title: "AuxHR launch video", outcome: "AuxHR launch video", meta: "Product promo · 60 s · 2026", src: "assets/media/motion_auxhr3.mp4", poster: "assets/media/motion_auxhr3.jpg", ar: "16/9",
           brand: "AUXHR · SALESPLAT", years: "2026", dot: "#C4A0FF", role: "Motion design · Product promo", badges: ["Motion graphics", "SaaS"],
           short: "Launch Video for AuxHR, an AI powered hiring platform for talents and recruiters.", cta: "Watch video",
           desc: "Launch Video for AuxHR, an AI powered hiring platform for talents and recruiters. It walks through posting a role, AI screening and the shortlist, with the product UI in motion." },   // Oct 18 2026 11:30 AM: her ask, AuxHR video first in Motion Designs
-        { title: "Axis Robotics · September recap", outcome: "Axis Robotics Recap", meta: "Recap film · 52 s · 2026", src: "assets/media/motion_axisrecap.mp4", poster: "assets/media/motion_axisrecap.jpg", ar: "16/9",
-          caseKey: "axis", short: "Motion design for Axis Robotics recap 3D data graphics", cta: "Watch video" },   // Oct 18 12:13 her ask: second after AuxHR, intro cut, starts on the trajectories screen
         { title: "The Lore of Credit Rolls", outcome: "The Lore of Credit Rolls", meta: "Motion design · NFT · 48 s · 2026", src: "assets/media/motion_creditrolls.mp4", poster: "assets/media/motion_creditrolls.jpg", ar: "16/9",
           brand: "CREDIT ROLLS · MONAD", years: "2026", dot: "#FF8EE4", role: "Motion design · Launch video", badges: ["Motion design", "NFT"],
           short: "Launch video for an NFT product", cta: "Watch video",
@@ -184,24 +185,24 @@ window.CONTENT.tabs = [
 window.CONTENT.groups = {
   uiux: { eyebrow: "B2B B2C SAAS FINTECH & WEB3 Case Studies", title: "UI/UX Designs",
     intro: "Products I designed end to end: research, flows, UI and the details that make people trust them.",
-    cases: ["auxhr","warblelive","sofavault","hm-trades","presale-memecoin-landing","invora","navra","clique-logistics","stikboo","sign-in-page-ui","redesigned-neon-ui"],   // Oct 20 2026 9:06 PM: Navra right after Invora; Superteam removed Oct 20 9:47 PM
-    explore: { img: "assets/media/warblelive_banner.jpg", vid: "assets/media/warblelive_banner.mp4" } },
+    cases: ["auxhr","warblelive","hm-trades","sofavault","presale-memecoin-landing","invora","stikboo","clique-logistics","navra","sign-in-page-ui","redesigned-neon-ui"],   // Oct 20 2026 9:06 PM: Navra right after Invora; Superteam removed Oct 20 9:47 PM; 10:01 PM Stikboo and Navra swapped, list now matches the page order (next project follows it)
+    explore: { img: "assets/media/warblelive_banner.jpg", vid: "assets/media/warblelive_banner.mp4", cover: "assets/media/cat_uiux.webp?v=2" } },
   motion: { eyebrow: "AI films & motion design", title: "AI / Motion Designs",
     intro: "AI films, product promos, brand motion and launch animations.",
     cases: ["axis","sphinx-ai-promo"],
     featured: ["axis"],
     sections: ["motion","ai-films"],   // Oct 18 2026 11:30 AM: Motion Designs first, then AI Films
     extraItems: { "ai-films": [] },
-    explore: { img: "assets/media/ai_axis.jpg", vid: "assets/media/ai_axis.mp4" } },
+    explore: { img: "assets/media/ai_axis.jpg", vid: "assets/media/ai_axis.mp4", cover: "assets/media/cat_motion.webp?v=2", coverVid: "assets/media/cat_motion.mp4?v=2" } },
   brand: { eyebrow: "Brand & graphic design", title: "Brand Designs",
     intro: "Identities, campaigns and visuals for brands of every kind.",
     cases: ["axis-brand"],   /* Oct 20 2026 9:20 PM: Axis Robotics NG brand page (Toki removed 8:57 PM) */
     soon: { soon: true, title: "Designs for artists & robotics brands", meta: "Uploading soon", ar: "16/9" },
-    explore: { img: "" } },
+    explore: { img: "", cover: "assets/media/cat_brand.webp?v=2" } },
   video: { eyebrow: "Video editing", title: "UGC / Video Edits",
     intro: "Brand videos I shot and edited, with motion and captions.",
     sections: ["video-edits"],
-    explore: { img: "assets/media/video_spenda.jpg", vid: "assets/media/video_spenda.mp4" } }
+    explore: { img: "assets/media/video_spenda.jpg", vid: "assets/media/video_spenda.mp4", cover: "assets/media/cat_ugc.webp?v=2" } }
 };
 /* Experience: short form, from her CV (Adaikem_Resume_*.pdf / Academic CV). Nothing here is clickable. */
 window.CONTENT.experience = [
