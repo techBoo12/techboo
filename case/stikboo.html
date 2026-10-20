@@ -34,6 +34,32 @@ body[data-slug="stikboo"] .next-title{font-family:"Space Grotesk",sans-serif;fon
 body[data-slug="stikboo"] .next-title i{color:var(--sk-lime)}
 body[data-slug="stikboo"] .sb-cap b{font-family:"Tiny5",monospace;font-size:13px;letter-spacing:.12em}
 @media (max-width:600px){body[data-slug="stikboo"] .sb-cap b{font-size:12px}}
+
+/* Oct 20 2026 8:24 PM her ask: mobile screens in real phone mockups, inside a clean glass panel */
+.case-module.sb-phones{position:relative;overflow:hidden;isolation:isolate;padding:64px 28px 56px;border-radius:24px;background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.14);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+.case-module.sb-phones::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(38% 50% at 22% 30%,rgba(212,255,74,.16),transparent 70%),radial-gradient(40% 55% at 80% 72%,rgba(139,92,246,.22),transparent 70%)}
+.sb-ph-row{display:flex;justify-content:center;align-items:center;gap:clamp(20px,3.2vw,48px)}
+.sb-ph{position:relative;flex:0 0 auto;width:clamp(170px,21vw,272px);padding:9px;border-radius:46px;background:linear-gradient(145deg,rgba(255,255,255,.26),rgba(255,255,255,.06) 45%,rgba(255,255,255,.12));border:1px solid rgba(255,255,255,.28);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -1px 0 rgba(255,255,255,.08),0 34px 70px rgba(0,0,0,.6),0 0 48px rgba(212,255,74,.07)}
+.sb-ph.mid{transform:translateY(-30px);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 40px 80px rgba(0,0,0,.65),0 0 60px rgba(212,255,74,.16)}
+.sb-ph-scr{position:relative;border-radius:38px;overflow:hidden;aspect-ratio:780/1688;background:#0b0a12}
+.sb-ph-scr img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.sb-ph .isl{position:absolute;top:19px;left:50%;width:30%;height:19px;transform:translateX(-50%);background:#000;border-radius:999px;z-index:2;box-shadow:0 0 0 1px rgba(255,255,255,.06)}
+.sb-ph::after{content:"";position:absolute;right:-3px;top:22%;width:3px;height:12%;border-radius:0 3px 3px 0;background:rgba(255,255,255,.25)}
+@media (max-width:700px){
+  .case-module.sb-phones{padding:44px 0 34px;border-radius:16px}
+  .sb-ph-row{justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:34px calc(50% - 31vw) 8px;gap:18px}
+  .sb-ph-row::-webkit-scrollbar{display:none}
+  .sb-ph{width:62vw;max-width:260px;scroll-snap-align:center;border-radius:40px;padding:8px}
+  .sb-ph-scr{border-radius:33px}
+  .sb-ph .isl{top:16px;height:17px}
+  .sb-ph.mid{transform:translateY(-18px)}
+  .sb-swipe{display:block}
+}
+.sb-swipe{text-align:center;margin-top:14px;font:500 11px/1 "Space Grotesk",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.sb-swipe i{font-style:normal;color:#D4FF4A}
+@media (min-width:701px){.sb-swipe{display:none}}
+.sb-ph-scr{padding-top:10%;background:#0d0a1b}
+.sb-ph-scr img{height:auto}
 </style>
 <link rel="icon" href="../assets/logo.jpg">
 <meta property="og:title" content="Stikboo | Adaikem Ajufo">
@@ -82,6 +108,23 @@ body[data-slug="stikboo"] .sb-cap b{font-family:"Tiny5",monospace;font-size:13px
   var r=document.createElement('div'); r.className='sb-run';
   r.innerHTML='<div class="tr"><img src="../assets/cases/stikboo/strip.webp" alt=""><img src="../assets/cases/stikboo/strip.webp" alt=""></div>';
   w.appendChild(r);
+})();
+</script>
+<script>
+/* Oct 20 2026 8:24 PM her ask: the two mobile boards become three phone mockups each (screens from her mobile build), in a glass panel */
+(function(){
+  var A="../assets/cases/stikboo/";
+  var sets=[["m01-landing",["ph-l1","ph-l2","ph-l3"],"Stikboo landing on a phone"],["m02-mint",["ph-m1","ph-m2","ph-m3"],"Stikboo mint on a phone"]];
+  sets.forEach(function(st){
+    var img=document.querySelector('#case .case-gallery img[src*="'+st[0]+'"]'); if(!img) return;
+    var fig=img.closest(".case-module"); if(!fig) return;
+    fig.classList.add("sb-phones");
+    fig.innerHTML='<div class="sb-ph-row">'+st[1].map(function(n,i){return '<div class="sb-ph'+(i===1?' mid':'')+'"><i class="isl"></i><div class="sb-ph-scr"><img src="'+A+n+'.webp" width="780" height="1688" alt="'+st[2]+' '+(i+1)+'" loading="lazy" decoding="async" data-lb="case" data-cap="'+st[2]+'"></div></div>';}).join("")+'</div><div class="sb-swipe">Swipe <i>\u2192</i></div>';
+    var row=fig.querySelector(".sb-ph-row");
+    var center=function(){ if(row.scrollWidth>row.clientWidth+4){ var mid=row.children[1]; row.scrollLeft=mid.offsetLeft-(row.clientWidth-mid.offsetWidth)/2; } };
+    requestAnimationFrame(center); addEventListener("load",center);
+  });
+  if(window.TBLightbox) TBLightbox.bind(document.getElementById("case"));
 })();
 </script>
 </body>
