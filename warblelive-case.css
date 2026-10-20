@@ -245,3 +245,22 @@ body.wrb2-page{background:#000}
   .wrb2-ring .v,.wrb2-bars i,.wlp-sold .bar i{transition:none!important}
   .cs2-ty.on .wrb2-stub,.wrb2 .cs2-cards.three,.wrb2-pane,.wlp-pop span{animation:none!important}
 }
+
+/* Oct 20 2026 10:35 PM fix: no ticket design anywhere; plain branded ending; one modest phone on mobile */
+.cs2-ty.wrb2-plain .cs2-ty-h{font-family:'Cabin',sans-serif}
+.cs2-ty.wrb2-plain .cs2-ty-h span{color:#FF2AF9}
+.wrb2-bye{display:flex;flex-direction:column;align-items:center;gap:16px;margin:26px auto 0;max-width:460px;text-align:center}
+.wrb2-bye img{width:44px;height:44px;display:block;filter:drop-shadow(0 0 18px rgba(255,42,249,.45))}
+.wrb2-bye p{margin:0;font:400 16px/1.55 'Cabin',sans-serif;color:rgba(255,255,255,.74)}
+.cs2-ty.on .wrb2-bye{animation:wrb2bye .8s cubic-bezier(.2,.8,.2,1) both}
+@keyframes wrb2bye{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@media (max-width:600px){
+  /* one phone only, at a modest size: Discovery keeps its phone, Event Detail and Checkout read as copy */
+  .wrb2 #wrb2-det .cs2-phones,.wrb2 #wrb2-buy .cs2-phones{display:none}
+  .wrb2 #wrb2-buy .wrb2-copy .cs2-p:last-of-type{display:none}
+  .wrb2 #wrb2-det,.wrb2 #wrb2-buy{padding-top:28px;padding-bottom:28px}
+  .wrb2 .cs2-phones{overflow:visible;margin:0;padding:8px 0 20px;justify-content:center;scroll-snap-type:none}
+  .wrb2 #wrb2-disc .cs2-phone{--pw:300px;zoom:.66}
+  .wrb2-bye p{font-size:15px}
+}
+@media (prefers-reduced-motion:reduce){.cs2-ty.on .wrb2-bye{animation:none!important}}
