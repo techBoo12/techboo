@@ -140,7 +140,7 @@
     uiux(){
       const g = G.uiux;
       const W3 = ["hm-trades","stikboo","chainai","presale-memecoin-landing","redesigned-neon-ui"];
-      const PRI=["auxhr","warblelive","hm-trades","sofavault","stikboo"];   /* Oct 19 2026: AuxHR first, before WarbleLive (her ask) */ const OR=k=>{const p=PRI.indexOf(k); return p>=0?p:10+g.cases.indexOf(k);};
+      const PRI=["auxhr","warblelive","hm-trades","sofavault","stikboo","invora"];   /* Oct 20 2026: Invora right after Stikboo */   /* Oct 19 2026: AuxHR first, before WarbleLive (her ask) */ const OR=k=>{const p=PRI.indexOf(k); return p>=0?p:10+g.cases.indexOf(k);};
       const colA = g.cases.filter(k=>!W3.includes(k)), colB = g.cases.filter(k=>W3.includes(k));
       main.innerHTML = `<section class="tb-page">${pageHead(g)}<div class="cards tb-cards tb-split"><div class="tb-col">${colA.map(k=>`<div class="tb-cw" style="--o:${OR(k)}">${TB.workCards([k])}</div>`).join("")}</div><div class="tb-col">${colB.map(k=>`<div class="tb-cw" style="--o:${OR(k)}">${TB.workCards([k])}</div>`).join("")}</div></div></section>${footSmall()}`;
       document.title = `${g.title} | ${B.name}`;
