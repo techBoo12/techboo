@@ -87,7 +87,7 @@
   const RENDER = {
     about(){
       const H = C.hero, A = C.about, E = C.experience, L = C.loop;
-      const tiles = ["uiux","motion","brand","video"].map(id=>{
+      const tiles = ["uiux","motion","video","brand"].map(id=>{
         const g = G[id], t = tabById(id);
         const n = id==="uiux" ? g.cases.length+" case studies"
                 : id==="motion" ? "AI films · motion design"
