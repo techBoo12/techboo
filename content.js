@@ -47,7 +47,7 @@ window.CONTENT = {
         dot: "#4266ff",
         outcome: "AuxHR: AI-powered hiring for recruiters and talent",
         role: "Associate Design Lead · Product, UX & UI",
-        desc: "AuxHR is SalesPlat's AI-powered hiring platform. Recruiters set the screening criteria once and every applicant arrives scored; talent builds one profile, gets matched to roles that fit and sees where every application stands. I led the redesign from the MVP to the product that is live today: both sides, the AI configuration flow, the marketing site and the design system.",   // Oct 19 2026: case study build (case/auxhr.html, auxhr-case.js). Live features only, no metrics (her ask)
+        desc: "Recruiters set the screening criteria once and every applicant arrives scored. Talent builds one profile, gets matched to roles that fit and sees where every application stands.",   // Oct 19 2026: case study build (case/auxhr.html, auxhr-case.js). Live features only, no metrics (her ask)
         media: { type: "image", src: "assets/cases/auxhr/cover.webp", alt: "AuxHR recruiter dashboard" },
         badges: ["Lead", "SaaS", "AI hiring"],
         tags: ["SaaS", "B2B + B2C", "AI", "Web app", "Lead"],
