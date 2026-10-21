@@ -121,13 +121,13 @@ window.CONTENT = {
       items: [
         { title: "Axis Robotics · September recap", outcome: "Axis Robotics Recap", meta: "Recap film · 52 s · 2026", src: "assets/media/motion_axisrecap.mp4", poster: "assets/media/motion_axisrecap.jpg", ar: "16/9",
           caseKey: "axis", short: "Motion design for Axis Robotics recap 3D data graphics", cta: "Watch video" },   // Oct 20 2026 9:35 PM her ask: Axis first in Motion Designs (Oct 18 12:13: intro cut, intro cut, starts on the trajectories screen)
-        { title: "$HEX Launch Film", outcome: "$HEX Launch Film", meta: "Launch film · 22 s · 2026", src: "assets/media/motion_hex.mp4", poster: "assets/media/motion_hex.jpg", ar: "16/9",
-          brand: "$HEX", years: "2026", dot: "#FF7A1A", role: "Motion design · Launch film", badges: ["Motion design", "Meme coin"],
-          short: "Launch film for $HEX, a fictional meme coin. Charts pump and dump around Hex the witch cat; she stays unbothered and keeps holding.", cta: "Watch video", href: "case/hex-memecoin" },   // Oct 20 2026 10:52 PM: $HEX launch film, 2nd after the Axis recap
         { title: "AuxHR launch video", outcome: "AuxHR launch video", meta: "Product promo · 60 s · 2026", src: "assets/media/motion_auxhr3.mp4", poster: "assets/media/motion_auxhr3.jpg", ar: "16/9",
           brand: "AUXHR · SALESPLAT", years: "2026", dot: "#C4A0FF", role: "Motion design · Product promo", badges: ["Motion graphics", "SaaS"],
           short: "Launch Video for AuxHR, an AI powered hiring platform for talents and recruiters.", cta: "Watch video",
           desc: "Launch Video for AuxHR, an AI powered hiring platform for talents and recruiters. It walks through posting a role, AI screening and the shortlist, with the product UI in motion." },   // Oct 18 2026 11:30 AM: her ask, AuxHR video first in Motion Designs
+        { title: "$HEX Launch Film", outcome: "$HEX Launch Film", meta: "Launch film · 22 s · 2026", src: "assets/media/motion_hex.mp4", poster: "assets/media/motion_hex.jpg", ar: "16/9",
+          brand: "$HEX", years: "2026", dot: "#FF7A1A", role: "Motion design · Launch film", badges: ["Motion design", "Meme coin"],
+          short: "Launch film for $HEX, a fictional meme coin. Charts pump and dump around Hex the witch cat; she stays unbothered and keeps holding.", cta: "Watch video", href: "case/hex-memecoin" },   // Oct 20 2026 10:52 PM: $HEX launch film, 2nd after the Axis recap
         { title: "The Lore of Credit Rolls", outcome: "The Lore of Credit Rolls", meta: "Motion design · NFT · 48 s · 2026", src: "assets/media/motion_creditrolls.mp4", poster: "assets/media/motion_creditrolls.jpg", ar: "16/9",
           brand: "CREDIT ROLLS · MONAD", years: "2026", dot: "#FF8EE4", role: "Motion design · Launch video", badges: ["Motion design", "NFT"],
           short: "Launch video for an NFT product", cta: "Watch video",
