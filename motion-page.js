@@ -72,7 +72,7 @@
           <div class="card-side">
             <p class="desc">${esc(p.short || p.meta)}</p>
             <button class="card-cta mp-watch" type="button" data-open="${idx(p)}">${esc(p.cta)} <i>→</i></button>
-            ${p.href?`<a class="mp-case" href="${p.href}">View case study <i>↗</i></a>`:""}
+            ${p.href?`<a class="mp-case" href="${p.href}">${p.caseLabel||"View case study"} <i>↗</i></a>`:""}
           </div>
         </div>
       </article>`;
@@ -181,7 +181,7 @@
             <p class="mp-lb-t"></p>
             <p class="mp-lb-m"></p>
             <p class="mp-lb-d"></p>
-            <a class="mp-case mp-lb-a" href="#">View case study <i>↗</i></a>
+            <a class="mp-case mp-lb-a" href="#">${p.caseLabel||"View case study"} <i>↗</i></a>
             <a class="mp-case mp-lb-ext" href="#" target="_blank" rel="noopener"><span></span> <i>↗</i></a>
           </div>
           <div class="mp-lb-th" aria-label="All pieces"></div>
