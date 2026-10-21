@@ -29,7 +29,7 @@
         out.push({ sec: s.id, title: it.title, meta: it.meta||"", src: it.src, poster: it.poster||"", ar: it.ar||"16/9",
           href: it.href||"", brand: pick("brand")||"", years: pick("years")||"", dot: pick("dot")||"var(--lilac)",
           outcome: it.outcome || k.outcome || it.title, role: pick("role")||"", badges: pick("badges")||[],
-          short: it.short||"", desc: it.desc || k.desc || "", cta: it.cta || "Watch", link: it.link||"", linkLabel: it.linkLabel||"" });
+          short: it.short||"", desc: it.desc || k.desc || "", cta: it.cta || "Watch", link: it.link||"", linkLabel: it.linkLabel||"", caseLabel: it.caseLabel||"" });
       });
     });
     return out;
@@ -222,7 +222,7 @@
       el.querySelector(".mp-lb-t").textContent = p.title;
       el.querySelector(".mp-lb-m").textContent = [...new Set([p.meta, p.role].join(" · ").split(" · ").map(s=>s.trim()).filter(Boolean))].join(" · ");
       const d = el.querySelector(".mp-lb-d"); d.textContent = p.desc || p.short || ""; d.hidden = !d.textContent;
-      const a = el.querySelector(".mp-lb-a"); if(p.href){ a.href = p.href; a.hidden = false; } else { a.hidden = true; a.removeAttribute("href"); }
+      const a = el.querySelector(".mp-lb-a"); if(p.href){ a.href = p.href; a.hidden = false; if(a.firstChild && a.firstChild.nodeType===3) a.firstChild.textContent = (p.caseLabel||"View case study")+" "; } else { a.hidden = true; a.removeAttribute("href"); }
       const xl = el.querySelector(".mp-lb-ext"); if(p.link){ xl.href = p.link; xl.querySelector("span").textContent = p.linkLabel || "Visit website"; xl.hidden = false; } else { xl.hidden = true; xl.removeAttribute("href"); }
       el.querySelectorAll(".mp-lb-th button").forEach((b,k)=>{ b.classList.toggle("on", k===i); if(k===i) b.setAttribute("aria-current","true"); else b.removeAttribute("aria-current"); });
       const th = el.querySelector(".mp-lb-th"), on = th.querySelector("button.on"); if(on) th.scrollLeft = on.offsetLeft - th.clientWidth/2 + on.clientWidth/2;
