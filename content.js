@@ -192,7 +192,7 @@ window.CONTENT.groups = {
   uiux: { eyebrow: "B2B B2C SAAS FINTECH & WEB3 Case Studies", title: "UI/UX Designs",
     intro: "Products I designed end to end: research, flows, UI and the details that make people trust them.",
     cases: ["auxhr","warblelive","hm-trades","sofavault","hex-memecoin","invora","stikboo","clique-logistics","navra","sign-in-page-ui","redesigned-neon-ui"],   // Oct 20 2026 9:06 PM: Navra right after Invora; Superteam removed Oct 20 9:47 PM; 10:01 PM Stikboo and Navra swapped, list now matches the page order (next project follows it)
-    explore: { img: "assets/media/warblelive_banner.jpg", vid: "assets/media/warblelive_banner.mp4", cover: "assets/media/cat_uiux.webp?v=2" } },
+    explore: { img: "assets/media/warblelive_banner.jpg", vid: "assets/media/warblelive_banner.mp4", cover: "assets/media/cat_uiux.webp?v=3", coverVid: "assets/media/cat_uiux.mp4?v=3" } },   // Oct 21 2026 3:06 AM her ask: UI/UX tile animated like AI / Motion
   motion: { eyebrow: "AI films & motion design", title: "AI / Motion Designs",
     intro: "AI films, product promos, brand motion and launch animations.",
     cases: ["axis","sphinx-ai-promo"],
@@ -208,7 +208,7 @@ window.CONTENT.groups = {
   video: { eyebrow: "Video editing", title: "UGC / Video Edits",
     intro: "Brand videos I shot and edited, with motion and captions.",
     sections: ["video-edits"],
-    explore: { img: "assets/media/video_spenda.jpg", vid: "assets/media/video_spenda.mp4", cover: "assets/media/cat_ugc.webp?v=2" } }
+    explore: { img: "assets/media/video_spenda.jpg", vid: "assets/media/video_spenda.mp4", cover: "assets/media/cat_ugc.webp?v=3", coverVid: "assets/media/cat_ugc.mp4?v=3" } }   // Oct 21 2026 3:06 AM her ask: UGC tile animated, colours fixed (Rec.709 limited)
 };
 /* Experience: short form, from her CV (Adaikem_Resume_*.pdf / Academic CV). Nothing here is clickable. */
 window.CONTENT.experience = [
