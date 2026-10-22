@@ -183,3 +183,78 @@ body.hm2-page{background:#000}
   .hm2-cr .ok::before,.hm2-cr .no::before{display:block;margin:0 0 6px}
 }
 @media (prefers-reduced-motion:reduce){.hm2-done{opacity:1;transform:none}.hm2-done-ok svg{stroke-dashoffset:0}.hm2-cmp .hm2-cr{opacity:1;transform:none}.hmp-msg{opacity:1;transform:none}.hm2-spark path{stroke-dashoffset:0}}
+
+/* ===== v3 adjust (Oct 21 2026, her words: "hm trades needs adjustment not brought to life"): layout only.
+   Same look, sections, screens and motion. Desktop: every section on the site grid (1240 column, 1480 from 1600px;
+   x=100..1340 at 1440), bands edge-to-edge on that column with 56px inner padding, 12-col splits, one vertical
+   rhythm (120 between sections, 72 tight), screens sized to fill their columns, equal-height card rows.
+   Mobile: 20px edges, 72px rhythm, phones large and stacked (no side-scroll crop), no overflow. ===== */
+body.hm2-page .hm2{--g:24px;--sec:120px;--sec-s:72px;--pp:56px}
+body.hm2-page .hm2>section,body.hm2-page .hm2>.cs2-int{margin-top:var(--sec)}
+body.hm2-page .hm2>section.hm2-prob{margin-top:var(--sec-s)}
+body.hm2-page .hm2>section.hm2-hero{margin-top:56px}
+body.hm2-page .hm2>.cs2-int.hm2-tick{margin-top:var(--g)}
+body.hm2-page .hm2 .cs2-sec{max-width:none;margin-left:0;margin-right:0;padding:0}
+body.hm2-page .hm2 .cs2-band{margin-left:0;margin-right:0}
+body.hm2-page .hm2 .cs2-band>.cs2-sec{padding:96px var(--pp)}
+body.hm2-page .hm2 .cs2-cards{align-items:stretch}
+body.hm2-page .hm2 .hm2-show>div:has(> .cs2-phone){display:flex!important;justify-content:center;align-items:center}
+/* original boards: shown whole instead of cropped at 420px */
+body.hm2-page .hm2 .cs2-orig figure{max-height:none}
+body.hm2-page .cs2-ty{margin:var(--sec,120px) 0 48px;width:100%;box-sizing:border-box}
+/* tabbed phone (wallet): the pane wrapper had no height, so the bottom nav floated mid-screen over the coin list */
+body.hm2-page .hm2 .cs2-scr>[data-pane]{height:calc(100% - 38px)}
+body.hm2-page .hm2 .cs2-scr>[data-pane]>.hmp{height:100%}
+
+@media (min-width:1024px){
+  body.hm2-page .hm2 .cs2-phone{--pw:320px}
+  /* hero: 6 / 6 on the band's inner grid, no forced 860px height */
+  body.hm2-page .hm2 .hm2-hero{min-height:0}
+  body.hm2-page .hm2 .hm2-hero .cs2-sec{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--g);padding:88px var(--pp)}
+  body.hm2-page .hm2 .hm2-hero .cs2-sec>:first-child{grid-column:1/span 6}
+  body.hm2-page .hm2 .hm2-hero .cs2-sec>.hm2-stage{grid-column:7/span 6}
+  body.hm2-page .hm2 .hm2-stage .cs2-phone{--pw:330px}
+  /* 12-col splits */
+  body.hm2-page .hm2 .cs2-grid2{column-gap:var(--g);align-items:start}
+  body.hm2-page .hm2 .cs2-cards{gap:var(--g)}
+  body.hm2-page .hm2 .hm2-show{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--g);margin-top:0;align-items:center}
+  body.hm2-page .hm2 .hm2-show>div:not(:has(> .cs2-phone)){grid-column:span 6}
+  body.hm2-page .hm2 .hm2-show>div:has(> .cs2-phone){grid-column:span 6}
+  body.hm2-page .hm2 .hm2-flow{margin-top:48px}
+  body.hm2-page .hm2 .hm2-pane{padding:40px var(--pp);gap:40px}
+  body.hm2-page .hm2 .cs2-phones{gap:96px}
+  body.hm2-page .hm2 .hm2-sty{grid-template-columns:calc((100% - 11*var(--g))/12*7 + 6*var(--g)) minmax(0,1fr);gap:var(--g);margin-top:48px}
+  body.hm2-page .hm2 .hm2-sw{gap:var(--g)}
+  body.hm2-page .hm2 .hm2-cmp,body.hm2-page .hm2 .cs2-cards,body.hm2-page .hm2 .hm2-proc{margin-top:48px}
+  body.hm2-page .hm2 .cs2-orig{gap:var(--g);margin-top:56px}
+}
+@media (min-width:1600px){
+  body.hm2-page .hm2 .cs2-phone{--pw:350px}
+  body.hm2-page .hm2 .hm2-stage .cs2-phone{--pw:360px}
+}
+@media (max-width:900px){
+  body.hm2-page .hm2{--sec:72px;--sec-s:48px;--pp:20px}
+  body.hm2-page .hm2>section.hm2-hero{margin-top:32px}
+  body.hm2-page .hm2>.cs2-int.hm2-tick{margin-top:16px}
+  body.hm2-page .hm2 .cs2-band>.cs2-sec{padding:56px var(--pp)}
+  body.hm2-page .hm2 .hm2-hero{min-height:0}
+  body.hm2-page .hm2 .hm2-hero .cs2-sec{gap:24px}
+  body.hm2-page .hm2 .hm2-show{gap:32px;margin-top:0}
+  body.hm2-page .hm2 .hm2-show>div:has(> .cs2-phone){order:2}
+  body.hm2-page .hm2 .cs2-phones{flex-direction:column;align-items:center;overflow:visible;margin:36px 0 0!important;padding:0;gap:32px}
+  body.hm2-page .hm2 .cs2-phones .cs2-phone:nth-child(2){margin-top:0}
+  body.hm2-page .hm2 .cs2-h2{font-size:clamp(30px,8.4vw,40px)}
+  body.hm2-page .hm2 .cs2-p{font-size:16px}
+  body.hm2-page .hm2 .hm2-flow,body.hm2-page .hm2 .hm2-proc,body.hm2-page .hm2 .hm2-cmp,body.hm2-page .hm2 .hm2-sty,body.hm2-page .hm2 .cs2-orig{margin-top:32px}
+  body.hm2-page .cs2-ty{margin-top:72px}
+}
+@media (max-width:600px){
+  body.hm2-page .hm2 .cs2-band{margin-left:0;margin-right:0}
+  body.hm2-page .hm2 .cs2-phone{--pw:min(290px,100%)}
+  body.hm2-page .hm2 .hm2-stage{padding:60px 0 8px}
+  body.hm2-page .hm2 .hm2-float.a{top:0;left:0}
+  body.hm2-page .hm2 .hm2-stage .cs2-phone{--pw:min(280px,100%)}
+  body.hm2-page .hm2 .cs2-orig{gap:16px}
+  body.hm2-page .hm2 .hm2-proc .cs2-tabs{flex-wrap:nowrap;justify-content:space-between;padding:4px;gap:2px;max-width:100%}
+  body.hm2-page .hm2 .hm2-proc .cs2-tab{padding:9px 8px;font-size:12.5px}
+}
