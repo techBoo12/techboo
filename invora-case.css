@@ -471,3 +471,104 @@ body.iv-page{overflow-x:clip}
 .iv-win .bar i{width:9px;height:9px;border-radius:50%;flex:none}
 .iv-win .bar span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);margin:0;height:19px;width:min(34%,300px);max-width:none;flex:none;display:flex;align-items:center;justify-content:center;padding:0 10px;border-radius:6px;font:400 12px/1 Inter,system-ui,-apple-system,sans-serif;letter-spacing:0;color:#8A8F99;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 @media (max-width:600px){.iv-win .bar{height:20px;padding:0 8px;gap:4px}.iv-win .bar i{width:6px;height:6px}.iv-win .bar span{height:13px;width:46%;padding:0 6px;border-radius:4px;font-size:8px}}
+
+
+/* ===== TIGHTEN (Oct 21 2026, her words: "invora too are we eating all these space"). One rhythm: 120px between sections, 72px tight (desktop); 64px / 40px on mobile. Brief = 7/5 split with the Create, Send, Paid loop on the right. Screens = 3/9 split (sticky caption left, window right). Interludes = caption column + stage, sized to content. ===== */
+.iv-page .case-gallery{margin-top:56px}
+.iv-page .iv-sec{padding-top:120px}
+.iv-page .iv-sec.tight{padding-top:72px}
+.iv-page .iv-chase{margin-top:120px}
+.iv-page .iv-inter{margin-top:72px;min-height:0}
+.iv-page .iv-h2{margin-bottom:40px}
+.iv-page #iv-users{padding-top:120px}
+.iv-page .iv-eyebrow{margin-bottom:18px}
+
+/* brief */
+.iv-brief{display:flex;flex-direction:column}
+.iv-brief > .iv-flow{order:-1}
+.iv-brief-copy > #iv-intro{padding-top:72px}
+.iv-brief-copy > #iv-intro .iv-h2{margin-bottom:0}
+.iv-brief-copy > #iv-overview{padding-top:40px}
+.iv-brief-copy > #iv-problem{padding-top:40px}
+
+@media (min-width:1024px){
+  .iv-brief{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:stretch}
+  .iv-brief-copy{grid-column:1 / span 7;display:flex;flex-direction:column;justify-content:center}
+  .iv-brief > .iv-flow{order:0;grid-column:8 / -1;height:auto!important;min-height:460px;align-self:stretch}
+  .iv-brief-copy > #iv-intro{padding-top:0}
+  .iv-brief-copy > #iv-intro .iv-h2{font-size:clamp(42px,4.1vw,64px);text-wrap:balance}
+  .iv-brief-copy > #iv-overview,.iv-brief-copy > #iv-problem{padding-top:44px}
+  .iv-brief .iv-lede{max-width:none;font-size:clamp(19px,1.7vw,24px)}
+  .iv-brief .iv-flow-track{width:calc(100% - 230px)}
+  .iv-brief .iv-flow-line,.iv-brief .iv-flow-node{bottom:34%}
+  .iv-brief .iv-flow-card{bottom:calc(34% + 40px)}
+
+  /* chase sized to the column, not the screen */
+  .iv-page .iv-chase-pin{height:560px!important}
+
+  /* personas: equal-height cards */
+  .iv-page .iv-personas{align-items:stretch;gap:24px}
+
+  /* goal: label column + statement across the rest of the grid */
+  .iv-page .iv-card.goal{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:center;padding:48px 56px}
+  .iv-page .iv-card.goal .iv-lbl{grid-column:1 / span 3}
+  .iv-page .iv-card.goal p.big{grid-column:4 / -1;margin:0;font-size:clamp(30px,3.1vw,46px);line-height:1.1}
+
+  /* screens: caption left (3 cols, sticky), window right (9 cols) */
+  .iv-page .iv-screen{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:start;margin-top:72px}
+  .iv-page .iv-screen:first-of-type,.iv-page .iv-h2 + .iv-screen{margin-top:0}
+  .iv-page .iv-screen-text{grid-column:1 / span 3;display:flex;flex-direction:column;align-items:flex-start;gap:0;margin:0;max-width:none;position:sticky;top:calc(var(--iv-hdr,0px) + 32px);padding-top:8px}
+  .iv-page .iv-screen-text .iv-n{margin-bottom:14px}
+  .iv-page .iv-screen-text h3{font-size:clamp(24px,2.1vw,30px);align-self:auto}
+  .iv-page .iv-screen-text p{margin-top:12px;font-size:16px;line-height:1.55}
+  .iv-page .iv-screen > .iv-win{grid-column:4 / -1}
+
+  /* interludes: caption column (4) + stage (8), height = content */
+  .iv-page .iv-inter{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:center;justify-items:center;padding:48px 56px}
+  .iv-page .iv-inter-cap{position:relative;left:auto;top:auto;grid-column:1 / span 4;justify-self:start;gap:10px}
+  .iv-page .iv-inter-cap span{font-size:12px}
+  .iv-page .iv-inter-cap b{font-size:clamp(40px,4vw,60px);line-height:1;letter-spacing:-.05em}
+  .iv-page .iv-inter > :not(.iv-inter-cap){grid-column:5 / -1}
+  .iv-page .iv-fx-stage{width:460px;height:460px;max-width:100%}
+  .iv-page .iv-fx-stage .iv-flip{transform:scale(.9)}
+  .iv-page .iv-stamp-stage{padding:44px 0 8px;transform:none}
+  .iv-page .iv-ping{right:-70px;top:12px}
+  .iv-page .iv-link-stage{max-width:none;width:100%;padding:24px 0 8px;gap:16px;grid-template-columns:1fr minmax(120px,.8fr) 1fr}
+  .iv-page .iv-link-src .iv-inv{width:260px}
+
+  /* close */
+  .iv-page .iv-ty{padding:72px 56px 56px}
+}
+
+/* tablet: interlude captions sit above the stage instead of over it */
+@media (min-width:601px) and (max-width:1023px){
+  .iv-page .iv-inter{flex-direction:column;padding:32px 32px 40px}
+  .iv-page .iv-inter-cap{position:relative;left:auto;top:auto;align-self:flex-start;margin-bottom:8px}
+  .iv-page .iv-link-stage{padding:24px 0 8px}
+  .iv-page .iv-stamp-stage{padding:48px 0 8px}
+  .iv-page .iv-flow-track{width:calc(100% - 220px)}
+}
+
+/* mobile rhythm + compact interludes */
+@media (max-width:600px){
+  .iv-page .case-gallery{margin-top:24px}
+  .iv-page .iv-sec{padding-top:64px}
+  .iv-page .iv-sec.tight{padding-top:40px}
+  .iv-page .iv-chase{margin-top:64px}
+  .iv-page .iv-inter{margin-top:40px;flex-direction:column;padding:20px 16px 28px}
+  .iv-page .iv-h2{margin-bottom:28px}
+  .iv-page #iv-users{padding-top:64px}
+  .iv-brief-copy > #iv-intro{padding-top:40px}
+  .iv-brief-copy > #iv-overview,.iv-brief-copy > #iv-problem{padding-top:32px}
+  .iv-page .iv-screen{margin-top:40px}
+  .iv-page .iv-h2 + .iv-screen{margin-top:0}
+  .iv-page .iv-inter-cap{position:relative;left:auto;top:auto;align-self:flex-start;margin-bottom:4px}
+  .iv-page #iv-fx{padding-left:0;padding-right:0}
+  .iv-page #iv-fx .iv-inter-cap{margin-left:16px}
+  .iv-page .iv-fx-stage{margin:18px 0 6px;width:310px;height:310px}
+  .iv-page .iv-stamp-stage{padding:52px 0 0;transform:scale(.92);margin:-6px 0 -10px}
+  .iv-page .iv-ping{right:-6px;top:6px}
+  .iv-page .iv-link-stage{padding:12px 0 0}
+  .iv-page .iv-chase-pin{height:520px!important}
+  .iv-page .iv-ty{padding:48px 18px 40px}
+}
