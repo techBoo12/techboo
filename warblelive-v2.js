@@ -83,6 +83,8 @@
       if(typeof s==="object") return `<span class="wl2-dec">${chip(s.q,"q")}<span class="wl2-br"><span class="wl2-br-row"><em>Yes</em>${s.yes.map(x=>chip(x)).join(arrow)}</span><span class="wl2-br-row no"><em>No</em>${s.no.map(x=>chip(x)).join(arrow)}</span></span></span>`;
       return chip(s);
     }).join(arrow)}</div>`;
+  /* phones open the user chapters on the Mobile screens (they fit the screen); desktop and tablet keep Desktop first */
+  const DEV0 = matchMedia("(max-width: 720px)").matches ? "mob" : "desk";
   const userBlock = (role)=>{
     const att = role==="att", P = att ? T.p1 : T.p2;
     const D = att ? DATA.D_ATT : DATA.D_ORG, M = att ? DATA.M_ATT : DATA.M_ORG, FL = att ? DATA.FLOW_ATT : DATA.FLOW_ORG;
@@ -94,9 +96,9 @@
         <p class="wl2-user-who"><img src="${L}${P.img.replace("live/","")}" alt="" width="28" height="28">Designed for ${esc(P.name.split(" ")[0])}, ${esc(P.occ.toLowerCase())}, ${esc(P.loc)}</p></div>
       </div>
       <div class="wl2-card wl2-flowcard"><span class="wl2-tag"><i></i>${att?"Attendee":"Organizer"} Userflow</span>${flow(FL)}</div>
-      <div class="wl2-ctrls">${seg("device-"+role,[["desk","Desktop"],["mob","Mobile"]],"desk")}<span class="wl2-ctrl-note">${att?D.length:D.length} desktop screens · ${M.length} mobile screens</span></div>
-      <div class="wl2-dev" data-dev="desk">${dpane(D, role)}</div>
-      <div class="wl2-dev" data-dev="mob" hidden>${mpane(M, role)}</div>
+      <div class="wl2-ctrls">${seg("device-"+role,[["desk","Desktop"],["mob","Mobile"]],DEV0)}<span class="wl2-ctrl-note">${att?D.length:D.length} desktop screens · ${M.length} mobile screens</span></div>
+      <div class="wl2-dev" data-dev="desk"${DEV0==="desk"?"":" hidden"}>${dpane(D, role)}</div>
+      <div class="wl2-dev" data-dev="mob"${DEV0==="mob"?"":" hidden"}>${mpane(M, role)}</div>
     </section>`;
   };
   const flowIntro = `<section class="wl2-sec wl2-split rv">${head("Two Users","One Platform, Two Kinds Of Users",T.flow)}
