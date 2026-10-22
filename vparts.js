@@ -11,6 +11,7 @@ window.VPARTS = {
  "assets/media/motion_bolapsd_v2.mp4": 6,
  "assets/media/motion_auxhr3.mp4": 30,
  "assets/media/motion_biztriach.mp4": 18,
+ "assets/media/motion_navra.mp4": 11,
  "assets/media/motion_axisrecap.mp4": 6,
  "assets/media/motion_creditrolls.mp4": 29,
  "assets/media/motion_spenda_v2.mp4": 4,
@@ -36,6 +37,7 @@ window.VPARTS = {
 window.VPREV = {
  "assets/media/motion_auxhr3.mp4": "assets/media/prev/motion_auxhr3.mp4",
  "assets/media/motion_biztriach.mp4": "assets/media/prev/motion_biztriach.mp4",
+ "assets/media/motion_navra.mp4": "assets/media/prev/motion_navra.mp4",
  "assets/media/motion_creditrolls.mp4": "assets/media/prev/motion_creditrolls.mp4",
  "assets/media/motion_axisrecap.mp4": "assets/media/prev/motion_axisrecap.mp4",
  "assets/media/motion_bolapsd_v2.mp4": "assets/media/prev/motion_bolapsd_v2.mp4",
