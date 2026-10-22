@@ -243,3 +243,115 @@
   .wl2-bn-f img{border-radius:10px}
   .wl2-bn figcaption{margin-top:9px}
 }
+
+
+/* ===== Mobile pass (Oct 21 2026, her words: "WarbleLive, the mobile is not looking good at all, please do it properly").
+   Everything below sits inside max-width queries, so the >=1024px desktop layout is untouched. ===== */
+@media (max-width:900px){
+  /* personas: two side-by-side cards were cramped at tablet widths, stack them */
+  .wl2-grid.c2.wl2-personas{grid-template-columns:1fr}
+  .wl2-personas .wl2-lists{grid-template-columns:1fr 1fr}
+}
+@media (max-width:720px){
+  /* one vertical rhythm: every section starts 64px below the last, the two user chapters included */
+  .wl2-sec,.wl2-user{padding-top:64px}
+  .wl2-eyebrow{margin-bottom:14px}
+  .wl2-h2{font-size:28px;line-height:1.12;margin-bottom:14px}
+  .wl2-lede{font-size:16px;line-height:1.6}
+  .wl2-grid,.wl2-brand,.wl2-pal,.wl2-steps,.wl2-emp{margin-top:28px}
+  .wl2-grid{gap:14px}
+  /* readable type: nothing under 15px for body copy */
+  .wl2-card{padding:20px;border-radius:18px}
+  .wl2-card h4{font-size:18px}
+  .wl2-card p,.wl2-steps p,.wl2 li,.wl2-bio,.wl2-note,.wl2-p-top dd{font-size:15px!important}
+  .wl2 li:before{top:10px}
+  .wl2-tag{font-size:11px;margin-bottom:12px}
+
+  /* hero: bigger phone, cleaner stage */
+  .wl2-hero{padding:32px 18px 0}
+  .wl2-hero-h{font-size:27px;line-height:1.15}
+  .wl2-hero-p{font-size:15px}
+  .wl2-hero-stage{margin-top:26px}
+  .wl2-hero-phone{width:31%;right:-2%;bottom:-4%}
+
+  /* process: one readable row per step instead of a cramped 2x2 + orphan */
+  .wl2-steps{grid-template-columns:1fr;gap:12px}
+  .wl2-steps li:last-child{grid-column:auto}
+  .wl2-steps li:before{display:none}
+  .wl2-steps li.wl2-card{display:grid;grid-template-columns:auto 1fr;column-gap:12px;align-items:center;padding:18px 20px 20px}
+  .wl2-steps .wl2-num{margin:0;font-size:26px;line-height:1}
+  .wl2-steps h4{margin:0}
+  .wl2-steps p{grid-column:1/-1;margin-top:10px}
+
+  /* personas */
+  .wl2-persona{gap:16px}
+  .wl2-p-top{align-items:center;gap:14px}
+  .wl2-p-top img{width:76px;height:76px}
+  .wl2-p-top h4{font-size:20px;margin-bottom:6px}
+  .wl2-p-top dl{gap:6px 12px}
+  .wl2-persona blockquote{font-size:15.5px;padding:14px 16px}
+  .wl2-personas .wl2-lists{grid-template-columns:1fr;gap:18px}
+
+  /* empathy map */
+  .wl2-emp{gap:14px}
+
+  /* two-user spine: clear chapter heads */
+  .wl2-jump{gap:12px;margin-top:26px}
+  .wl2-jump a.wl2-card{padding:18px 16px}
+  .wl2-jump span:last-child{font-size:14.5px;line-height:1.45}
+  .wl2-user-head{gap:14px;margin-bottom:24px;align-items:flex-start}
+  .wl2-unum{font-size:56px}
+  .wl2-user-head .wl2-h2{margin-bottom:10px}
+  .wl2-user-who{font-size:15px;align-items:flex-start;line-height:1.4}
+  .wl2-user-who img{margin-top:-3px}
+
+  /* userflow: a vertical flowchart, no arrows dangling off the end of wrapped lines */
+  .wl2-flowcard{padding:20px 16px 22px}
+  .wl2-flowcard>.wl2-tag{display:flex;justify-content:center;margin-bottom:18px}
+  .wl2-flow{flex-direction:column;flex-wrap:nowrap;align-items:center;gap:0}
+  .wl2-chip{font-size:13.5px;padding:7px 14px;white-space:normal;text-align:center;justify-content:center;max-width:100%;line-height:1.25}
+  .wl2-arw{width:1px;height:12px;margin:2px 0;background:rgba(255,255,255,.4)}
+  .wl2-arw:after{right:auto;left:-3px;top:auto;bottom:-1px;border:3.5px solid transparent;border-top:5px solid rgba(255,255,255,.6);border-bottom:0}
+  .wl2-fork{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:6px;max-width:100%}
+  .wl2-dec{flex-direction:column;align-items:stretch;gap:12px;width:100%}
+  .wl2-dec>.wl2-chip{align-self:center}
+  .wl2-br{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0;border:0}
+  .wl2-br-row{flex-direction:column;flex-wrap:nowrap;align-items:center;gap:0;padding:12px 8px;border-radius:14px;border:1px solid rgba(125,255,176,.35);background:rgba(125,255,176,.04)}
+  .wl2-br-row.no{border-color:rgba(255,143,163,.35);background:rgba(255,143,163,.04)}
+  .wl2-br-row em{margin:0 0 10px}
+  .wl2-br-row .wl2-chip{font-size:12.5px;padding:7px 10px;width:100%}
+
+  /* screens: phones big and swipeable with a peek of the next one */
+  .wl2-ctrls{margin:26px 0 18px;gap:10px}
+  .wl2-track{grid-auto-columns:100%;column-gap:16px;padding:6px 50px 8px;scroll-padding-inline:50px}
+  .wl2-slide{scroll-snap-align:center}
+  .wl2-slide .wl2-phone{max-width:none}
+  .wl2-slide figcaption{font-size:14px}
+  .wl2-nav{margin-top:14px}
+  .wl2-arr{width:42px;height:42px}
+  .wl2-thumbs{grid-auto-columns:44%}
+  .wl2-th{font-size:13.5px}
+
+  /* branding */
+  .wl2-brand{gap:14px}
+  .wl2-card.wl2-logo{padding:0}
+  .wl2-logo img{height:auto;aspect-ratio:auto}
+  .wl2-mark{font-size:24px;padding-top:20px}
+
+  /* type + colour */
+  .wl2-aa{font-size:80px}
+  .wl2-sws,.wl2-sws.a{gap:14px}
+
+  /* layout grid: two phones filling the column */
+  .wl2-gridshow{gap:14px;margin-top:28px}
+  .wl2-gridshow figure{width:calc(50% - 7px)}
+  .wl2-gridshow figcaption{font-size:14px}
+
+  /* banners */
+  .wl2-bns{margin-top:28px}
+  .wl2-bn figcaption{font-size:14px}
+
+  /* ending */
+  .wl2-end{margin-top:72px}
+  .wl2-end h2{font-size:40px}
+}
