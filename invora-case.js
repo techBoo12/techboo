@@ -104,6 +104,22 @@
 
   const html = `
 
+  <!-- BRIEF (Oct 21 2026 tighten): title, about and problem on the left, the Create, Send, Paid loop on the right (desktop 7/5 split; stacked on mobile with the loop first) -->
+  <div class="iv-brief" id="iv-brief">
+  <div class="iv-brief-copy">
+  <section class="iv iv-sec tight rv" id="iv-intro">
+    <h2 class="iv-h2 iv-intro-h">Invoicing That <em>Gets You Paid</em></h2>
+  </section>
+  <!-- overview: about, problem, personas, goal -->
+  <section class="iv iv-sec tight rv" id="iv-overview">
+    ${eyebrow("","About The Project")}
+    <p class="iv-lede">Invora is an invoicing and payments tool for freelancers and small agencies. Create an invoice, send a link, get paid, see who still owes you.</p>
+  </section>
+  <section class="iv iv-sec rv" id="iv-problem">
+    ${eyebrow("","The Problem")}
+    <p class="iv-lede soft">Freelancers chase payments across WhatsApp, bank alerts and spreadsheets. Invoices get made in Word or Canva, nobody knows who has paid and who is late, and clients abroad get confused about currency.</p>
+  </section>
+  </div>
   <!-- OPENING MOTION (her Oct 20 8:04 PM correction): one invoice rides Create, Send, Paid on a loop; a faint status marquee runs behind -->
   <section class="iv-flow" id="iv-flow" aria-label="Create an invoice, send a link, get paid">
     <div class="iv-flow-mq" aria-hidden="true"><div class="iv-flow-mq-in">${[0,1].map(()=>["Draft","Sent","Viewed","Paid","Reminder Sent","Paid In NGN","Paid In USD","Paid"].map(s=>`<span>${s}</span><i></i>`).join("")).join("")}</div></div>
@@ -122,18 +138,8 @@
       </div>
     </div>
   </section>
-  <section class="iv iv-sec tight rv" id="iv-intro">
-    <h2 class="iv-h2 iv-intro-h">Invoicing That <em>Gets You Paid</em></h2>
-  </section>
-  <!-- overview: about, problem, personas, goal -->
-  <section class="iv iv-sec tight rv" id="iv-overview">
-    ${eyebrow("","About The Project")}
-    <p class="iv-lede">Invora is an invoicing and payments tool for freelancers and small agencies. Create an invoice, send a link, get paid, see who still owes you.</p>
-  </section>
-  <section class="iv iv-sec rv" id="iv-problem">
-    ${eyebrow("","The Problem")}
-    <p class="iv-lede soft">Freelancers chase payments across WhatsApp, bank alerts and spreadsheets. Invoices get made in Word or Canva, nobody knows who has paid and who is late, and clients abroad get confused about currency.</p>
-  </section>
+  </div>
+
   <!-- INTERLUDE 1: the chase. Autoplay (her Oct 20 8:05 PM correction: "let it move itself"): fragments drift on their own, pull together into one invoice, then scatter again. Sits before Personas. -->
   <section class="iv-chase" id="iv-chase" aria-label="From scattered messages to one invoice">
     <div class="iv-chase-pin">
