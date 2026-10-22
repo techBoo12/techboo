@@ -126,6 +126,9 @@ window.CONTENT = {
         { title: "Biztriach", outcome: "Biztriach", meta: "Product promo · 33 s · 2026", src: "assets/media/motion_biztriach.mp4", poster: "assets/media/motion_biztriach.jpg", ar: "16/9",
           brand: "BIZTRIACH · SALESPLAT", years: "2026", dot: "#FF6B57", role: "Motion design · Product promo", badges: ["Motion graphics", "SaaS"],
           short: "Product promo for Biztriach, an AI agent that answers your customers on WhatsApp and your website.", cta: "Watch video" },   // Oct 22 2026 8:08 AM her ask: Biztriach video named "Biztriach", 2nd in Motion Designs right after AuxHR
+        { title: "Navra", outcome: "Navra", meta: "Fintech motion · 18 s · 2026", src: "assets/media/motion_navra.mp4", poster: "assets/media/motion_navra.jpg", ar: "16/9",
+          brand: "NAVRA", years: "2026", dot: "#B9A6FF", role: "Motion design · Product promo", badges: ["Motion graphics", "Fintech"],
+          short: "Fintech Dashboard Motion I Designed for Navra, Built From Its Real Screens in Navra Purple.", cta: "Watch video", href: "case/navra", caseLabel: "View the project" },   // Oct 22 2026 8:37 PM her ask: "put navra in my portfolio" (v4: Good Morning, techBoo / TB), 3rd right after Biztriach
         { title: "Axis Robotics · September recap", outcome: "Axis Robotics Recap", meta: "Recap film · 52 s · 2026", src: "assets/media/motion_axisrecap.mp4", poster: "assets/media/motion_axisrecap.jpg", ar: "16/9",
           caseKey: "axis", short: "Motion design for Axis Robotics recap 3D data graphics", cta: "Watch video" },   // Oct 21 2026 4:42 PM: Axis recap now 2nd, after the AuxHR launch video (was first since Oct 20 9:35 PM) (Oct 18 12:13: intro cut, intro cut, starts on the trajectories screen)
         { title: "$HEX Launch Film", outcome: "$HEX Launch Film", meta: "Launch film · 22 s · 2026", src: "assets/media/motion_hex.mp4", poster: "assets/media/motion_hex.jpg", ar: "16/9",
