@@ -71,7 +71,7 @@
   <!-- Oct 20 2026 6:22 PM: hero dashboard visual removed on her word ("remove the recruiter dashboard in the beginning"); About The Project now opens the page. Old markup in files/auxhr_case/short_v4/auxhr-case.js.BEFORE -->
   <!-- film. Oct 20 2026 6:32 PM, her word "this should be in a better place maybe at the top before AI powered": moved into the hero (see the move below the render), no eyebrow -->
   <section class="ax ax-sec ax-film-hero" id="ax-film">
-    <div class="ax-video"><video data-vsrc="../assets/media/motion_auxhr3.mp4" poster="../assets/media/motion_auxhr3.jpg" controls playsinline preload="none" data-noauto="1" width="1920" height="1080"></video></div>
+    <div class="ax-video"><!-- Oct 21 2026 4:50 PM her words "why is this not playing": the hero film now plays muted on a loop by itself (auxhr-motion.js, section 0): light 8 s loop at once, full film swapped in when its 30 parts land; controls stay for sound --><video data-axfilm="../assets/media/motion_auxhr3.mp4" data-axprev="../assets/media/prev/motion_auxhr3.mp4" poster="../assets/media/motion_auxhr3.jpg" controls muted autoplay loop playsinline preload="auto" width="1920" height="1080"></video></div>
   </section>
 
   <!-- overview: about, problem, goal, solution. Oct 20 2026: rebalanced after the short cut went too far ("why did you remove all the problems solution"); all wording trimmed from short_v1/auxhr-case.BEFORE.js -->
