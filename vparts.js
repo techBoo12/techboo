@@ -10,6 +10,7 @@ window.VPARTS = {
  "assets/media/ai_axis.mp4": 5,
  "assets/media/motion_bolapsd_v2.mp4": 6,
  "assets/media/motion_auxhr3.mp4": 30,
+ "assets/media/motion_biztriach.mp4": 18,
  "assets/media/motion_axisrecap.mp4": 6,
  "assets/media/motion_creditrolls.mp4": 29,
  "assets/media/motion_spenda_v2.mp4": 4,
@@ -34,6 +35,7 @@ window.VPARTS = {
 /* Oct 20 2026 9:19 PM her ask ("in desktop view for the motion design section, the videos don't play before they click it"): the biggest motion files are 25 MB in 30 parts, so a card stayed on its poster until every part had downloaded. Muted card previews now play a light 8 s clip (assets/media/prev/) right away; the click / lightbox still plays the full film. */
 window.VPREV = {
  "assets/media/motion_auxhr3.mp4": "assets/media/prev/motion_auxhr3.mp4",
+ "assets/media/motion_biztriach.mp4": "assets/media/prev/motion_biztriach.mp4",
  "assets/media/motion_creditrolls.mp4": "assets/media/prev/motion_creditrolls.mp4",
  "assets/media/motion_axisrecap.mp4": "assets/media/prev/motion_axisrecap.mp4",
  "assets/media/motion_bolapsd_v2.mp4": "assets/media/prev/motion_bolapsd_v2.mp4",
