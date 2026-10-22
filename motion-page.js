@@ -181,7 +181,7 @@
             <p class="mp-lb-t"></p>
             <p class="mp-lb-m"></p>
             <p class="mp-lb-d"></p>
-            <a class="mp-case mp-lb-a" href="#">${p.caseLabel||"View case study"} <i>↗</i></a>
+            <a class="mp-case mp-lb-a" href="#">View case study <i>↗</i></a>
             <a class="mp-case mp-lb-ext" href="#" target="_blank" rel="noopener"><span></span> <i>↗</i></a>
           </div>
           <div class="mp-lb-th" aria-label="All pieces"></div>
