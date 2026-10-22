@@ -1,0 +1,77 @@
+/* desktop-grid.css (Oct 21 2026): her words "the desktop view is rubbish / zero alignment".
+   ONE grid for desktop, loaded last on every page. Layout only: no copy, colours, content or order changes.
+   Everything sits inside min-width:1024px, so the phone layout (390) is untouched.
+   Grid: content column = 1240px (1480px from 1600px, her Oct 19 ask), side gutter 100px, 12 columns, 24px gutters.
+   Every heading, text block, image and panel starts and ends on that column's two edges. */
+@media (min-width:1024px){
+  :root{--wrap:1240px;--gut:var(--pad,100px);--col-gap:24px;--sec:120px;--sec-s:72px;--panel-pad:56px}
+
+  /* ---------- section heads: the "01 / 02" number hangs in the gutter so every title starts on the grid line ---------- */
+  .tb-sub{position:relative;gap:0}
+  .tb-sub-n{position:absolute;right:calc(100% + 18px);top:28px;min-width:0;text-align:right}
+
+  /* ---------- project cards (UI/UX, Motion, Brand tabs): one inner rhythm, text on the media's edge ---------- */
+  .tb-page .card,.tb-site .cards .card{padding:20px 20px 28px;gap:28px;border-radius:28px}
+  .tb-page .card .card-body{padding:0 4px;column-gap:var(--col-gap);gap:var(--col-gap)}
+  .tb-page .card .card-media{border-radius:14px}
+  body[data-tab="uiux"] .tb-split .card{padding:20px 20px 28px;gap:24px;border-radius:28px}
+  body[data-tab="uiux"] .tb-split .card-body{padding:0 4px;gap:14px}
+  body[data-tab="uiux"] .tb-page .cards.tb-split{gap:var(--col-gap);row-gap:var(--col-gap)}
+  /* the full-width "coming soon" tile ends on the grid's right edge like every other row */
+  .tb-page .vgrid.tb-solo,.tb-page .vgrid.cols-1{max-width:none}
+
+  /* ---------- generic case pages (case.js): header is a 12-col split, no dead right half (her Navra photo, Oct 21).
+     Title + intro on columns 1-7, project facts (Role, Tags, Website) stacked on columns 9-12, cover full width under it. ---------- */
+  .case-hero{max-width:none;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--col-gap);align-items:start}
+  .case-hero>.back,.case-hero>.brand-row{grid-column:1/-1}
+  .case-hero>.case-title{grid-column:1/span 7;grid-row:3;margin-bottom:0;max-width:none}
+  .case-hero>.case-meta{grid-column:9/-1;grid-row:3/span 2;align-self:start;display:flex;flex-direction:column;gap:0;padding:0;border-bottom:0;margin-top:14px}
+  .case-hero>.case-meta>div{flex:none;padding:18px 0;border-bottom:1px solid var(--line);gap:10px}
+  .case-hero>.case-meta>div.cm-full{grid-column:auto}
+  .case-hero>.case-meta .cm-web .pill{margin-top:2px}
+  .case-hero>.case-text{grid-column:1/span 7;grid-row:4;margin-top:36px;max-width:none}
+  .case-cover{padding:20px;border-radius:28px}
+  .case-gallery{gap:var(--col-gap);margin-top:var(--col-gap)}
+  /* brand tab: the "coming soon" tile spans the column but stays a banner, not a second hero */
+  .tb-page .vgrid.cols-1 .vtile.soon .vmedia{aspect-ratio:1240/360!important}
+}
+@media (min-width:1600px){
+  :root{--wrap:1480px}
+}
+
+/* ---------- Axis Robotics NG brand page: sections share the hero frame's edges (x=100..1340 at 1440) ---------- */
+@media (min-width:1024px){
+  body.axb .axb-nav{padding-left:max(var(--gut,100px),calc(50% - var(--wrap)/2));padding-right:max(var(--gut,100px),calc(50% - var(--wrap)/2))}
+  body.axb .axb-hero{padding-left:100px;padding-right:100px}
+  body.axb .axb-hero-frame{max-width:var(--wrap)}
+  body.axb .axb-sec,body.axb .axb-sec--wide{max-width:calc(var(--wrap) + 200px);padding-left:100px;padding-right:100px}
+  body.axb .axb-sec-head{position:relative;display:block}
+  body.axb .axb-sec-head .axb-num{position:absolute;right:calc(100% + 18px);top:0;padding-top:14px}
+  body.axb .axb-sec-head p{margin-top:10px}
+}
+/* ---------- $HEX page: same 1240 column as the rest of the site (was 1180) ---------- */
+@media (min-width:1024px){
+  body.hx .hx-wrap{width:min(var(--wrap),100% - 200px)}
+  body.hx .hx-nav{padding-left:max(100px,calc(50% - var(--wrap)/2));padding-right:max(100px,calc(50% - var(--wrap)/2))}
+}
+/* ---------- small per-page edge fixes ---------- */
+@media (min-width:1024px){
+  body[data-slug="stikboo"] .sb-cap{padding-left:0;padding-right:0}
+  body[data-slug="navra"] .nv-mk-2,body[data-slug="navra"] .nv-mk-grid,body[data-slug="navra"] .nv-mk-ld,body[data-slug="navra"] .nv-psg{column-gap:var(--col-gap)}
+}
+
+/* WarbleLive: the generic list bullet was landing on the corner of each process card */
+@media (min-width:1024px){ body[data-slug="warblelive"] .wl2-steps li:before{display:none} }
+
+/* UGC / Video Edits (her Oct 21 4:45 PM ask "double double"): 2 per row, equal-height tiles */
+@media (min-width:1024px){
+  .tb-page .vgrid.tb-vgrid.cols-2{column-gap:var(--col-gap);row-gap:40px;align-items:stretch}
+  .tb-page .vgrid.tb-vgrid.cols-2>.vtile{height:100%}
+}
+@media (min-width:1024px){ .tb-page .vgrid.tb-vgrid .vtile figcaption{flex-direction:column;align-items:flex-start;gap:6px} }
+
+/* Sphinx AI film page: own sf-* columns were fixed at 1240 (340..1580 at 1920) and the film stage at 1400; put both on the site wrap */
+@media (min-width:1024px){
+  .sf-hero,.sf-sec{max-width:var(--wrap)}
+  .sf-stage{max-width:var(--wrap);padding:0;box-sizing:content-box}
+}
