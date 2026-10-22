@@ -1,3 +1,4 @@
+/* Oct 22 2026 9:05 PM: card counter now counts within its own section (Motion Designs read "03 / 10" with 9 cards, the AI film was counted too). */
 /* AI / Motion Designs page, v7 (Oct 18 2026). Her asks, WhatsApp 11:27 to 11:33 AM:
    "let's do other sections side by side: AI/motion design"; pills Motion Designs first then AI Films, purple glass, the active
    one follows the scroll or the tap; AuxHR launch video first; every piece as a card like the Axis one (brand • year, title,
@@ -59,7 +60,7 @@
       <article class="card mp-card${big?" big":""}">
         <button class="card-media mp-media" type="button" data-open="${idx(p)}" aria-label="${esc(p.cta)}: ${esc(p.title)}, full screen with sound">
           ${media(p)}${pb(p)}
-          <span class="mp-num mono">${pad(idx(p)+1)} / ${pad(P.length)}</span>
+          <span class="mp-num mono">${pad(P.filter(q=>q.sec===p.sec).indexOf(p)+1)} / ${pad(count(p.sec))}</span>
           <span class="mp-len mono">${esc((p.meta.match(/\d+\s?s\b/)||[""])[0])}</span>
         </button>
         <div class="card-body">
