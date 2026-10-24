@@ -37,14 +37,14 @@
   const role = (k.badges&&k.badges.length?k.badges:["Editing","Animation","Motion Graphics"]);
   const D = (C.nav&&C.nav.first ? C.nav.first+" "+C.nav.last : "Adaikem Ajufo");
 
-  const credits = [["A Film For", "Sphinx AI"], ["Editing", D], ["Animation", D], ["Motion Graphics", D], ["Made With", "AI Tools"], ["Year", k.years||"2026"], ["Runtime", "0:35"]];
+  const credits = [["A Film For", "Sphinx AI"], ["Editing", D], ["Animation", D], ["Motion Graphics", D], ["Made With", "AI Tools"], ["Runtime", "0:35"]];
 
   document.getElementById("case").innerHTML = `
     <section class="sf-hero">
       <div class="sf-glow" aria-hidden="true"></div>
       <div class="sf-in">
         <a class="sf-back" href="${back[0]}"><span aria-hidden="true">←</span> ${back[1]}</a>
-        <p class="sf-eye mono"><i aria-hidden="true"></i>AI Film <b>·</b> Sphinx AI <b>·</b> ${esc(k.years||"2026")}</p>
+        <p class="sf-eye mono"><i aria-hidden="true"></i>AI Film <b>·</b> Sphinx AI</p>
         <h1 class="sf-title">${esc(k.title||"Sphinx AI Powered Promotional Video")}</h1>
         <p class="sf-log">Every market on earth has always been controlled by the few. This film introduces Sphinx: a new kind of market, with 24/7 commodity trading that is fast, reliable and decentralized.</p>
       </div>
@@ -69,7 +69,6 @@
       <div class="sf-facts">
         <dl>
           <div><dt>Client</dt><dd>Sphinx AI</dd></div>
-          <div><dt>Year</dt><dd>${esc(k.years||"2026")}</dd></div>
           <div><dt>Runtime</dt><dd>0:35</dd></div>
           <div><dt>Format</dt><dd>16:9 · With Sound</dd></div>
         </dl>
@@ -111,7 +110,7 @@
         <a class="sf-btn ghost" href="${back[0]}"><span aria-hidden="true">←</span> Back To Projects</a>
       </div>
     </section>
-    <footer class="sf-foot"><p>${esc((C.footer&&C.footer.rights)||"All Rights Reserved © techBoo 2026")}</p></footer>`;
+    <footer class="sf-foot"><p>${esc((C.footer&&C.footer.rights)||"All Rights Reserved © techBoo")}</p></footer>`;
 
   /* ---------- player ---------- */
   const $ = (id)=>document.getElementById(id);
