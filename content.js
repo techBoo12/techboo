@@ -112,9 +112,10 @@ window.CONTENT = {
     { id: "ai-films", page: "ai-motion-designs#ai-films", eyebrow: "Directed by me, made with AI tools", title: "AI Films", cols: 2,
       intro: "Short films built from stills, AI animation and edit.",
       items: [
-        { title: "Sphinx AI Powered Promotional Video", src: "assets/cases/sphinx-ai-promo/video01.mp4", poster: "assets/cases/sphinx-ai-promo/poster_8.webp", preview: "assets/cases/sphinx-ai-promo/film_preview.mp4", ar: "16/9", href: "case/sphinx-ai-promo", cta: "Open The Film",
-          film: { client: "Sphinx AI", runtime: "0:35", logline: "The market never sleeps. Neither does Sphinx." } },   // Oct 18 4:05 PM her ask: moved to AI Films, to be upgraded
-        { soon: true, title: "More AI films on the way", meta: "Coming soon", ar: "16/9", span: 1 }
+        { title: "That's AI: A Short Film", src: "assets/cases/paris-ai-film/film.mp4", poster: "assets/cases/paris-ai-film/poster.webp", preview: "assets/cases/paris-ai-film/film_preview.mp4", ar: "16/9", cta: "Play The Film",
+          brand: "TECHBOO", years: "2026", dot: "#C4A0FF", badges: ["AI Film", "Direction", "Edit"],
+          desc: "A one-minute AI short film, directed and edited by me. A girl leaves her Paris apartment, skates across the city and lands a trick in the park, and the people watching start asking if any of it is real.",
+          film: { client: "Personal project", runtime: "1:00", logline: "A girl skates across Paris. The people watching can’t tell if it’s real." } },   // Oct 24 2026 6:06 PM her ask: the AI film we did this month under AI Films; 6:07 PM "remove the existing AI film there it's stale" (Sphinx card removed, case page kept; 'More AI films on the way' tile dropped so the one film reads full width)
       ] },
     { id: "motion", page: "ai-motion-designs#motion", eyebrow: "Motion design & graphics", title: "Motion Designs", cols: 2,
       intro: "Product promos, brand motion and launch animations.",
@@ -154,6 +155,7 @@ window.CONTENT = {
       intro: "Talking-head brand stories, shot by me and edited with motion.",
       items: [
         { title: "Spenda 2.0 Product Launch", meta: "Video edit for @myspenda · 72 s · 2026", src: "assets/media/video_spenda.mp4", poster: "assets/media/video_spenda.jpg", ar: "16/9", span: 1 },   // Oct 21 2026 4:45 PM her title
+        { title: "Jesse Pinkman: A Breaking Bad Edit", meta: "Fan edit · 50 s · 2026", src: "assets/media/video_jesse.mp4", poster: "assets/media/video_jesse.webp", ar: "16/9", span: 1 },   // Oct 24 2026 6:06 PM her ask: second, after Spenda 2.0
         { title: "Robotics Education", meta: "Education video · 110 s · 2026", src: "assets/media/video_robo.mp4", poster: "assets/media/video_robo.webp", ar: "16/9", span: 1 },   // Oct 21 2026 4:45 PM her title "Robotics Education". Oct 20 2026 9:35 PM her ask: all her X videos (x.com/techboo_/status/2092877786230751346)
         { title: "Short Campaign Movie", meta: "A Day In The Life Of An Axis Robotics Contributor · 45 s · 2026", src: "assets/media/video_movie.mp4", poster: "assets/media/video_movie.webp", ar: "16/9", span: 1 },   // x.com/techboo_/status/2101950614364135643 (item 1 of 2)
         { title: "Toki Finance Campaign Video", meta: "Explainer for @tokifinance · 124 s · 2025", src: "assets/media/video_toki.mp4", poster: "assets/media/video_toki.webp", ar: "16/9", span: 1 }   // x.com/techboo_/status/2002997764381368520, last per her ask; 1080p web cut of the 4K original
@@ -201,7 +203,7 @@ window.CONTENT.groups = {
     explore: { img: "assets/media/warblelive_banner.jpg", vid: "assets/media/warblelive_banner.mp4", cover: "assets/media/cat_uiux.webp?v=3", coverVid: "assets/media/cat_uiux.mp4?v=3" } },   // Oct 21 2026 3:06 AM her ask: UI/UX tile animated like AI / Motion
   motion: { eyebrow: "AI films & motion design", title: "AI / Motion Designs",
     intro: "AI films, product promos, brand motion and launch animations.",
-    cases: ["axis","sphinx-ai-promo"],
+    cases: ["axis"],   // Oct 24 2026: sphinx-ai-promo unlinked from AI Films on her word "remove the existing AI film there it's stale" (case files kept)
     featured: ["axis"],
     sections: ["motion","ai-films"],   // Oct 18 2026 11:30 AM: Motion Designs first, then AI Films
     extraItems: { "ai-films": [] },
