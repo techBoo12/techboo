@@ -27,7 +27,7 @@
   /* the invoice card used by several interludes (sample data from her Create Invoice + Payment Page screens) */
   const invoice = (opt={})=>`<div class="iv-inv ${opt.cls||""}">
       <div class="iv-inv-top">${mark}<div><b>Studio Nine</b><small>Design Agency · Lagos</small></div></div>
-      <div class="iv-inv-meta"><span>${esc(opt.no||"INV-2042")}</span><span>Due ${esc(opt.due||"Nov 3, 2026")}</span></div>
+      <div class="iv-inv-meta"><span>${esc(opt.no||"INV-2042")}</span><span>Due ${esc(opt.due||"Nov 3")}</span></div>
       <div class="iv-inv-amt"><div><small>Amount Due</small><b>${opt.amt||"₦2,633,750"}</b></div>${opt.status||pill("y","Awaiting Payment")}</div>
       <div class="iv-inv-lines">${(opt.lines||[["Brand identity refresh","₦1,500,000"],["Logo system and guidelines","₦650,000"],["Stationery and templates","₦300,000"]]).map(([a,b])=>`<div><span>${esc(a)}</span><span>${esc(b)}</span></div>`).join("")}</div>
       <div class="iv-inv-btn">${esc(opt.btn||"Pay Now")}</div>
@@ -35,7 +35,7 @@
 
   /* phone with a code-built mobile version of her Client Payment Page */
   const phonePay = `<div class="iv-phone"><div class="iv-phone-in">
-      <div class="iv-pp-top">${mark}<div><b>Studio Nine</b><small>INV-2042 · Due Nov 3, 2026</small></div></div>
+      <div class="iv-pp-top">${mark}<div><b>Studio Nine</b><small>INV-2042 · Due Nov 3</small></div></div>
       <div class="iv-pp-amt"><small>Amount Due</small><b>₦2,633,750</b><span>Billed to Lumen Digital Ltd</span></div>
       <div class="iv-pp-k">Choose How You Want To Pay</div>
       <div class="iv-pp-opt on"><i></i><div><b>Debit Or Credit Card</b><small>Visa, Mastercard, Verve</small></div></div>
@@ -183,7 +183,7 @@
       <div class="iv-orbit"><span class="o1">₦</span><span class="o2">$</span><span class="o3">NGN</span><span class="o4">USD</span></div>
       <div class="iv-flip"><div class="iv-flip-in">
         <div class="face fr">${invoice({})}</div>
-        <div class="face bk">${invoice({no:"INV-2033",due:"Sep 15, 2026",amt:"$1,400",lines:[["Menu redesign","$1,400"]],status:pill("g","Paid"),btn:"Paid"}).replace("Studio Nine</b><small>Design Agency · Lagos","Studio Nine</b><small>Billed to Kobo Foods")}</div>
+        <div class="face bk">${invoice({no:"INV-2033",due:"Sep 15",amt:"$1,400",lines:[["Menu redesign","$1,400"]],status:pill("g","Paid"),btn:"Paid"}).replace("Studio Nine</b><small>Design Agency · Lagos","Studio Nine</b><small>Billed to Kobo Foods")}</div>
       </div></div>
     </div>
   </section>
@@ -197,7 +197,7 @@
     <div class="iv-inter-cap"><span>Pending To</span><b>Paid</b></div>
     <div class="iv-stamp-stage">
       <div class="iv-ping">${pill("y","Reminder Sent")}</div>
-      ${invoice({cls:"stampable",no:"INV-2041",due:"Oct 24, 2026",amt:"₦920,000",lines:[["Pitch deck design","₦920,000"]],status:`<span class="iv-st">${pill("y","Pending")}${pill("g","Paid")}</span>`,btn:"Pay Now"}).replace("Studio Nine</b><small>Design Agency · Lagos","Studio Nine</b><small>Billed to Lumen Digital")}
+      ${invoice({cls:"stampable",no:"INV-2041",due:"Oct 24",amt:"₦920,000",lines:[["Pitch deck design","₦920,000"]],status:`<span class="iv-st">${pill("y","Pending")}${pill("g","Paid")}</span>`,btn:"Pay Now"}).replace("Studio Nine</b><small>Design Agency · Lagos","Studio Nine</b><small>Billed to Lumen Digital")}
       <div class="iv-stamp" aria-hidden="true"><span>Paid</span></div>
     </div>
   </section>
