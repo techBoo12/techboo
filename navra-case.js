@@ -108,7 +108,7 @@
       <div class="nv-kpi"><div class="nv-kpi-top"><span class="nv-kpi-ic exp">${svg("wallet",16)}</span><span>Top Category</span></div><b>Payroll</b><small>43.7% of spend</small></div>
     </div>
     <div class="nv-row2 an">
-      <section class="nv-panel"><header><div><h4>Income By Month</h4><small>Nov 2025 to Oct 2026</small></div></header><div class="nv-bars" data-chart="bars"></div></section>
+      <section class="nv-panel"><header><div><h4>Income By Month</h4><small>Nov to Oct</small></div></header><div class="nv-bars" data-chart="bars"></div></section>
       <section class="nv-panel"><header><div><h4>Budget Vs Actual</h4><small>October</small></div></header><div class="nv-budget">${CATS.map(c=>{ const p = c.v/c.b*100; return `<div class="nv-bud ${p>100?"over":""}"><div><span>${c.n}</span><b>${N(c.v)} <em>/ ${M(c.b)}</em></b></div><div class="nv-bar"><i style="--w:${Math.min(p,100).toFixed(1)}%;--c:${p>100?"var(--neg)":c.c}"></i></div><small>${p>100?`${(p-100).toFixed(0)}% over budget`:`${p.toFixed(0)}% used`}</small></div>`; }).join("")}</div></section>
     </div>`;
   const NAV = [["ov","Overview","grid"],["tx","Transactions","list"],["cd","Cards","card"],["an","Analytics","chart"]];
@@ -123,7 +123,7 @@
     </aside>
     <div class="nv-main">
       <header class="nv-top"><div class="nv-top-l"><span class="nv-mlogo">${mkLogo()}</span><div><h3 data-title>${TITLES.ov[0]}</h3><p data-sub>${TITLES.ov[1]}</p></div></div>
-      <div class="nv-top-r"><span class="nv-pill">${svg("cal",15)}Oct 2026</span><button type="button" class="nv-ib nv-theme-m" data-theme-t aria-label="Switch light or dark">${svg("sun",16)}${svg("moon",16)}</button><span class="nv-ib nv-bell">${svg("bell",16)}<i></i></span></div></header>
+      <div class="nv-top-r"><span class="nv-pill">${svg("cal",15)}Oct</span><button type="button" class="nv-ib nv-theme-m" data-theme-t aria-label="Switch light or dark">${svg("sun",16)}${svg("moon",16)}</button><span class="nv-ib nv-bell">${svg("bell",16)}<i></i></span></div></header>
       <div class="nv-views">
         <div class="nv-view on" data-view-p="ov">${vOverview}</div>
         <div class="nv-view" data-view-p="tx">${vTx}</div>
@@ -237,7 +237,7 @@
     guide.setAttribute("x1",X(i)); guide.setAttribute("x2",X(i)); dI.setAttribute("cx",X(i)); dI.setAttribute("cy",Y(INC[i])); dE.setAttribute("cx",X(i)); dE.setAttribute("cy",Y(EXP[i]));
     lineBox.classList.add("hov");
     tip.hidden = false;
-    tip.innerHTML = `<b>${MONTHS[i]} ${year}</b><span><i style="background:var(--acc)"></i>Income <em>${N(INC[i])}</em></span><span><i style="background:var(--neg)"></i>Expenses <em>${N(EXP[i])}</em></span>`;
+    tip.innerHTML = `<b>${MONTHS[i]}</b><span><i style="background:var(--acc)"></i>Income <em>${N(INC[i])}</em></span><span><i style="background:var(--neg)"></i>Expenses <em>${N(EXP[i])}</em></span>`;
     const r = {width: lsvg.clientWidth || lsvg.getBoundingClientRect().width, height: lsvg.clientHeight || 230}, px = X(i)/W*r.width, py = Y(INC[i])/H*r.height;
     tip.style.left = Math.max(4, Math.min(r.width - tip.offsetWidth - 4, px - tip.offsetWidth/2)) + "px";
     tip.style.top = Math.max(0, py - tip.offsetHeight - 14) + "px";
