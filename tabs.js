@@ -200,8 +200,33 @@
       main.innerHTML = `<section class="tb-page">${pageHead(g)}${secs.map(s=>vgrid(s)).join("")}</section>${footSmall()}`;
       document.title = `${g.title} | ${B.name}`;
       TB.wireVideos(main);
+      videoFS(main, secs);
     }
   };
+
+  /* Oct 24 2026 6:23 PM her ask ("why am I clicking to watch the videos on video edit [and it] is not clicking?"): a tap on a
+     UGC / Video Edits card used to only unmute the small card in place. Now any card opens the full-screen player of the
+     AI / Motion page (motion-page.js, TBMotionLB) and plays with sound; swipe / arrows go through the 5 edits. */
+  function videoFS(main, secs){
+    const P = [];
+    secs.forEach(s=>s.items.forEach(it=>{ if(it.soon || !it.src) return;
+      P.push({ sec: s.id, title: it.title, meta: it.meta||"", src: it.src, poster: it.poster||"", ar: it.ar||"16/9", href: it.href||"",
+        brand: it.brand||String(s.title||"").toUpperCase(), years: "", dot: it.dot||"var(--lilac)", outcome: it.title, role: "", badges: [], short: "", desc: it.desc||"",
+        cta: "Watch", link: it.link||"", linkLabel: it.linkLabel||"", caseLabel: it.caseLabel||"" }); }));
+    const need = ()=>{ if(window.TBMotionLB || window.__tbMPv) return; window.__tbMPv = 1;
+      if(!document.querySelector('link[href*="motion-page.css"]')){ const l = document.createElement("link"); l.rel = "stylesheet"; l.href = U("motion-page.css?v=7"); document.head.appendChild(l); }
+      const s = document.createElement("script"); s.src = U("motion-page.js?v=11"); document.head.appendChild(s); };
+    need();
+    main.querySelectorAll(".vtile:not(.soon) .vmedia").forEach((m,k)=>{
+      const lb = m.querySelector(".snd"); if(lb){ lb.setAttribute("aria-label","Tap to watch"); const l = lb.querySelector(".l"); if(l) l.textContent = "Tap to watch"; }
+      m.addEventListener("click",(e)=>{
+        e.preventDefault(); e.stopPropagation();
+        main.querySelectorAll(".vtile video").forEach(o=>{ try{ o.muted = true; o.pause(); }catch(_){} o.closest(".vtile")?.classList.remove("sound"); });
+        const go = ()=>{ window.TBMotionLB.set(P); window.TBMotionLB.open(k, m); };
+        if(window.TBMotionLB) go(); else { need(); let t = 0; const w = setInterval(()=>{ if(window.TBMotionLB){ clearInterval(w); go(); } else if(++t>80) clearInterval(w); }, 50); }
+      }, true);
+    });
+  }
 
   function render(id, hash){
     if(clockTimer){ clearInterval(clockTimer); clockTimer = null; }
