@@ -155,7 +155,6 @@ window.CONTENT = {
       intro: "Talking-head brand stories, shot by me and edited with motion.",
       items: [
         { title: "Spenda 2.0 Product Launch", meta: "Video edit for @myspenda · 72 s", src: "assets/media/video_spenda.mp4", poster: "assets/media/video_spenda.jpg", ar: "16/9", span: 1 },   // Oct 21 2026 4:45 PM her title
-        { title: "Jesse Pinkman: A Breaking Bad Edit", meta: "Fan edit · 50 s", src: "assets/media/video_jesse.mp4", poster: "assets/media/video_jesse.webp", ar: "16/9", span: 1 },   // Oct 24 2026 6:06 PM her ask: second, after Spenda 2.0
         { title: "Robotics Education", meta: "Education video · 110 s", src: "assets/media/video_robo.mp4", poster: "assets/media/video_robo.webp", ar: "16/9", span: 1 },   // Oct 21 2026 4:45 PM her title "Robotics Education". Oct 20 2026 9:35 PM her ask: all her X videos (x.com/techboo_/status/2092877786230751346)
         { title: "Short Campaign Movie", meta: "A Day In The Life Of An Axis Robotics Contributor · 45 s", src: "assets/media/video_movie.mp4", poster: "assets/media/video_movie.webp", ar: "16/9", span: 1 },   // x.com/techboo_/status/2101950614364135643 (item 1 of 2)
         { title: "Toki Finance Campaign Video", meta: "Explainer for @tokifinance · 124 s", src: "assets/media/video_toki.mp4", poster: "assets/media/video_toki.webp", ar: "16/9", span: 1 }   // x.com/techboo_/status/2002997764381368520, last per her ask; 1080p web cut of the 4K original
