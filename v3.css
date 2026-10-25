@@ -503,3 +503,29 @@ body[data-tab="uiux"] .tb-split .tb-cw{display:flex;flex-direction:column;min-wi
 .tb-skills .tb-resume{margin-top:66px}
 .tb-skills + .tb-explore{padding-top:66px}
 @media (max-width:900px){.tb-skills .tb-resume{margin-top:48px}.tb-skills + .tb-explore{padding-top:48px}}
+/* Oct 25 2026 2:36 AM her ask "why not animated": UI/UX explore tile = only AuxHR, Invora, HM Trades, Navra, animated in code (no video).
+   Staggered slide-in, slow Ken Burns per tile, floating UI cards + coins, glow pulse on hover/tap. Same % layout at every width; no layout shift. */
+.tb-exa{position:relative;display:block;width:100%;height:100%;overflow:hidden;background:radial-gradient(60% 70% at 50% 50%,#41296d 0%,#1d1233 45%,#07050c 100%);--fl:-4px}
+.tb-exa i{display:block;font-style:normal}
+.exa-bg,.exa-base{position:absolute;inset:0;background-size:100% 100%;background-repeat:no-repeat}
+.exa-bg{display:none}
+.exa-q{position:absolute;overflow:hidden;border-radius:1.6%/2.6%;opacity:0}
+.tb-exa.in .exa-q{animation:exaIn 1.1s cubic-bezier(.19,1,.22,1) both;animation-delay:calc(var(--i)*.16s)}
+@keyframes exaIn{0%{opacity:0;transform:translateY(12%) scale(.94)}60%{opacity:1}100%{opacity:1;transform:none}}
+.exa-q::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.16);pointer-events:none}
+.exa-kb{position:absolute;animation:exaKb 18s ease-in-out infinite alternate;will-change:transform}
+.exa-q:nth-child(2) .exa-kb{animation-delay:-4.5s;--kx:1%;--ky:-.8%}
+.exa-q:nth-child(3) .exa-kb{animation-delay:-9s;--kx:-.9%;--ky:.8%}
+.exa-q:nth-child(4) .exa-kb{animation-delay:-13.5s;--kx:.9%;--ky:.9%}
+.exa-q:nth-child(5) .exa-kb{animation-delay:-2s;--kx:-1%;--ky:-.6%}
+@keyframes exaKb{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.07) translate(var(--kx,-1%),var(--ky,-.8%))}}
+.exa-f{position:absolute;background-size:100% 100%;background-repeat:no-repeat;filter:drop-shadow(0 5px 9px rgba(0,0,0,.32));animation:exaFloat 5.6s ease-in-out infinite alternate;animation-delay:calc(var(--j)*-1.9s - var(--i)*1.1s)}
+.exa-f.coin{animation-name:exaCoin;animation-duration:4.4s;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))}
+@keyframes exaFloat{0%{transform:translateY(0) scale(1)}100%{transform:translateY(var(--fl)) scale(1.025)}}
+@keyframes exaCoin{0%{transform:translateY(1px) rotate(-6deg)}100%{transform:translateY(calc(var(--fl)*1.6)) rotate(6deg)}}
+.tb-exa::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;border-radius:inherit;background:radial-gradient(70% 80% at 50% 50%,rgba(196,160,255,.16),transparent 70%);box-shadow:inset 0 0 0 1.5px rgba(196,160,255,.6),inset 0 0 46px rgba(196,160,255,.38);transition:opacity .4s}
+.tb-ex:hover .tb-exa::after,.tb-ex:active .tb-exa::after,.tb-ex:focus-visible .tb-exa::after{animation:exaGlow 1.8s ease-in-out infinite}
+.tb-ex:hover .tb-ex-img:has(.tb-exa),.tb-ex:active .tb-ex-img:has(.tb-exa){box-shadow:0 0 0 1px rgba(196,160,255,.45),0 0 34px -6px rgba(196,160,255,.6)}
+@keyframes exaGlow{0%,100%{opacity:.4}50%{opacity:1}}
+@media (max-width:600px){.tb-exa{--fl:-2.5px}}
+@media (prefers-reduced-motion:reduce){.tb-exa .exa-q,.tb-exa.in .exa-q{opacity:1;transform:none;animation:none}.tb-exa .exa-kb,.tb-exa .exa-f{animation:none}.tb-ex:hover .tb-exa::after,.tb-ex:active .tb-exa::after{animation:none;opacity:.7}}
