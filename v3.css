@@ -442,5 +442,55 @@ body[data-tab="uiux"] .tb-split .tb-cw{display:flex;flex-direction:column;min-wi
 .card .card-side:has(>.card-cta:first-child){padding-top:22px}
 @media (max-width:600px){.card .card-side:has(>.card-cta:first-child){padding-top:20px}}
 
-/* Oct 25 2026 1:31 AM her screenshot (About page, phone): empty band under Toki Finance read as a blank row; drop the second divider above "Explore my categories" */
-.tb-explore .tb-sub{border-top:0;padding-top:0}
+/* Oct 25 2026 1:31 AM her screenshot (About page, phone): the empty band under Toki Finance is now filled by the resume row + Skills section
+   (her ask 1:33–1:38 AM). The cs2 rule that dropped the Explore divider is retired: each section again opens with ONE line (its subhead's). */
+
+/* ===== Oct 25 2026: RESUME (header pill + row under Toki Finance) ===== */
+.tb-acts{display:flex;align-items:center;gap:8px;flex:none}
+.tb-cv{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px 0 13px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.16);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:rgba(255,255,255,.86);font-size:13.5px;font-weight:600;letter-spacing:.01em;white-space:nowrap;flex:none;transition:border-color .3s,color .3s,background .3s}
+.tb-cv svg{color:var(--lilac);flex:none}
+.tb-cv:hover{border-color:rgba(196,160,255,.6);background:rgba(196,160,255,.08);color:#fff}
+.tb-cv .s{display:none}
+@media (max-width:900px){.tb-cv{height:36px;padding:0 12px 0 10px;font-size:13px;gap:6px}}
+@media (max-width:560px){.tb-cv .l{display:none}.tb-cv .s{display:inline}.tb-acts{gap:6px}}
+.tb-resume{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;margin-top:22px;padding:20px 22px;border-radius:20px;background:linear-gradient(135deg,rgba(196,160,255,.10),rgba(255,255,255,.02) 62%);border:1px solid rgba(196,160,255,.24);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 18px 50px -26px rgba(150,110,255,.5);transition:border-color .3s}
+.tb-resume:hover{border-color:rgba(196,160,255,.6)}
+.tb-resume-ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:rgba(196,160,255,.12);border:1px solid rgba(196,160,255,.32);color:var(--lilac);box-shadow:0 0 18px rgba(196,160,255,.18)}
+.tb-resume-m{display:flex;flex-direction:column;gap:5px;min-width:0}
+.tb-resume-t{font-family:var(--serif);font-variation-settings:"SOFT" 100,"opsz" 72;font-size:28px;line-height:1.1;color:#fff}
+.tb-resume-s{font-size:14px;color:rgba(255,255,255,.55);line-height:1.35}
+.tb-resume-go{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 18px;border-radius:999px;background:#161616;border:1px solid rgba(196,160,255,.5);color:#fff;font-size:13.5px;font-weight:600;white-space:nowrap;transition:background .3s,color .3s,border-color .3s}
+.tb-resume-go i{font-style:normal;color:var(--lilac);transition:transform .3s,color .3s}
+.tb-resume:hover .tb-resume-go{background:var(--lilac);border-color:var(--lilac);color:#0a0a0a}
+.tb-resume:hover .tb-resume-go i{color:#0a0a0a;transform:translateX(3px)}
+@media (max-width:900px){.tb-resume{gap:13px;margin-top:18px;padding:15px 14px 15px 15px;border-radius:18px}.tb-resume-ic{width:42px;height:42px;border-radius:12px}.tb-resume-t{font-size:22px}.tb-resume-s{font-size:12.5px}.tb-resume-go{height:34px;padding:0 13px;font-size:12.5px;gap:6px}}
+
+/* ===== Oct 25 2026: SKILLS marquee (inspo: her AuxHR "Live Talent Pool"). Two rows, opposite directions, hover pauses ===== */
+.tb-skills{max-width:1240px;margin:0 auto;padding:110px var(--pad) 0;box-sizing:content-box}
+@media (max-width:900px){.tb-skills{padding-top:80px}}
+@media (min-width:1600px){.tb-skills{max-width:1480px}}
+.tb-sk{position:relative;margin-top:36px;padding:62px 0 30px;border-radius:28px;overflow:hidden;isolation:isolate;background:radial-gradient(58% 75% at 50% 0%,rgba(124,92,255,.26),transparent 72%),radial-gradient(45% 60% at 88% 100%,rgba(196,160,255,.12),transparent 70%),radial-gradient(40% 55% at 8% 100%,rgba(70,90,255,.12),transparent 70%),linear-gradient(180deg,#0e0b1d,#09090f);border:1px solid rgba(196,160,255,.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 30px 80px -44px rgba(124,92,255,.55)}
+.tb-sk-label{position:absolute;top:18px;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:8px;height:28px;padding:0 13px 0 11px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(196,160,255,.3);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.82);white-space:nowrap}
+.tb-sk-label .tb-dot{width:6px;height:6px}
+.tb-sk-row{overflow:hidden;padding:7px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.tb-sk-track{display:flex;width:max-content;animation:tbSk 70s linear infinite;will-change:transform}
+.tb-sk-row.rev .tb-sk-track{animation-direction:reverse;animation-duration:76s}
+@media (hover:hover){.tb-sk:hover .tb-sk-track{animation-play-state:paused}}
+@keyframes tbSk{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+.tb-pill{display:inline-flex;align-items:center;gap:11px;height:54px;padding:0 20px 0 9px;margin-right:12px;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.025));border:1px solid rgba(255,255,255,.12);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 10px 26px -14px rgba(0,0,0,.7);font-size:15px;font-weight:600;letter-spacing:.005em;color:#fff;white-space:nowrap;flex:none}
+.tb-pill-i{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;flex:none;background:radial-gradient(circle at 32% 28%,rgba(196,160,255,.34),rgba(196,160,255,.07) 70%);border:1px solid rgba(196,160,255,.38);color:var(--lilac);box-shadow:0 0 16px rgba(196,160,255,.22)}
+.tb-pill-i svg{width:17px;height:17px}
+@media (max-width:900px){
+  .tb-sk{margin-top:28px;padding:54px 0 22px;border-radius:22px}
+  .tb-sk-label{top:15px}
+  .tb-sk-row{padding:5px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+  .tb-pill{height:46px;gap:9px;padding:0 16px 0 7px;margin-right:10px;font-size:14px}
+  .tb-pill-i{width:32px;height:32px}
+  .tb-pill-i svg{width:15px;height:15px}
+}
+@media (prefers-reduced-motion:reduce){
+  .tb-sk-track{animation:none;width:auto;flex-wrap:wrap;justify-content:center;gap:10px;padding:0 18px}
+  .tb-sk-track .dup{display:none}
+  .tb-pill{margin-right:0}
+  .tb-sk-row{-webkit-mask-image:none;mask-image:none}
+}
