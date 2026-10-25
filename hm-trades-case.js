@@ -1,4 +1,4 @@
-/* HM Trades case page v4 (Oct 25 2026: fuller hero, stroke-framed app panels instead of big phones, brand banners in the middle). v2 (Oct 20 2026): a coded web page in HM Trades' own brand. Screens rebuilt in HTML/CSS from her boards (figures read off her own screens). Runs after case.js + cs2-case.js. */
+/* HM Trades case page v4.1 (Oct 25 2026: fuller hero, stroke-framed app panels instead of big phones, four brand banners in the middle: logo+colour, type+icons, escrow flow, real app screens). v2 (Oct 20 2026): a coded web page in HM Trades' own brand. Screens rebuilt in HTML/CSS from her boards (figures read off her own screens). Runs after case.js + cs2-case.js. */
 (function(){
   const gal = document.querySelector("#case .case-gallery"); if(!gal || !window.CS2) return;
   const {RM, reveal, tabs, onView, mountEnding} = CS2;
@@ -29,7 +29,9 @@
     home:'<svg viewBox="0 0 24 24"><path d="M4 11l8-6 8 6v9H4z"/><path d="M10 20v-5h4v5"/></svg>'
   };
   const ACTS = [["send","Send"],["receive","Receive"],["buy","Buy"],["sell","Sell"]];
-  const LOGO = (cls="")=>`<span class="hm3-logo ${cls}" aria-label="HM Trades logo"><b>HM</b></span>`;
+  /* her real logo (from her onboarding screen): bold HM with a striped band + a node-network glyph */
+  const NET = '<svg class="hm3-net" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 20L20 7M20 20L31 13.5M20 20L31 26.5M20 20L20 33M20 20L9 26.5M20 20L9 13.5M20 7L31 13.5L31 26.5L20 33L9 26.5L9 13.5Z"/>'+[[20,20],[20,7],[31,13.5],[31,26.5],[20,33],[9,26.5],[9,13.5]].map(([x,y])=>`<rect x="${x-2.6}" y="${y-2.6}" width="5.2" height="5.2" transform="rotate(45 ${x} ${y})"/>`).join("")+'</svg>';
+  const LOGO = (cls="")=>`<span class="hm3-logo ${cls}" role="img" aria-label="HM Trades logo"><b>HM</b>${NET}</span>`;
   const spark = (up)=>`<svg class="hm2-spark" viewBox="0 0 56 22" aria-hidden="true"><path stroke="${up?"#6ACC9D":"#F06A7A"}" d="${up?"M2 18 L10 14 L17 16 L25 9 L33 11 L41 5 L48 7 L54 3":"M2 4 L10 8 L17 6 L25 12 L33 10 L41 15 L48 13 L54 18"}"/></svg>`;
   /* figures read off her HM Trades screens */
   const COINS = [["btc","BTC","Bitcoin","$65,111.44","-2.09%",0],["eth","ETH","Ethereum","$3,511.44","+2.09%",1],["bnb","BNB","BNB","$598.29","+2.08%",1],["usdt","USDT","Tether","₦1,453.00","P2P",1]];
@@ -104,81 +106,80 @@
       </div>
     </section>`;
 
-  /* --- ESCROW FLOW INTERLUDE --- */
-  const flow = `<section class="cs2-band" style="background:radial-gradient(80% 120% at 50% 0%,rgba(101,76,144,.35),transparent 60%),#05050a"><div class="cs2-sec cs2-center">
-      <span class="cs2-eb cs2-rv"><i></i>The Fix</span>
-      <h2 class="cs2-h2 cs2-rv" style="max-width:18ch">Escrow Holds The Coins. <em>Nobody Gets Burned.</em></h2>
-      <div class="hm2-flow" id="hm2-flow">
-        <div class="hm2-node" data-n="0"><span class="cs2-ic">${I.user}</span><b>Buyer Pays</b><small>Bank transfer to the vendor</small></div>
-        <span class="hm2-pipe" aria-hidden="true"></span>
-        <div class="hm2-node" data-n="1"><span class="cs2-ic">${I.lock}</span><b>Escrow Locks</b><small>Seller's USDT is held by HM Trades</small><span class="hm2-lock">🔒 Locked</span></div>
-        <span class="hm2-pipe" aria-hidden="true"></span>
-        <div class="hm2-node" data-n="2"><span class="cs2-ic">${I.shield}</span><b>Coins Released</b><small>Payment confirmed, USDT lands in the wallet</small></div>
-      </div>
-    </div></section>`;
 
 
-  /* --- BRAND BANNER 1 (v4): her board's hero look, gradient + outlined wordmark, with the wallet card and action icons --- */
-  const bannerIntro = `<section class="hm3-ban hm3-ban1 cs2-rv" aria-label="HM Trades brand banner">
+
+  /* ===== FOUR BRAND BANNERS (her VNs 2:31 + 2:45 AM Oct 25: "put banners in the middle... like three to four") ===== */
+  const SW = [["Purple","#654C90",""],["Blue","#4A9ECC",""],["Green","#6ACC9D","#06130d"],["Gradient","var(--grad)",""]];
+  /* BANNER 1 · logo + colour palette (her board's gradient + outlined wordmark) */
+  const bannerIntro = `<section class="hm3-ban hm3-ban1 cs2-rv" aria-label="HM Trades brand banner: logo and colours">
       <div class="hm3-ban-in">
         <div class="hm3-b1-copy">
-          <div class="hm3-b1-logo">${LOGO("md")}<span>HM Trades</span></div>
+          <span class="hm3-bk">Brand · 01 Logo &amp; Colour</span>
           <div class="hm3-b1-word" aria-hidden="true">HM<br>TRADES</div>
           <p class="hm3-b1-tag">A FinTech P2P Trading Platform</p>
           <div class="hm3-b1-chips"><span>Buy</span><span>Sell</span><span>Send</span><span>Receive</span></div>
         </div>
         <div class="hm3-b1-art">
-          <div class="hm3-wcard">
-            <div class="t"><span>My Wallet</span><i>${IC.eye}</i></div>
-            <div class="bal">$3,540.00</div>
-            <div class="c"><span>▲ +2.09% today</span><span class="hm3-wnet">USDT · BTC · ETH · BNB</span></div>
-          </div>
-          <div class="hm3-wacts">${ACTS.map(([k,t])=>`<span class="hm3-ai lg a-${k}"><i>${IC[k]}</i>${t}</span>`).join("")}</div>
-          <div class="hm3-b1-coins">${COINS.slice(0,3).map(([c,s,n,p,ch,up])=>`<span class="hm2-chip"><span class="hmp-ci ci-${c}">${s[0]}</span><span>${s}</span><span>${p} <small class="${up?"up":"dn"}">${ch}</small></span></span>`).join("")}</div>
+          <div class="hm3-lockup">${LOGO("xl")}<small>Logo · from the HM Trades app</small></div>
+          <div class="hm3-pal">${SW.map(([n,c,t])=>`<div class="hm3-sw" style="background:${c};${t?`color:${t}`:""}"><b>${n}</b><small>${c.startsWith("#")?c:"Teal · Blue · Purple"}</small></div>`).join("")}</div>
         </div>
       </div>
     </section>`;
 
-  /* --- BRAND KIT (v4, moved to the middle and expanded: logo, colours, type, icon set, components) --- */
-  const KIT_ICONS = [["send","Send"],["receive","Receive"],["buy","Buy"],["sell","Sell"],["wallet","Wallet"],["p2p","P2P"],["lock","Escrow"],["shield","Verified"],["chat","Chat"],["bank","Bank"],["swap","Networks"],["user","Profile"]];
-  const sty = `<section class="cs2-band hm3-kitband"><div class="cs2-sec">
-      <div class="cs2-rv"><span class="cs2-eb"><i></i>Visual Language</span><h2 class="cs2-h2">Dark, Calm, <em>Money Green</em></h2></div>
-      <div class="hm3-kit">
-        <div class="hm3-tile hm3-t-logo cs2-rv">${LOGO("xl")}<div class="nm">HM Trades</div><small class="lbl">Logo · App Icon</small></div>
-        <div class="hm3-tile hm3-t-col cs2-rv d1"><small class="lbl">Colour</small>
-          <div class="hm2-sw">
-            <div class="hm2-swc" style="background:#654C90">Purple<small>#654C90</small></div>
-            <div class="hm2-swc" style="background:#4A9ECC">Blue<small>#4A9ECC</small></div>
-            <div class="hm2-swc" style="background:#6ACC9D;color:#06130d">Green<small>#6ACC9D</small></div>
-            <div class="hm2-swc" style="background:var(--grad)">Gradient<small>Teal · Blue · Purple</small></div>
-          </div></div>
-        <div class="hm3-tile hm3-t-type cs2-rv"><small class="lbl">Typeface</small><div class="hm2-type"><div class="aa">Aa</div><div class="nm">Poppins</div><div class="wt"><span>Regular</span><span>Medium</span><span>SemiBold</span><span>Bold</span></div></div></div>
-        <div class="hm3-tile hm3-t-ic cs2-rv d1"><small class="lbl">Icon Set</small>
-          <div class="hm3-icons">${KIT_ICONS.map(([k,t])=>`<span><i>${IC[k]}</i>${t}</span>`).join("")}</div></div>
-        <div class="hm3-tile hm3-t-ui cs2-rv d2"><small class="lbl">Components</small>
-          <div class="hm3-ui">
-            <div class="hmp-seg" style="margin:0"><button type="button" class="on" tabindex="-1">Buy</button><button type="button" tabindex="-1">Sell</button></div>
-            <div class="hm3-btns"><button class="hmp-btn" type="button" tabindex="-1">Buy</button><button class="hmp-btn s" type="button" tabindex="-1">Sell</button><button class="hmp-cta" type="button" tabindex="-1">I Have Paid</button></div>
-            <div class="hm3-tags"><span class="g"><i class="hm3-ii">${IC.lock}</i>Escrow Locked</span><span class="b"><i class="hm3-ii">${IC.shield}</i>Verified Vendor</span><span>0% Fee</span></div>
-          </div></div>
-      </div>
-    </div></section>`;
-
-  /* --- BRAND BANNER 2 (v4): quick actions, the icon set at full size --- */
-  const bannerActs = `<section class="hm3-ban hm3-ban2 cs2-rv" aria-label="Buy, Sell, Send, Receive">
+  /* BANNER 2 · typography + icon set (Buy / Sell / Send / Receive up front) */
+  const KIT_ICONS = [["wallet","Wallet"],["p2p","P2P"],["lock","Escrow"],["shield","Verified"],["chat","Chat"],["bank","Bank"],["swap","Networks"],["user","Profile"]];
+  const bannerType = `<section class="hm3-ban hm3-ban2 cs2-rv" aria-label="HM Trades brand banner: typography and icons">
       <div class="hm3-ban-in">
-        <div class="hm3-b2-head"><span class="cs2-eb"><i></i>Quick Actions</span><h2 class="cs2-h2">Buy, Sell, Send, Receive. <em>One Tap From Home.</em></h2></div>
-        <div class="hm3-b2-row">${[["buy","Buy","From verified vendors"],["sell","Sell","To verified buyers"],["send","Send","ERC20 · BEP20 · TRC20 · Polygon"],["receive","Receive","Straight into the wallet"]].map(([k,t,d],i)=>`<div class="hm3-b2-it a-${k}" style="--i:${i}"><span class="hm3-b2-ic">${IC[k]}</span><b>${t}</b><small>${d}</small></div>`).join("")}</div>
+        <span class="hm3-bk">Brand · 02 Type &amp; Icons</span>
+        <div class="hm3-b2-grid">
+          <div class="hm3-type2">
+            <div class="aa">Aa</div>
+            <div class="nm">Poppins</div>
+            <div class="hm3-scale"><span style="font-weight:700">Total Balance $3,540.00</span><span style="font-weight:600">Buy USDT · ₦1,453.00</span><span style="font-weight:500">Verified vendor · 164 orders</span><span style="font-weight:400">Pay the seller within the time limit</span></div>
+            <div class="wt"><span>Regular</span><span>Medium</span><span>SemiBold</span><span>Bold</span></div>
+          </div>
+          <div class="hm3-ic2">
+            <div class="hm3-b2-row">${[["buy","Buy"],["sell","Sell"],["send","Send"],["receive","Receive"]].map(([k,t],i)=>`<div class="hm3-b2-it a-${k}" style="--i:${i}"><span class="hm3-b2-ic">${IC[k]}</span><b>${t}</b></div>`).join("")}</div>
+            <div class="hm3-icons">${KIT_ICONS.map(([k,t])=>`<span><i>${IC[k]}</i>${t}</span>`).join("")}</div>
+          </div>
+        </div>
       </div>
     </section>`;
 
-  /* --- BRAND BANNER 3 (v4): marketing-style posters built from her own promises --- */
-  const bannerPosters = `<section class="cs2-sec hm3-posters-sec">
-      <div class="cs2-rv"><span class="cs2-eb"><i></i>Brand In Use</span><h2 class="cs2-h2">Three Promises, <em>Three Posters</em></h2></div>
-      <div class="hm3-posters">
-        <div class="hm3-poster p1 cs2-rv">${LOGO("sm")}<div class="pw">0%<br>Fees</div><p>Shown upfront on every order.</p><div class="hm3-pv"><div class="hmp-kv"><span>Fee</span><b class="up">0%</b></div><div class="hmp-kv"><span>You receive</span><b>17.89 USDT</b></div></div></div>
-        <div class="hm3-poster p2 cs2-rv d1">${LOGO("sm")}<div class="pw">Escrow<br>On Every<br>Trade</div><p>Coins stay locked until payment is confirmed.</p><div class="hm3-pv"><span class="hm3-tagl g"><i class="hm3-ii">${IC.lock}</i>Escrow Locked</span></div></div>
-        <div class="hm3-poster p3 cs2-rv d2">${LOGO("sm")}<div class="pw">Verified<br>Vendors</div><p>Email, phone, ID and bank, checked.</p><div class="hm3-pv"><span class="hm3-tagl b"><i class="hm3-ii">${IC.shield}</i>164 completed orders · 95%</span></div></div>
+  /* BANNER 3 · escrow / P2P trade flow (her "The Fix" copy, now a banner) */
+  const flow = `<section class="hm3-ban hm3-ban3 cs2-rv" aria-label="HM Trades brand banner: escrow trade flow">
+      <div class="hm3-ban-in">
+        <span class="hm3-bk">Brand · 03 Escrow Flow</span>
+        <div class="cs2-center"><span class="cs2-eb"><i></i>The Fix</span>
+        <h2 class="cs2-h2" style="max-width:18ch;margin-left:auto;margin-right:auto">Escrow Holds The Coins. <em>Nobody Gets Burned.</em></h2></div>
+        <div class="hm2-flow" id="hm2-flow">
+          <div class="hm2-node" data-n="0"><span class="cs2-ic">${I.user}</span><b>Buyer Pays</b><small>Bank transfer to the vendor</small></div>
+          <span class="hm2-pipe" aria-hidden="true"></span>
+          <div class="hm2-node" data-n="1"><span class="cs2-ic">${I.lock}</span><b>Escrow Locks</b><small>Seller's USDT is held by HM Trades</small><span class="hm2-lock"><i class="hm3-ii">${IC.lock}</i>Locked</span></div>
+          <span class="hm2-pipe" aria-hidden="true"></span>
+          <div class="hm2-node" data-n="2"><span class="cs2-ic">${I.shield}</span><b>Coins Released</b><small>Payment confirmed, USDT lands in the wallet</small></div>
+        </div>
+        <div class="hm3-b3-log">${["Order created · USDT in escrow","Buyer marked as paid","17.89 USDT released to your wallet"].map((t,i)=>`<span style="--i:${i}">${t}</span>`).join('<i aria-hidden="true"></i>')}</div>
+      </div>
+    </section>`;
+
+  /* BANNER 4 · marketing composition: her real app screens in stroke frames */
+  const shotImg = (f,alt)=>`<figure class="hm3-real"><img src="${A}${f}.webp" alt="${alt}" width="266" height="569" loading="lazy" decoding="async" data-lb="case" data-cap="HM Trades · ${alt}"></figure>`;
+  const bannerScreens = `<section class="hm3-ban hm3-ban4 cs2-rv" aria-label="HM Trades brand banner: app screens">
+      <div class="hm3-ban-in">
+        <div class="hm3-b4-copy">
+          <span class="hm3-bk">Brand · 04 In The App</span>
+          ${LOGO("md")}
+          <h3 class="hm3-b4-h">Manage your <span>crypto</span> wallet</h3>
+          <p>Buy, store, send exchange &amp; p2p trading, become a vendor.</p>
+          <div class="hm3-b1-chips"><span>Get Started</span><span>Sign Up</span></div>
+        </div>
+        <div class="hm3-b4-art">
+          ${shotImg("scr-onb-start","Onboarding · Get started")}
+          ${shotImg("scr-onb-wallet","Onboarding · Manage your crypto wallet")}
+          ${shotImg("scr-p2p-order","P2P · Buy USDT order")}
+        </div>
       </div>
     </section>`;
 
@@ -287,7 +288,7 @@
       </div>
     </section>`;
 
-  gal.innerHTML = `<div class="cs2 hm2 hm3">${hero}${ticker}${about}${bannerIntro}${flow}${sty}${proc}${walletSec}${marketSec}${bannerActs}${tradeSec}${profSec}${bannerPosters}${cmp}${out}</div>`;
+  gal.innerHTML = `<div class="cs2 hm2 hm3">${hero}${ticker}${about}${bannerIntro}${proc}${walletSec}${bannerType}${marketSec}${flow}${tradeSec}${profSec}${bannerScreens}${cmp}${out}</div>`;
   const root = gal.firstElementChild;
   reveal(root); tabs(root);
 
