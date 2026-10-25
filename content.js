@@ -199,7 +199,25 @@ window.CONTENT.groups = {
   uiux: { eyebrow: "B2B B2C SAAS FINTECH & WEB3 Case Studies", title: "UI/UX Designs",
     intro: "Products I designed end to end: research, flows, UI and the details that make people trust them.",
     cases: ["auxhr","warblelive","hm-trades","sofavault","hex-memecoin","invora","stikboo","clique-logistics","navra","sign-in-page-ui","redesigned-neon-ui"],   // Oct 20 2026 9:06 PM: Navra right after Invora; Superteam removed Oct 20 9:47 PM; 10:01 PM Stikboo and Navra swapped, list now matches the page order (next project follows it)
-    explore: { img: "assets/media/warblelive_banner.jpg", vid: "assets/media/warblelive_banner.mp4", cover: "assets/media/cat_uiux.webp?v=3" } },   // Oct 21 2026 3:06 AM her ask: UI/UX tile animated like AI / Motion. Oct 25 2026 2:07 AM her ask: ONLY the 4 fixed tiles (AuxHR, Invora, HM Trades, Navra), so the cycling video (WarbleLive, e-commerce, sofavault) is off; static collage
+    explore: { img: "assets/media/warblelive_banner.jpg", vid: "assets/media/warblelive_banner.mp4", cover: "assets/media/cat_uiux.webp?v=3",
+    /* Oct 25 2026 2:36 AM her ask "why not animated": the same 4 tiles, animated in code (staggered slide-in, slow Ken Burns per tile, floating UI cards/coins, glow pulse on hover/tap).
+       Frame 1280x800; q = tile boxes [x,y,w,h]; f = floating layers [file, tile, x, y, w, h, kind, radius] cut from cat_uiux.webp; base.webp has those spots filled in. */
+    anim: { dir: "assets/media/exa_uiux/", base: "assets/media/exa_uiux/base.webp?v=1", v: 1,
+      q: [[12, 12, 623, 382], [646, 12, 622, 382], [12, 406, 623, 382], [646, 406, 622, 382]],
+      f: [
+      ["aux_short", 0, 493, 30, 142, 50, "", "4%/7%"],
+      ["aux_apps", 0, 451, 101, 184, 155, "", "4%/7%"],
+      ["aux_total", 0, 276, 267, 172, 85, "", "4%/7%"],
+      ["inv_earned", 1, 645, 205, 176, 115, "", "4%/7%"],
+      ["inv_status", 1, 1109, 171, 160, 172, "", "4%/7%"],
+      ["hm_btc", 2, 91, 476, 93, 93, "coin", "50%"],
+      ["hm_eth", 2, 487, 474, 64, 64, "coin", "50%"],
+      ["hm_usdt", 2, 471, 666, 54, 54, "coin", "50%"],
+      ["nv_bal", 3, 738, 498, 135, 76, "", "4%/7%"],
+      ["nv_inc", 3, 881, 498, 132, 76, "", "4%/7%"],
+      ["nv_exp", 3, 1022, 498, 132, 76, "", "4%/7%"],
+      ["nv_net", 3, 1163, 498, 106, 76, "", "4%/7%"]
+      ] } } },   // Oct 21 2026 3:06 AM her ask: UI/UX tile animated like AI / Motion. Oct 25 2026 2:07 AM her ask: ONLY the 4 fixed tiles (AuxHR, Invora, HM Trades, Navra), so the cycling video (WarbleLive, e-commerce, sofavault) is off; static collage
   motion: { eyebrow: "AI films & motion design", title: "AI / Motion Designs",
     intro: "AI films, product promos, brand motion and launch animations.",
     cases: ["axis"],   // Oct 24 2026: sphinx-ai-promo unlinked from AI Films on her word "remove the existing AI film there it's stale" (case files kept)
@@ -236,7 +254,8 @@ window.CONTENT.contact = { eyebrow: "Contact", title: "Let’s build something <
    Oct 25 2026 2:05 AM: both now open resume.html (same tab, Back + Download PDF; page images from make_resume_imgs.py). PDF = assets/Adaikem_Ajufo_techBoo_Resume.pdf (her approved CV, 2:10 AM). */
 window.CONTENT.resume = { href: "assets/Adaikem_Ajufo_techBoo_Resume.pdf", label: "Resume", short: "CV", title: "Full resume", line: "Product Visual Designer · PDF", cta: "View" };
 
-/* Oct 25 2026 2:10–2:19 AM her renames: AI Video → AI Tools, Branding → Brand Design, Community → Community Lead.
+/* Oct 25 2026 2:38 AM her ask: "AI-Powered Features" → "Motion Design" (play icon "mdesign" in tabs.js).
+   Oct 25 2026 2:10–2:19 AM her renames: AI Video → AI Tools, Branding → Brand Design, Community → Community Lead.
    Oct 25 2026 1:33–1:35 AM her ask: skills after Experience, "in a nice way", inspo = the AuxHR "Live Talent Pool" marquee.
    Words from her resume (SKILLS: Software + Technical Skills) plus what her work shows. Two rows slide in opposite directions.
    icon = one of: product, uiux, system, research, proto, interact, ai, figma, motion, video, prompt, aivideo, brand, web3, content, community */
@@ -246,7 +265,7 @@ window.CONTENT.skills = {
   label: "Tools & craft",
   rows: [
     [ { t: "Product Design", i: "product" }, { t: "UI/UX Design", i: "uiux" }, { t: "Design Systems", i: "system" }, { t: "Figma", i: "figma" },
-      { t: "User Research", i: "research" }, { t: "Prototyping", i: "proto" }, { t: "Interaction Design", i: "interact" }, { t: "AI-Powered Features", i: "ai" } ],
+      { t: "User Research", i: "research" }, { t: "Prototyping", i: "proto" }, { t: "Interaction Design", i: "interact" }, { t: "Motion Design", i: "mdesign" } ],
     [ { t: "Motion Graphics", i: "motion" }, { t: "Video Editing", i: "video" }, { t: "Prompt Engineering", i: "prompt" }, { t: "AI Tools", i: "aivideo" },
       { t: "Brand Design", i: "brand" }, { t: "Web3 Visuals", i: "web3" }, { t: "Content Creation", i: "content" }, { t: "Community Lead", i: "community" } ]
   ]
