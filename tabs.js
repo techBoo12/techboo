@@ -11,6 +11,7 @@
   const TABS = C.tabs;
   const tabById = (id)=> TABS.find(t=>t.id===id) || TABS[0];
   const R = C.resume;   // Oct 25 2026: resume PDF (header pill + About row)
+  const RP = "resume.html";   // Oct 25 2026 2:04 AM her words "I could not go back to the site": CV pill + Full resume row open resume.html (same tab, Back + Download PDF), not the raw PDF
 
   /* which tab a case belongs to (case pages) */
   function tabOfCase(slug){
@@ -39,7 +40,7 @@
         <img class="tb-logo" src="${U(B.logo)}" alt="" width="38" height="38">
         <span class="tb-name"><span>${esc(B.first)}</span> <em>${esc(B.last)}</em><small>${esc(B.tag)}</small></span>
       </a>
-      <div class="tb-acts">${R?`<a class="tb-cv" href="${U(R.href)}" target="_blank" rel="noopener" aria-label="${esc(R.label)} (PDF, opens in a new tab)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg><span class="l">${esc(R.label)}</span><span class="s">${esc(R.short||R.label)}</span></a>`:""}<!-- Oct 25 2026 1:36 AM her ask: Resume next to Hire me -->
+      <div class="tb-acts">${R?`<a class="tb-cv" href="${U(RP)}" aria-label="${esc(R.label)}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg><span class="l">${esc(R.label)}</span><span class="s">${esc(R.short||R.label)}</span></a>`:""}<!-- Oct 25 2026 1:36 AM her ask: Resume next to Hire me -->
       <a class="tb-hire" href="mailto:${C.footer.email}"><span class="tb-dot"></span>${esc(B.hire)}</a></div><!-- Oct 18 10:17 PM her ask: Hire me back in header, opens email -->
     </div>
     <nav class="tb-tabs" aria-label="Portfolio">
@@ -84,7 +85,7 @@
         <div class="tb-sk"><span class="tb-sk-label"><span class="tb-dot"></span>${esc(S.label)}</span>${S.rows.map(skRow).join("")}</div>
         ${resumeRow()}<!-- Oct 25 2026 1:59 AM her ask: "Full resume should be after What I work with" -->
       </section>`;
-  const resumeRow = ()=> !R ? "" : `<a class="tb-resume" href="${U(R.href)}" target="_blank" rel="noopener"><span class="tb-resume-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span><span class="tb-resume-m"><span class="tb-resume-t">${esc(R.title)}</span><span class="tb-resume-s">${esc(R.line)}</span></span><span class="tb-resume-go">${esc(R.cta)} <i>→</i></span></a>`;
+  const resumeRow = ()=> !R ? "" : `<a class="tb-resume" href="${U(RP)}"><span class="tb-resume-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span><span class="tb-resume-m"><span class="tb-resume-t">${esc(R.title)}</span><span class="tb-resume-s">${esc(R.line)}</span></span><span class="tb-resume-go">${esc(R.cta)} <i>→</i></span></a>`;
   const secById = (id)=> C.sections.find(s=>s.id===id);
   const vgrid = (s)=> `<div class="vgrid cols-${(s.items.length===3 && !s.items.some(i=>i.span))?3:(s.cols||2)} tb-vgrid">${s.items.map(TB.tile).join("")}</div>`;
   let clockTimer = null;
