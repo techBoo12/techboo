@@ -1,4 +1,5 @@
-/* v4 (Oct 16 2026): shared header (logo + name, Hire me pill, tab row) and the tab pages.
+/* Oct 25 2026: + Resume pill in header, resume row under Experience, Skills marquee (see content.js resume/skills).
+   v4 (Oct 16 2026): shared header (logo + name, Hire me pill, tab row) and the tab pages.
    About | UI/UX Designs | AI / Motion Designs | Brand Designs | Video Edits. All words live in content.js.
    Tab switches render in place (no page reload): the header stays, the page swaps instantly, the URL updates. */
 (function(){
@@ -9,6 +10,7 @@
   const G = C.groups;
   const TABS = C.tabs;
   const tabById = (id)=> TABS.find(t=>t.id===id) || TABS[0];
+  const R = C.resume;   // Oct 25 2026: resume PDF (header pill + About row)
 
   /* which tab a case belongs to (case pages) */
   function tabOfCase(slug){
@@ -37,7 +39,8 @@
         <img class="tb-logo" src="${U(B.logo)}" alt="" width="38" height="38">
         <span class="tb-name"><span>${esc(B.first)}</span> <em>${esc(B.last)}</em><small>${esc(B.tag)}</small></span>
       </a>
-      <a class="tb-hire" href="mailto:${C.footer.email}"><span class="tb-dot"></span>${esc(B.hire)}</a><!-- Oct 18 10:17 PM her ask: Hire me back in header, opens email -->
+      <div class="tb-acts">${R?`<a class="tb-cv" href="${U(R.href)}" target="_blank" rel="noopener" aria-label="${esc(R.label)} (PDF, opens in a new tab)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg><span class="l">${esc(R.label)}</span><span class="s">${esc(R.short||R.label)}</span></a>`:""}<!-- Oct 25 2026 1:36 AM her ask: Resume next to Hire me -->
+      <a class="tb-hire" href="mailto:${C.footer.email}"><span class="tb-dot"></span>${esc(B.hire)}</a></div><!-- Oct 18 10:17 PM her ask: Hire me back in header, opens email -->
     </div>
     <nav class="tb-tabs" aria-label="Portfolio">
       <div class="tb-tabs-in">${TABS.map(t=>`<a href="${U(t.page)}" data-tab="${t.id}">${esc(t.label)}</a>`).join("")}</div>
@@ -70,6 +73,17 @@
     </footer>`;
   const pageHead = (g)=> `<div class="tb-phead"><p class="eyebrow left">${esc(g.eyebrow)}</p><h1 class="tb-title">${esc(g.title)}</h1>${g.intro?`<p class="tb-intro">${esc(g.intro)}</p>`:""}</div>`;
   const subHead = (s, n)=> `<div class="tb-sub"><span class="tb-sub-n">${n||""}</span><div><p class="eyebrow left">${esc(s.eyebrow)}</p><h2 class="tb-sub-t">${esc(s.title)}</h2>${s.intro?`<p class="tb-sub-i">${esc(s.intro)}</p>`:""}</div></div>`;
+  /* Oct 25 2026: Skills marquee icons (inline SVG, lilac via currentColor). Keys used in content.js skills.rows[].i */
+  const SKI = {"product": "<path d=\"M12 3l8 4.5v9L12 21l-8-4.5v-9z\"/><path d=\"M4 7.5l8 4.5 8-4.5M12 12v9\"/>", "uiux": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"2.5\"/><path d=\"M3 9h18M9 9v11\"/>", "system": "<rect x=\"3.5\" y=\"3.5\" width=\"7\" height=\"7\" rx=\"1.5\"/><rect x=\"13.5\" y=\"3.5\" width=\"7\" height=\"7\" rx=\"1.5\"/><rect x=\"3.5\" y=\"13.5\" width=\"7\" height=\"7\" rx=\"1.5\"/><circle cx=\"17\" cy=\"17\" r=\"3.5\"/>", "research": "<circle cx=\"11\" cy=\"11\" r=\"6.5\"/><path d=\"M20 20l-4.3-4.3\"/>", "proto": "<path d=\"M5 3.5l13 6.2-5.6 1.9-2.2 5.7z\"/><path d=\"M13 13l5 5\"/>", "interact": "<circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1\"/>", "ai": "<path d=\"M11 3l1.9 5.1L18 10l-5.1 1.9L11 17l-1.9-5.1L4 10l5.1-1.9z\"/><path d=\"M18.5 14.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z\"/>", "figma": "<path d=\"M9 3h3v6H9a3 3 0 0 1 0-6zM12 3h3a3 3 0 0 1 0 6h-3zM9 9h3v6H9a3 3 0 0 1 0-6zM12 15v3a3 3 0 1 1-3-3z\"/><circle cx=\"15\" cy=\"12\" r=\"3\"/>", "motion": "<circle cx=\"15\" cy=\"12\" r=\"5.5\"/><path d=\"M2.5 9h5M1.5 12h5M2.5 15h5\"/>", "video": "<rect x=\"3\" y=\"6\" width=\"13\" height=\"12\" rx=\"2.5\"/><path d=\"M16 10.5l5-3v9l-5-3\"/>", "prompt": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"2.5\"/><path d=\"M7 9.5l3 2.5-3 2.5M12.5 15h4.5\"/>", "aivideo": "<rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"3\"/><path d=\"M10 9l5 3-5 3z\"/>", "brand": "<path d=\"M12 3l6 7.5L12 21 6 10.5z\"/><circle cx=\"12\" cy=\"11\" r=\"1.7\"/>", "web3": "<path d=\"M12 2.5l8 4.6v9.8l-8 4.6-8-4.6V7.1z\"/><path d=\"M12 7.6l4 2.3v4.4l-4 2.3-4-2.3V9.9z\"/>", "content": "<rect x=\"9\" y=\"3\" width=\"6\" height=\"11\" rx=\"3\"/><path d=\"M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21\"/>", "community": "<circle cx=\"9\" cy=\"8\" r=\"3\"/><path d=\"M3.5 19a5.5 5.5 0 0 1 11 0\"/><circle cx=\"17\" cy=\"9\" r=\"2.4\"/><path d=\"M15.6 14a4.5 4.5 0 0 1 5.4 4.5\"/>"};
+  const skPill = (k, dup)=> `<span class="tb-pill${dup?" dup":""}"${dup?' aria-hidden="true"':""}><span class="tb-pill-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${SKI[k.i]||SKI.ai}</svg></span>${esc(k.t)}</span>`;
+  /* each row: the list twice (= one loop set, wide enough for big screens), then that set again for the seamless -50% loop */
+  const skRow = (row, i)=> `<div class="tb-sk-row${i%2?" rev":""}"><div class="tb-sk-track">${row.map(k=>skPill(k,false)).join("")}${[...row,...row,...row].map(k=>skPill(k,true)).join("")}</div></div>`;
+  const skillsBlock = (S)=> !S ? "" : `
+      <section class="tb-skills" id="skills">
+        ${subHead({eyebrow:S.eyebrow, title:S.title})}
+        <div class="tb-sk"><span class="tb-sk-label"><span class="tb-dot"></span>${esc(S.label)}</span>${S.rows.map(skRow).join("")}</div>
+      </section>`;
+  const resumeRow = ()=> !R ? "" : `<a class="tb-resume" href="${U(R.href)}" target="_blank" rel="noopener"><span class="tb-resume-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span><span class="tb-resume-m"><span class="tb-resume-t">${esc(R.title)}</span><span class="tb-resume-s">${esc(R.line)}</span></span><span class="tb-resume-go">${esc(R.cta)} <i>→</i></span></a>`;
   const secById = (id)=> C.sections.find(s=>s.id===id);
   const vgrid = (s)=> `<div class="vgrid cols-${(s.items.length===3 && !s.items.some(i=>i.span))?3:(s.cols||2)} tb-vgrid">${s.items.map(TB.tile).join("")}</div>`;
   let clockTimer = null;
@@ -125,7 +139,9 @@
             <span class="tb-exp-m"><span class="tb-exp-oh"><span class="tb-exp-o">${esc(e.org)}</span>${e.loc?`<span class="tb-exp-l tb-exp-l1">${esc(e.loc)}</span>`:""}</span>${e.roles.map(([r,d])=>`<span class="tb-exp-r">${esc(r)}${d?`<span class="tb-exp-d">${esc(d)}</span>`:""}</span>`).join("")}</span>
           </li>`).join("")}
         </ol>
+        ${resumeRow()}<!-- Oct 25 2026 1:38 AM her ask: resume right under Toki Finance, where she circled -->
       </section>
+      ${skillsBlock(C.skills)}
 
       <section class="tb-explore">
         ${subHead({eyebrow:"The work", title:"Explore my categories"})}
