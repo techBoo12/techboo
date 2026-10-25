@@ -236,7 +236,8 @@ window.CONTENT.contact = { eyebrow: "Contact", title: "Let’s build something <
    Oct 25 2026 2:05 AM: both now open resume.html (same tab, Back + Download PDF; page images from make_resume_imgs.py). PDF = assets/Adaikem_Ajufo_techBoo_Resume.pdf (her approved CV, 2:10 AM). */
 window.CONTENT.resume = { href: "assets/Adaikem_Ajufo_techBoo_Resume.pdf", label: "Resume", short: "CV", title: "Full resume", line: "Product Visual Designer · PDF", cta: "View" };
 
-/* Oct 25 2026 1:33–1:35 AM her ask: skills after Experience, "in a nice way", inspo = the AuxHR "Live Talent Pool" marquee.
+/* Oct 25 2026 2:10–2:19 AM her renames: AI Video → AI Tools, Branding → Brand Design, Community → Community Lead.
+   Oct 25 2026 1:33–1:35 AM her ask: skills after Experience, "in a nice way", inspo = the AuxHR "Live Talent Pool" marquee.
    Words from her resume (SKILLS: Software + Technical Skills) plus what her work shows. Two rows slide in opposite directions.
    icon = one of: product, uiux, system, research, proto, interact, ai, figma, motion, video, prompt, aivideo, brand, web3, content, community */
 window.CONTENT.skills = {
@@ -246,7 +247,7 @@ window.CONTENT.skills = {
   rows: [
     [ { t: "Product Design", i: "product" }, { t: "UI/UX Design", i: "uiux" }, { t: "Design Systems", i: "system" }, { t: "Figma", i: "figma" },
       { t: "User Research", i: "research" }, { t: "Prototyping", i: "proto" }, { t: "Interaction Design", i: "interact" }, { t: "AI-Powered Features", i: "ai" } ],
-    [ { t: "Motion Graphics", i: "motion" }, { t: "Video Editing", i: "video" }, { t: "Prompt Engineering", i: "prompt" }, { t: "AI Video", i: "aivideo" },
-      { t: "Branding", i: "brand" }, { t: "Web3 Visuals", i: "web3" }, { t: "Content Creation", i: "content" }, { t: "Community Lead", i: "community" } ]
+    [ { t: "Motion Graphics", i: "motion" }, { t: "Video Editing", i: "video" }, { t: "Prompt Engineering", i: "prompt" }, { t: "AI Tools", i: "aivideo" },
+      { t: "Brand Design", i: "brand" }, { t: "Web3 Visuals", i: "web3" }, { t: "Content Creation", i: "content" }, { t: "Community Lead", i: "community" } ]
   ]
 };
