@@ -165,7 +165,7 @@ window.CONTENT = {
     eyebrow: "About",
     // her words, Oct 16 2026 1:42 PM voice note; 2:19 PM: "four" as a word, make it longer/fuller
     // v6 (Oct 16 2026 3:20 PM, her pick, three sentences)
-    body: "I’m Adaikem, aka techBoo, a product and visual designer in Nigeria with four+ years of experience designing B2B, SaaS, fintech and Web3 products. I take products from rough ideas to clean, usable screens. When I’m not in Figma, I’m creating with AI, from prompts to video edits.",
+    body: "I’m Adaikem, aka techBoo, a product and visual designer in Nigeria with four+ years of experience designing B2B, SaaS, fintech and Web3 products. I take products from rough ideas to clean, usable screens. When I’m not design engineering, I’m prompt engineering with AI.",
     handle: "@techboo_", handleHref: "https://x.com/techboo_"
   },
 
@@ -228,4 +228,25 @@ window.CONTENT.experience = [
   { org: "Axis Robotics Contributor", loc: "California · Remote", years: "Sep 2025 – Oct 2026", roles: [ ["Motion Designer & Brand Designer", ""] ] },
   { org: "Toki Finance", loc: "Japan · Remote", years: "Sep 2024 – Jan 2026", roles: [ ["Marketing Designer, Ambassador & Community Lead", ""] ] }
 ];
-window.CONTENT.contact = { eyebrow: "Contact", title: "Let’s build something <em>people trust</em>.", body: "Product design, Web3 visuals, AI films and motion. Tell me what you’re making.", cta: "Email me" };
+/* Oct 25 2026 1:41 AM her ask (old line was "mid"): contact body below. Swap the body string to change it. */
+window.CONTENT.contact = { eyebrow: "Contact", title: "Let’s build something <em>people trust</em>.", body: "Got a product, brand or launch that needs to look as good as it works? Let’s make it.", cta: "Email me" };
+
+/* Oct 25 2026 1:33–1:38 AM her ask (voice note + "it's the resume that will be under that Toki where i circled"):
+   full resume as a PDF. "Resume" pill next to Hire me in the header (shows "CV" on phones), and a full-width row right under Toki Finance.
+   Both open the PDF in a new tab. Swap the file at assets/Adaikem_Ajufo_Resume.pdf to update it. */
+window.CONTENT.resume = { href: "assets/Adaikem_Ajufo_Resume.pdf", label: "Resume", short: "CV", title: "Full resume", line: "Product Visual Designer · PDF", cta: "View" };
+
+/* Oct 25 2026 1:33–1:35 AM her ask: skills after Experience, "in a nice way", inspo = the AuxHR "Live Talent Pool" marquee.
+   Words from her resume (SKILLS: Software + Technical Skills) plus what her work shows. Two rows slide in opposite directions.
+   icon = one of: product, uiux, system, research, proto, interact, ai, figma, motion, video, prompt, aivideo, brand, web3, content, community */
+window.CONTENT.skills = {
+  eyebrow: "Skills",
+  title: "What I work with",
+  label: "Tools & craft",
+  rows: [
+    [ { t: "Product Design", i: "product" }, { t: "UI/UX Design", i: "uiux" }, { t: "Design Systems", i: "system" }, { t: "Figma", i: "figma" },
+      { t: "User Research", i: "research" }, { t: "Prototyping", i: "proto" }, { t: "Interaction Design", i: "interact" }, { t: "AI-Powered Features", i: "ai" } ],
+    [ { t: "Motion Graphics", i: "motion" }, { t: "Video Editing", i: "video" }, { t: "Prompt Engineering", i: "prompt" }, { t: "AI Video", i: "aivideo" },
+      { t: "Branding", i: "brand" }, { t: "Web3 Visuals", i: "web3" }, { t: "Content Creation", i: "content" }, { t: "Community", i: "community" } ]
+  ]
+};
