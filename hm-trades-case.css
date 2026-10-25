@@ -516,3 +516,11 @@ body.hm2-page .hm2 .cs2-scr>[data-pane]>.hmp{height:100%}
   .hm3-real:nth-child(1),.hm3-real:nth-child(3){transform:translateY(16px) rotate(-2deg)}.hm3-real:nth-child(3){transform:translateY(16px) rotate(2deg)}
 }
 @media (max-width:600px){.hm3-scale span:nth-child(1){font-size:18px}.hm3-scale span:nth-child(2){font-size:15px}.hm3-ban3 .hm2-node{padding-top:18px;padding-bottom:18px}}
+@media (max-width:900px){.hm3-ban4 .hm3-ban-in,.hm3-b2-grid,.hm3-ban1 .hm3-ban-in{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:600px){
+  .hm3-b4-art{gap:0;padding-bottom:10px;min-width:0}
+  .hm3-real{flex:0 1 108px;min-width:0}
+  .hm3-real:nth-child(2){flex:0 1 146px;margin:0 -14px}
+  .hm3-real:nth-child(1){transform:translateY(18px) rotate(-4deg)}.hm3-real:nth-child(3){transform:translateY(18px) rotate(4deg)}
+  .hm3-b4-h{font-size:30px}
+}
