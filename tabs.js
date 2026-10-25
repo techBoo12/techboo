@@ -82,6 +82,7 @@
       <section class="tb-skills" id="skills">
         ${subHead({eyebrow:S.eyebrow, title:S.title})}
         <div class="tb-sk"><span class="tb-sk-label"><span class="tb-dot"></span>${esc(S.label)}</span>${S.rows.map(skRow).join("")}</div>
+        ${resumeRow()}<!-- Oct 25 2026 1:59 AM her ask: "Full resume should be after What I work with" -->
       </section>`;
   const resumeRow = ()=> !R ? "" : `<a class="tb-resume" href="${U(R.href)}" target="_blank" rel="noopener"><span class="tb-resume-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span><span class="tb-resume-m"><span class="tb-resume-t">${esc(R.title)}</span><span class="tb-resume-s">${esc(R.line)}</span></span><span class="tb-resume-go">${esc(R.cta)} <i>→</i></span></a>`;
   const secById = (id)=> C.sections.find(s=>s.id===id);
@@ -139,7 +140,7 @@
             <span class="tb-exp-m"><span class="tb-exp-oh"><span class="tb-exp-o">${esc(e.org)}</span>${e.loc?`<span class="tb-exp-l tb-exp-l1">${esc(e.loc)}</span>`:""}</span>${e.roles.map(([r,d])=>`<span class="tb-exp-r">${esc(r)}${d?`<span class="tb-exp-d">${esc(d)}</span>`:""}</span>`).join("")}</span>
           </li>`).join("")}
         </ol>
-        ${resumeRow()}<!-- Oct 25 2026 1:38 AM her ask: resume right under Toki Finance, where she circled -->
+        ${C.skills ? "" : resumeRow()}
       </section>
       ${skillsBlock(C.skills)}
 
