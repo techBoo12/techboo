@@ -1,0 +1,30 @@
+/* techBoo parallax + curtain scroll, PREVIEW v2 (Oct 25 2026). Homepage only (index.html About tab).
+   .px-on is set by parallax.js only while the About tab is on screen; no load animation (removed on her word, Oct 25).
+   Off entirely under prefers-reduced-motion. */
+html.lenis,html.lenis body{height:auto}
+.lenis:not(.lenis-autoToggle).lenis-stopped{overflow:clip}
+.lenis.lenis-smooth iframe{pointer-events:none}
+
+/* ---------- curtains ---------- */
+.px-on .px-layer{position:sticky;top:var(--px-top,0px);display:flow-root;width:100%;isolation:isolate}
+.px-on .px-layer:first-child{background:transparent}
+/* every later section is a sheet of dark glass: the pinned orb glows through it as it slides over the last one */
+.px-on .px-layer+.px-layer{
+  background:linear-gradient(180deg,rgba(18,16,24,.58) 0,rgba(11,11,14,.66) 220px,rgba(10,10,12,.68) 100%);
+  -webkit-backdrop-filter:blur(22px) saturate(135%);backdrop-filter:blur(22px) saturate(135%);
+  border-radius:30px 30px 0 0;
+  box-shadow:0 -24px 60px -14px rgba(0,0,0,.6),inset 0 1px 0 rgba(196,160,255,.26),inset 0 0 0 1px rgba(196,160,255,.05)}
+@media (max-width:900px){.px-on .px-layer+.px-layer{border-radius:24px 24px 0 0;
+  -webkit-backdrop-filter:blur(18px) saturate(135%);backdrop-filter:blur(18px) saturate(135%)}}
+.px-on .px-layer.px-deep{position:relative;top:auto}
+.px-on .px-in:first-child{border-radius:0;box-shadow:none;background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
+.px-on.px-measure .px-layer{position:static!important}
+
+/* ---------- the orb stays put behind everything, all the way down ---------- */
+.px-on .tb-hero .tb-orb.px-orb-fix{position:fixed;right:auto;bottom:auto;margin:0}
+.px-on.px-measure .tb-hero .tb-orb.px-orb-fix{position:absolute}
+
+/* ---------- hero stage ---------- */
+.px-on .tb-hero{min-height:calc(100svh - var(--px-hh,0px))}
+.px-on .tb-hero .tb-hero-h,.px-on .tb-hero .tb-widget,.px-on .px-mv{will-change:translate,opacity}
+
