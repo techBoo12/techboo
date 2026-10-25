@@ -199,7 +199,7 @@ window.CONTENT.groups = {
   uiux: { eyebrow: "B2B B2C SAAS FINTECH & WEB3 Case Studies", title: "UI/UX Designs",
     intro: "Products I designed end to end: research, flows, UI and the details that make people trust them.",
     cases: ["auxhr","warblelive","hm-trades","sofavault","hex-memecoin","invora","stikboo","clique-logistics","navra","sign-in-page-ui","redesigned-neon-ui"],   // Oct 20 2026 9:06 PM: Navra right after Invora; Superteam removed Oct 20 9:47 PM; 10:01 PM Stikboo and Navra swapped, list now matches the page order (next project follows it)
-    explore: { img: "assets/media/warblelive_banner.jpg", vid: "assets/media/warblelive_banner.mp4", cover: "assets/media/cat_uiux.webp?v=3", coverVid: "assets/media/cat_uiux.mp4?v=3" } },   // Oct 21 2026 3:06 AM her ask: UI/UX tile animated like AI / Motion
+    explore: { img: "assets/media/warblelive_banner.jpg", vid: "assets/media/warblelive_banner.mp4", cover: "assets/media/cat_uiux.webp?v=3" } },   // Oct 21 2026 3:06 AM her ask: UI/UX tile animated like AI / Motion. Oct 25 2026 2:07 AM her ask: ONLY the 4 fixed tiles (AuxHR, Invora, HM Trades, Navra), so the cycling video (WarbleLive, e-commerce, sofavault) is off; static collage
   motion: { eyebrow: "AI films & motion design", title: "AI / Motion Designs",
     intro: "AI films, product promos, brand motion and launch animations.",
     cases: ["axis"],   // Oct 24 2026: sphinx-ai-promo unlinked from AI Films on her word "remove the existing AI film there it's stale" (case files kept)
