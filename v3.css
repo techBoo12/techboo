@@ -494,3 +494,12 @@ body[data-tab="uiux"] .tb-split .tb-cw{display:flex;flex-direction:column;min-wi
   .tb-pill{margin-right:0}
   .tb-sk-row{-webkit-mask-image:none;mask-image:none}
 }
+
+/* Oct 25 2026 2:17 AM her ask: section headings share the exact left edge of their content (phone + desktop).
+   The empty number slot before each heading took 14px on phones; the Experience rows had 2-6px side padding. */
+.tb-sub-n:empty{display:none}
+.tb-exp-list li{padding-left:0;padding-right:0}
+/* Oct 25 2026 2:21 AM her ask: "Full resume" row vertically centred between the Skills panel and the divider before Explore (equal space above + below). */
+.tb-skills .tb-resume{margin-top:66px}
+.tb-skills + .tb-explore{padding-top:66px}
+@media (max-width:900px){.tb-skills .tb-resume{margin-top:48px}.tb-skills + .tb-explore{padding-top:48px}}
