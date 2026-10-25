@@ -40,7 +40,7 @@
         <img class="tb-logo" src="${U(B.logo)}" alt="" width="38" height="38">
         <span class="tb-name"><span>${esc(B.first)}</span> <em>${esc(B.last)}</em><small>${esc(B.tag)}</small></span>
       </a>
-      <div class="tb-acts">${R?`<a class="tb-cv" href="${U(RP)}" aria-label="${esc(R.label)}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg><span class="l">${esc(R.label)}</span><span class="s">${esc(R.short||R.label)}</span></a>`:""}<!-- Oct 25 2026 1:36 AM her ask: Resume next to Hire me -->
+      <div class="tb-acts"><!-- Oct 25 2026 2:17 AM her ask: header CV/Resume pill removed (Full resume row on About stays) -->
       <a class="tb-hire" href="mailto:${C.footer.email}"><span class="tb-dot"></span>${esc(B.hire)}</a></div><!-- Oct 18 10:17 PM her ask: Hire me back in header, opens email -->
     </div>
     <nav class="tb-tabs" aria-label="Portfolio">
