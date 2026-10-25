@@ -34,7 +34,6 @@
     if(it.soon) return `
       <figure class="vtile soon"${span}>
         <div class="vmedia" style="aspect-ratio:${it.ar||"16/9"}"><div class="soon-in"><span class="soon-orb"></span><span class="mono">COMING SOON</span><span class="soon-t">${esc(it.title)}</span></div></div>
-        <figcaption><span class="vt">${esc(it.title)}</span><span class="vm">${esc(it.meta||"")}</span></figcaption>
       </figure>`;
     return `
       <figure class="vtile"${span}>
