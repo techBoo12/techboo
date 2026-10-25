@@ -210,7 +210,7 @@ window.CONTENT.groups = {
   brand: { eyebrow: "Brand & graphic design", title: "Brand Designs",
     intro: "Identities, campaigns and visuals for brands of every kind.",
     cases: ["axis-brand"],   /* Oct 20 2026 9:20 PM: Axis Robotics NG brand page (Toki removed 8:57 PM) */
-    soon: { soon: true, title: "Designs for artists & robotics brands", meta: "Uploading soon", ar: "16/9" },
+    soon: { soon: true, title: "Identities, campaigns and visuals for brands of every kind.", meta: "Uploading soon", ar: "16/9" },
     explore: { img: "", cover: "assets/media/cat_brand_axis.webp?v=1" } },   // Oct 21 2026 4:45 PM her ask: home Brand Designs tile = the Axis Robotics NG Brand Kit hero (crop of assets/cases/axis-brand/cover.webp)
   video: { eyebrow: "Video editing", title: "UGC / Video Edits",
     intro: "Brand videos I shot and edited, with motion and captions.",
