@@ -441,3 +441,6 @@ body[data-tab="uiux"] .tb-split .tb-cw{display:flex;flex-direction:column;min-wi
 /* Oct 20 2026 8:21 PM her ask "there should be space": breathing room between the tag pills and VIEW PROJECT on every project card (cards with no description) */
 .card .card-side:has(>.card-cta:first-child){padding-top:22px}
 @media (max-width:600px){.card .card-side:has(>.card-cta:first-child){padding-top:20px}}
+
+/* Oct 25 2026 1:31 AM her screenshot (About page, phone): empty band under Toki Finance read as a blank row; drop the second divider above "Explore my categories" */
+.tb-explore .tb-sub{border-top:0;padding-top:0}
