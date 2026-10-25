@@ -355,3 +355,42 @@
   .wl2-end{margin-top:72px}
   .wl2-end h2{font-size:40px}
 }
+
+
+/* ===== Oct 25 2026 (her 2:29 AM VNs): phone removed from the hero, live 4K site in the browser; brand block moved to the middle; live-product captures; moving screen strip ===== */
+/* hero: browser alone, a touch wider; the live capture is exactly 16:9 so it fills the viewport with no crop */
+.wl2-hero-solo .wl2-hero-stage{max-width:1080px}
+.wl2-hero-solo .wl2-hero-win{border-color:rgba(255,42,249,.28);box-shadow:0 0 0 1px rgba(178,60,253,.12),0 -18px 60px -20px rgba(255,42,249,.35),var(--wl-shadow)}
+.wl2-hero-solo .wl2-hero-win .wl2-vp{aspect-ratio:16/9}
+.wl2-hero-solo .wl2-hero-win .wl2-vp img{width:100%;height:100%;object-fit:cover;object-position:top;transform:none}
+/* splash keeps a phone-like width inside the justified row */
+.wl2-bn.sp .wl2-bn-f img{border-radius:18px}
+/* live product: natural-height browser windows, second row justified by aspect so the two windows end level */
+.wl2-lvs{display:flex;flex-direction:column;gap:24px;margin-top:36px}
+.wl2-lv-row{display:flex;gap:24px;align-items:flex-start}
+.wl2-lv-row .wl2-lv{flex:calc(var(--ar) * 1000) 1 0;min-width:0}
+.wl2-lv{margin:0}
+.wl2-lv .wl2-win{border-color:rgba(255,42,249,.22)}
+.wl2-vp.nat{aspect-ratio:auto}
+.wl2-vp.nat img{width:100%;height:auto;transform:none}
+.wl2-lv figcaption{margin-top:12px;font-size:13.5px;font-weight:600;color:var(--wl-ink2);text-align:center}
+/* interlude: a moving strip of mobile screens between personas and the empathy map */
+.wl2-rib{position:relative;margin:96px 0 0;padding:34px 0;border-radius:28px;overflow:hidden;border:1px solid var(--wl-line);background:radial-gradient(120% 140% at 50% 50%,#1d0620 0%,#070108 60%,#000 100%);isolation:isolate}
+.wl2-rib-glow{position:absolute;inset:20% 10%;background:radial-gradient(50% 50% at 50% 50%,rgba(255,42,249,.28),rgba(178,60,253,.12) 50%,transparent 75%);filter:blur(30px);z-index:-1}
+.wl2-rib-track{display:flex;width:max-content;animation:wl2rib 46s linear infinite}
+.wl2-rib:hover .wl2-rib-track{animation-play-state:paused}
+.wl2-rib-set{display:flex;gap:22px;padding-right:22px}
+.wl2-rib-ph{width:170px;flex:none}
+@keyframes wl2rib{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion: reduce){.wl2-rib-track{animation:none}.wl2-rib{overflow-x:auto}.wl2-rib-set[aria-hidden]{display:none}}
+@media (max-width:720px){
+  .wl2-hero-solo .wl2-hero-stage{margin-top:26px}
+  .wl2-bn.sp{width:58%;margin:0 auto}
+  .wl2-lvs{gap:18px;margin-top:28px}
+  .wl2-lv-row{flex-direction:column;gap:18px}
+  .wl2-lv-row .wl2-lv{flex:none;width:100%}
+  .wl2-lv figcaption{margin-top:9px;font-size:14px}
+  .wl2-rib{margin-top:64px;padding:22px 0;border-radius:22px}
+  .wl2-rib-ph{width:128px}
+  .wl2-rib-set{gap:14px;padding-right:14px}
+}
