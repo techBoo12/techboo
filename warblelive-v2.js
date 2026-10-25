@@ -17,8 +17,9 @@
     mob:`<svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>`
   };
 
-  /* 0. Hero stage: the real landing page in a glass browser, the attendee home in a glass phone */
-  const hero = `<section class="wl2-hero rv">
+  /* 0. Hero stage. Oct 25 2026 2:29 AM her VN: "remove that phone beside it ... that preview of the website should be what is on the website right now ... in 4K".
+     Phone removed; the browser now holds a 3840x2160 capture of the live warblelive.io homepage hero (Playwright, 1920x1080 @2x, Oct 25 2026). */
+  const hero = `<section class="wl2-hero wl2-hero-solo rv">
     <div class="wl2-glow" aria-hidden="true"></div>
     <div class="wl2-hero-copy">
       <span class="wl2-pill"><img src="${L}logo_mark.webp" alt="" width="18" height="18">WarbleLive</span>
@@ -26,8 +27,8 @@
       <p class="wl2-hero-p">${esc(T.hero_p)}</p>
     </div>
     <div class="wl2-hero-stage">
-      ${browser(F+"web_landing_page.webp","warblelive.io","WarbleLive landing page, desktop","wl2-scroll wl2-hero-win")}
-      ${phone(F+"t_att_home_trending.webp","WarbleLive attendee home, mobile","wl2-hero-phone")}
+      <div class="wl2-win wl2-hero-win"><div class="wl2-bar"><span class="wl2-dots"><i></i><i></i><i></i></span><span class="wl2-url"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><b>warblelive.io</b></span><span class="wl2-bar-sp"></span></div>
+        <div class="wl2-vp"><img src="${L}live_hero_4k.webp" srcset="${L}live_hero_1920.webp 1920w, ${L}live_hero_4k.webp 3840w" sizes="(max-width: 720px) 92vw, 1080px" width="3840" height="2160" alt="The live warblelive.io homepage" decoding="async" fetchpriority="high" data-lb="case" data-cap="The live warblelive.io homepage"></div></div>
     </div>
   </section>`;
 
@@ -139,14 +140,26 @@
     </div></section>`;
 
 
-  /* 10b. Banners (her word, Oct 21 3:20 AM: "don't forget banners"): her own billboard and banner designs as she made them, in glass frames. Rows are justified by aspect ratio so heights line up. Lede is FILLER (not from her slices). */
+  /* 10b. Brand designs. Oct 25 2026 2:29 AM her VNs: "add brand designs in the middle ... before the empathizing and the persona" and "all the banners were like below the case study after everything".
+     Her banners/billboards move up from the bottom into the middle, joined by her app icon and splash. Rows are justified by aspect ratio so heights line up. Lede is FILLER (not from her slices). */
   const BN = [
-    [[A+"live/banner.webp","Web Banner",1400,626]],
-    [[A+"billboard_43.webp","Billboard",1240,930],[L+"billboard_lit.webp","Lightbox Poster",772,490]]
+    [[L+"banner.webp","Web Banner",1400,626],[L+"app_icon.webp","App Icon",910,680]],
+    [[A+"billboard_43.webp","Billboard",1240,930],[L+"splash.webp","Splash Screen",606,1318,"sp"],[L+"billboard_lit.webp","Lightbox Poster",772,490]]
   ];
-  const bframe = ([src,cap,w,h])=>`<figure class="wl2-bn" style="--ar:${(w/h).toFixed(4)}"><div class="wl2-bn-f"><img src="${src}" alt="WarbleLive ${esc(cap.toLowerCase())}" width="${w}" height="${h}" loading="lazy" decoding="async" data-lb="case" data-cap="WarbleLive ${esc(cap.toLowerCase())}"></div><figcaption>${esc(cap)}</figcaption></figure>`;
-  const banners = `<section class="wl2-sec rv" id="wl2-banners">${head("Banners","My Banners And Billboards","I took WarbleLive off the screen and onto the street with the same purple on black, so the brand feels the same on a billboard as it does in the app.")}
+  const bframe = ([src,cap,w,h,cls])=>`<figure class="wl2-bn ${cls||""}" style="--ar:${(w/h).toFixed(4)}"><div class="wl2-bn-f"><img src="${src}" alt="WarbleLive ${esc(cap.toLowerCase())}" width="${w}" height="${h}" loading="lazy" decoding="async" data-lb="case" data-cap="WarbleLive ${esc(cap.toLowerCase())}"></div><figcaption>${esc(cap)}</figcaption></figure>`;
+  const banners = `<section class="wl2-sec rv" id="wl2-banners">${head("Brand Designs","My Banners, Billboards And App Icon","I took WarbleLive off the screen and onto the street with the same purple on black, so the brand feels the same on a billboard as it does in the app.")}
     <div class="wl2-bns">${BN.map(r=>`<div class="wl2-bn-row">${r.map(bframe).join("")}</div>`).join("")}</div></section>`;
+
+  /* 10c. Live product (Oct 25 2026): section captures of the live warblelive.io homepage (Playwright, 1440px @2x, Oct 25 2026). Lede is FILLER; headings in the shots are the site's own. */
+  const LV = [["live_events","Events Powered By WarbleLive",2000,1424],["live_features","Core Features",2000,1843],["live_built","Built For Every Event",2000,1102]];
+  const lwin = ([f,cap,w,h])=>`<figure class="wl2-lv" style="--ar:${(w/h).toFixed(4)}"><div class="wl2-win"><div class="wl2-bar"><span class="wl2-dots"><i></i><i></i><i></i></span><span class="wl2-url"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><b>warblelive.io</b></span><span class="wl2-bar-sp"></span></div><div class="wl2-vp nat"><img src="${L}${f}.webp" alt="warblelive.io, ${esc(cap.toLowerCase())}" width="${w}" height="${h}" loading="lazy" decoding="async" data-lb="case" data-cap="warblelive.io, ${esc(cap.toLowerCase())}"></div></div><figcaption>${esc(cap)}</figcaption></figure>`;
+  const live = `<section class="wl2-sec rv" id="wl2-live">${head("Live Product","WarbleLive, Live On The Web","The brand carried all the way through to the shipped product. These are straight from warblelive.io as it runs today.")}
+    <div class="wl2-lvs">${lwin(LV[0])}<div class="wl2-lv-row">${lwin(LV[1])}${lwin(LV[2])}</div></div></section>`;
+
+  /* 10d. Interlude between personas and the empathy map (her word: "so that it's not just reading, reading, reading"): a moving strip of her mobile screens, no copy */
+  const RIB = [["att_home_trending","Home"],["att_events","Explore Events"],["att_event_details","Event Details"],["att_buy_ticket_1","Purchase Ticket"],["att_ticket_wallet_1","Ticket Wallet"],["att_marketplace","Marketplace"],["org_dashboard","Organizer Home"],["org_create_event_1","Create Event"],["org_rewards_leaderboard","Rewards Leaderboard"]];
+  const ribSet = (hid)=>`<div class="wl2-rib-set"${hid?' aria-hidden="true"':""}>${RIB.map(([s,l])=>phone(F+"t_"+s+".webp","WarbleLive "+l+", mobile","wl2-rib-ph")).join("")}</div>`;
+  const ribbon = `<section class="wl2-rib rv" aria-label="WarbleLive mobile screens"><div class="wl2-rib-glow" aria-hidden="true"></div><div class="wl2-rib-track">${ribSet(false)}${ribSet(true)}</div></section>`;
 
   /* 11. Ending (TY_SKIP holds warblelive in case.js, so this is its own ending) */
   const ending = `<section class="wl2-end rv" id="wl2-ty">
@@ -157,7 +170,8 @@
     <button type="button" class="wl2-top">Back To Top ↑</button>
   </section>`;
 
-  gal.innerHTML = `<div class="wl2">${hero}${overview}${process}${personas}${empathy}${screens}${branding}${typo}${colour}${grid}${banners}${ending}</div>`;
+  /* Oct 25 2026 order (her VN): brand block in the middle, before personas + empathy; a visual strip between personas and empathy */
+  gal.innerHTML = `<div class="wl2">${hero}${overview}${process}${branding}${colour}${typo}${banners}${live}${personas}${ribbon}${empathy}${screens}${grid}${ending}</div>`;
 
   /* behaviour */
   const rm = matchMedia("(prefers-reduced-motion: reduce)").matches;
