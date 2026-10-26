@@ -445,3 +445,13 @@
 @media (min-width:1024px){
   .ax-page .case-hero>.ax-film-hero{grid-column:1/-1;grid-row:5;margin:56px 0 0}
 }
+
+/* Oct 26 2026 3:49 AM, her words "this should be in a lighter weight and opacity": hero subtitle lighter */
+.ax-page .case-hero .case-lede{font-weight:400 !important;color:rgba(255,255,255,.62) !important}
+
+/* Oct 26 2026 3:54 techBoo: 'too much space' between title and lede */
+.ax-page .case-hero .case-title{margin-bottom:14px !important}
+.ax-page .case-hero .case-lede{margin-top:0 !important}
+@media (min-width:761px){.ax-page .case-hero{grid-template-rows:auto auto min-content 1fr auto !important}}
+.ax-page .case-hero .case-text{margin-top:0 !important;align-self:start !important}
+.ax-page .case-hero .case-title{align-self:end}
