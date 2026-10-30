@@ -1,6 +1,7 @@
 /* Videos larger than one upload piece ship as byte parts (name.mp4.part0, .part1, …); this joins them in the browser.
    Every <video data-vsrc="…"> is filled when it nears the screen. Full files are kept beside the site in site_v2_fullmedia/. */
 window.VPARTS = {
+ "assets/cases/oraimo-spacebuds2-film/film.mp4": 13,
  "assets/cases/paris-ai-film/film.mp4": 27,
  "assets/media/sofavault_card4.mp4": 2,
  "assets/media/hmtrades_flow_v2.mp4": 4,

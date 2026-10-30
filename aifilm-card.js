@@ -12,7 +12,7 @@
     const media = desk() && it.preview
       ? `<video data-vsrc="${it.preview}" poster="${p.poster}" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true"></video>`
       : `<img src="${p.poster}" alt="" loading="lazy" decoding="async">`;
-    const facts = [["Client", f.client], ["Year", p.years], ["Runtime", f.runtime]].filter(x=>x[1]);
+    const facts = [["Client", f.client], ["Product", f.product], ["Year", p.years], ["Runtime", f.runtime]].filter(x=>x[1]);
     return `
       <article class="card fc-card mp-card big">
         <button class="fc-frame mp-media" type="button" data-open="${i}" aria-label="Play ${esc(p.outcome)} full screen with sound">

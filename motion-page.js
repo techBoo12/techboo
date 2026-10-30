@@ -94,7 +94,8 @@
       const soon = s.items.filter(it=>it.soon);
       return `<section class="tb-page tb-subsec mp-sec" id="${s.id}">${subHead(s, pad(i+1))}
         ${ps.length?card(ps[0], true):""}
-        ${ps.length>1?`<div class="mp-grid">${ps.slice(1).map(p=>card(p,false)).join("")}</div>`:""}
+        ${ps.slice(1).filter(p=>rawItem(p).film).map(p=>card(p,true)).join("")}
+        ${ps.slice(1).filter(p=>!rawItem(p).film).length?`<div class="mp-grid">${ps.slice(1).filter(p=>!rawItem(p).film).map(p=>card(p,false)).join("")}</div>`:""}
         ${soon.length?`<div class="vgrid cols-1 tb-vgrid mp-soon">${soon.map(TB.tile).join("")}</div>`:""}
       </section>`;
     };
