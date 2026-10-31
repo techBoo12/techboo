@@ -2,6 +2,7 @@
    A cinematic glass card for items marked film:true in content.js. Desktop: the muted highlights loop (item.preview) plays while
    the card is on screen (motion-page.js observes every .mp-sec video). Phones: poster only, tap the frame for the full film with
    sound in the fullscreen player. One CTA: Open The Film (the film page). Words and media all come from the content.js item. */
+/* Oct 31 2026 6:23 PM her ask: the description sits under the badges (desc replaces the logline line when present). */
 (function(){
   const esc = (s)=>String(s??"").replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
   const PLAY = `<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8.5 5.8v12.4c0 .8.9 1.3 1.6.9l9.8-6.2c.6-.4.6-1.4 0-1.8l-9.8-6.2c-.7-.4-1.6.1-1.6.9z" fill="currentColor"/></svg>`;
@@ -26,8 +27,9 @@
           <div class="fc-main">
             <div class="brand-row"><span class="dot" style="background:${p.dot}"></span><span class="brand">${esc(p.brand)}</span></div>
             <h3 class="fc-title">${esc(p.outcome)}</h3>
-            ${f.logline?`<p class="fc-line">${esc(f.logline)}</p>`:""}
+            ${(!p.desc && f.logline)?`<p class="fc-line">${esc(f.logline)}</p>`:""}
             ${p.badges.length?`<div class="fc-chips">${p.badges.map(b=>`<span>${esc(b)}</span>`).join("")}</div>`:""}
+            ${p.desc?`<p class="fc-line fc-desc">${esc(p.desc)}</p>`:""}
           </div>
           <div class="fc-side">
             <dl class="fc-facts">${facts.map(([a,b])=>`<div><dt>${a}</dt><dd>${esc(b)}</dd></div>`).join("")}</dl>
