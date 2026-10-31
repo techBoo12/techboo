@@ -1,4 +1,5 @@
-/* Oct 22 2026 9:05 PM: card counter now counts within its own section (Motion Designs read "03 / 10" with 9 cards, the AI film was counted too). */
+/* Oct 31 2026 6:23 PM her ask: AI Films cards show their desc under the badges (film items only; motion cards keep `short`).
+   Oct 22 2026 9:05 PM: card counter now counts within its own section (Motion Designs read "03 / 10" with 9 cards, the AI film was counted too). */
 /* AI / Motion Designs page, v7 (Oct 18 2026). Her asks, WhatsApp 11:27 to 11:33 AM:
    "let's do other sections side by side: AI/motion design"; pills Motion Designs first then AI Films, purple glass, the active
    one follows the scroll or the tap; AuxHR launch video first; every piece as a card like the Axis one (brand • year, title,
@@ -71,7 +72,7 @@
             ${p.badges.length?`<div class="badges">${p.badges.map((b,i)=>`<span class="badge ${i===0?"accent":""}">${esc(b)}</span>`).join("")}</div>`:""}
           </div>
           <div class="card-side">
-            <p class="desc">${esc(p.short || p.meta)}</p>
+            <p class="desc">${esc(p.short || p.meta || (rawItem(p).film ? p.desc : ""))}</p>
             <button class="card-cta mp-watch" type="button" data-open="${idx(p)}">${esc(p.cta)} <i>→</i></button>
             ${p.href?`<a class="mp-case" href="${p.href}">${p.caseLabel||"View case study"} <i>↗</i></a>`:""}
           </div>
