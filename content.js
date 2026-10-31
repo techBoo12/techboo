@@ -169,7 +169,7 @@ window.CONTENT = {
     eyebrow: "About",
     // her words, Oct 16 2026 1:42 PM voice note; 2:19 PM: "four" as a word, make it longer/fuller
     // v6 (Oct 16 2026 3:20 PM, her pick, three sentences)
-    body: "I’m Adaikem, aka techBoo, a product and visual designer in Nigeria with four+ years of experience designing B2B, SaaS, fintech and Web3 products. I take products from rough ideas to clean, usable screens. When I’m not design engineering, I’m prompt engineering with AI.",
+    body: "I’m Adaikem, aka techBoo, a product and visual designer in Nigeria with four+ years of experience designing B2B, SaaS, fintech and Web3 products. I take products from rough ideas to clean, usable screens. When I’m not designing, I’m exploring what AI can create through prompt engineering.",
     handle: "@techboo_", handleHref: "https://x.com/techboo_"
   },
 
