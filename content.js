@@ -119,7 +119,7 @@ window.CONTENT = {
         { title: "Oraimo Product Launch", src: "assets/cases/oraimo-spacebuds2-film/film.mp4", poster: "assets/cases/oraimo-spacebuds2-film/poster.webp", preview: "assets/cases/oraimo-spacebuds2-film/film_preview.mp4", ar: "16/9", cta: "Play The Film",
           brand: "ORAIMO", years: "", dot: "#B8F04A", badges: ["AI Film", "Motion Design", "Sound"],
           desc: "An AI ad film for oraimo SpaceBuds 2. Concept, AI film, motion design and sound by me.",
-          film: { product: "SpaceBuds 2 · AI ad film", runtime: "1:08", logline: "Mavo wants peace from the noise. One wish later, he gets SpaceBuds 2." } },   // Oct 30 2026 7:04 AM her ask: "upload the one without end card on my portfolio website", title "oriamo product launch" (brand spelling oraimo). Film = Mavo's wish v15 (no end card).
+          film: { product: "SpaceBuds 2 · AI ad film", runtime: "1:08", logline: "A character animation AI video for the launch of oraimo SpaceBuds 2" } },   // Oct 30 2026 7:04 AM her ask: "upload the one without end card on my portfolio website", title "oriamo product launch" (brand spelling oraimo). Film = Mavo's wish v15 (no end card).
       ] },
     { id: "motion", page: "ai-motion-designs#motion", eyebrow: "Motion design & graphics", title: "Motion Designs", cols: 2,
       intro: "Product promos, brand motion and launch animations.",
