@@ -112,14 +112,14 @@ window.CONTENT = {
     { id: "ai-films", page: "ai-motion-designs#ai-films", eyebrow: "Directed by me, made with AI tools", title: "AI Films", cols: 2,
       intro: "Short films built from stills, AI animation and edit.",
       items: [
-        { title: "Oraimo Product Launch", src: "assets/cases/oraimo-spacebuds2-film/film.mp4", poster: "assets/cases/oraimo-spacebuds2-film/poster.webp", preview: "assets/cases/oraimo-spacebuds2-film/film_preview.mp4", ar: "16/9", cta: "Play The Film",
-          brand: "ORAIMO", years: "", dot: "#B8F04A", badges: ["AI Film", "Motion Design", "Sound"],
-          desc: "An AI ad film for oraimo SpaceBuds 2. Concept, AI film, motion design and sound by me.",
-          film: { product: "SpaceBuds 2 · AI ad film", runtime: "1:08", logline: "Mavo wants peace from the noise. One wish later, he gets SpaceBuds 2." } },   // Oct 30 2026 7:04 AM her ask: "upload the one without end card on my portfolio website", title "oriamo product launch" (brand spelling oraimo). Film = Mavo's wish v15 (no end card).
         { title: "That's AI: A Short Film", src: "assets/cases/paris-ai-film/film.mp4", poster: "assets/cases/paris-ai-film/poster.webp", preview: "assets/cases/paris-ai-film/film_preview.mp4", ar: "16/9", cta: "Play The Film",
           brand: "TECHBOO", years: "", dot: "#C4A0FF", badges: ["AI Film", "Direction", "Edit"],
           desc: "A one-minute AI short film, directed and edited by me. A girl leaves her Paris apartment, skates across the city and lands a trick in the park, and the people watching start asking if any of it is real.",
           film: { client: "Personal project", runtime: "1:00", logline: "A girl skates across Paris. The people watching can’t tell if it’s real." } },   // Oct 24 2026 6:06 PM her ask: the AI film we did this month under AI Films; 6:07 PM "remove the existing AI film there it's stale" (Sphinx card removed, case page kept; 'More AI films on the way' tile dropped so the one film reads full width)
+        { title: "Oraimo Product Launch", src: "assets/cases/oraimo-spacebuds2-film/film.mp4", poster: "assets/cases/oraimo-spacebuds2-film/poster.webp", preview: "assets/cases/oraimo-spacebuds2-film/film_preview.mp4", ar: "16/9", cta: "Play The Film",
+          brand: "ORAIMO", years: "", dot: "#B8F04A", badges: ["AI Film", "Motion Design", "Sound"],
+          desc: "An AI ad film for oraimo SpaceBuds 2. Concept, AI film, motion design and sound by me.",
+          film: { product: "SpaceBuds 2 · AI ad film", runtime: "1:08", logline: "Mavo wants peace from the noise. One wish later, he gets SpaceBuds 2." } },   // Oct 30 2026 7:04 AM her ask: "upload the one without end card on my portfolio website", title "oriamo product launch" (brand spelling oraimo). Film = Mavo's wish v15 (no end card).
       ] },
     { id: "motion", page: "ai-motion-designs#motion", eyebrow: "Motion design & graphics", title: "Motion Designs", cols: 2,
       intro: "Product promos, brand motion and launch animations.",
