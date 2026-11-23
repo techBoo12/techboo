@@ -2,6 +2,8 @@
    Every <video data-vsrc="…"> is filled when it nears the screen. Full files are kept beside the site in site_v2_fullmedia/. */
 window.VPARTS = {
  "assets/cases/oraimo-spacebuds2-film/film.mp4": 13,
+ "assets/cases/gamdom-ai-film/film.mp4": 16,
+ "assets/media/motion_warblelive_offline.mp4": 12,
  "assets/cases/paris-ai-film/film.mp4": 27,
  "assets/media/sofavault_card4.mp4": 2,
  "assets/media/hmtrades_flow_v2.mp4": 4,
@@ -38,6 +40,7 @@ window.VPARTS = {
 /* Oct 20 2026 9:19 PM her ask ("in desktop view for the motion design section, the videos don't play before they click it"): the biggest motion files are 25 MB in 30 parts, so a card stayed on its poster until every part had downloaded. Muted card previews now play a light 8 s clip (assets/media/prev/) right away; the click / lightbox still plays the full film. */
 window.VPREV = {
  "assets/media/motion_auxhr3.mp4": "assets/media/prev/motion_auxhr3.mp4",
+ "assets/media/motion_warblelive_offline.mp4": "assets/media/prev/motion_warblelive_offline.mp4",
  "assets/media/motion_biztriach.mp4": "assets/media/prev/motion_biztriach.mp4",
  "assets/media/motion_navra.mp4": "assets/media/prev/motion_navra.mp4",
  "assets/media/motion_creditrolls.mp4": "assets/media/prev/motion_creditrolls.mp4",

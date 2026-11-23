@@ -116,6 +116,10 @@ window.CONTENT = {
           brand: "TECHBOO", years: "", dot: "#C4A0FF", badges: ["AI Films", "Storytelling"],
           desc: "A one-minute AI short film, directed and edited by me. A girl leaves her Paris apartment, skates across the city and lands a trick in the park, and the people watching start asking if any of it is real.",
           film: { client: "Personal project", runtime: "1:00", logline: "A girl skates across Paris. The people watching can’t tell if it’s real." } },   // Oct 24 2026 6:06 PM her ask: the AI film we did this month under AI Films; 6:07 PM "remove the existing AI film there it's stale" (Sphinx card removed, case page kept; 'More AI films on the way' tile dropped so the one film reads full width)
+        { title: "Gamdom AI Film", src: "assets/cases/gamdom-ai-film/film.mp4", poster: "assets/cases/gamdom-ai-film/poster.webp", preview: "assets/cases/gamdom-ai-film/film_preview.mp4", ar: "16/9", cta: "Play The Film",
+          brand: "GAMDOM", years: "", dot: "#00E676", badges: ["AI Films", "Storytelling"],
+          desc: "A one-minute AI streamer film for Gamdom. Concept, AI film direction, editing and sound design by me.",
+          film: { product: "Gamdom · AI brand film", runtime: "1:03", logline: "A high-energy AI brand film bringing Gamdom’s streamer penthouse to life." } },
         { title: "Oraimo Product Launch", src: "assets/cases/oraimo-spacebuds2-film/film.mp4", poster: "assets/cases/oraimo-spacebuds2-film/poster.webp", preview: "assets/cases/oraimo-spacebuds2-film/film_preview.mp4", ar: "16/9", cta: "Play The Film",
           brand: "ORAIMO", years: "", dot: "#B8F04A", badges: ["AI Character Animation", "Motion Design"],
           desc: "An AI ad film for oraimo SpaceBuds 2. Concept, AI film, motion design and sound by me.",
@@ -128,6 +132,10 @@ window.CONTENT = {
           brand: "AUXHR · SALESPLAT", years: "", dot: "#C4A0FF", role: "Motion design · Product promo", badges: ["Motion graphics", "SaaS"],
           short: "Launch video for AuxHR, an AI powered hiring platform for talents and recruiters.", cta: "Watch video",
           desc: "Launch video for AuxHR, an AI powered hiring platform for talents and recruiters. It walks through posting a role, AI screening and the shortlist, with the product UI in motion." },   // Oct 21 2026 4:42 PM her ask: AuxHR launch video FIRST in Motion Designs, then Axis recap, $HEX, Credit Rolls, Spenda, Bolapsd
+        { title: "WarbleLive · offline verification", outcome: "WarbleLive Launch Video", meta: "Product launch · 38 s", src: "assets/media/motion_warblelive_offline.mp4", poster: "assets/media/motion_warblelive_offline.jpg", ar: "16/9",
+          brand: "WARBLELIVE", years: "", dot: "#B84DFF", role: "Motion design · Product launch", badges: ["Motion graphics", "Product launch"],
+          short: "Product launch video for WarbleLive Offline Ticket Verification — instant QR check-ins with real-time local records, even without internet.", cta: "Watch video",
+          desc: "Product launch video for WarbleLive Offline Ticket Verification. Walks through preparing an event for offline scanning, instant QR check-ins at the gate, and real-time local check-in records." },
         { title: "Axis Robotics · September recap", outcome: "Axis Robotics Recap", meta: "Recap film · 52 s", src: "assets/media/motion_axisrecap.mp4", poster: "assets/media/motion_axisrecap.jpg", ar: "16/9",
           caseKey: "axis", short: "Motion design for Axis Robotics recap 3D data graphics", cta: "Watch video" },   // Oct 22 2026 9:03 PM her ask: "switch biztrach with axis recap", Axis recap 2nd after AuxHR, Biztriach 4th. Oct 21 2026 4:42 PM: Axis recap now 2nd, after the AuxHR launch video (was first since Oct 20 9:35 PM) (Oct 18 12:13: intro cut, intro cut, starts on the trajectories screen)
         { title: "Navra", outcome: "Navra", meta: "Fintech motion · 18 s", src: "assets/media/motion_navra.mp4", poster: "assets/media/motion_navra.jpg", ar: "16/9",
